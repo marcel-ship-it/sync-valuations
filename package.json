@@ -2,7 +2,10 @@
   "name": "sync-valuations",
   "version": "1.0.0",
   "description": "Sync Valuations — static site",
+  "dependencies": {
+    "serve": "^14.2.0"
+  },
   "scripts": {
-    "start": "npx serve . -p ${PORT:-3000} -s"
+    "start": "serve . -p ${PORT:-3000} -s"
   }
 }
