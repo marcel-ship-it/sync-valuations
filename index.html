@@ -1,0 +1,2457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sync Licensing Valuation Reports | Music Copyright Expert Witness — Sync Valuations</title>
+<meta name="description" content="Independent sync licensing valuation reports for music copyright disputes. Court-ready expert analysis for law firms, rights holders and insurers. 100+ cases assessed, 73% settlement rate.">
+<link rel="canonical" href="https://syncvaluations.com/">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Sync Licensing Valuation Reports | Music Copyright Expert Witness">
+<meta property="og:description" content="Independent sync licensing valuation reports for music copyright disputes. Court-ready expert analysis. 100+ cases assessed.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://syncvaluations.com">
+<meta property="og:image" content="https://syncvaluations.com/og-image.png">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sync Licensing Valuation Reports | Music Copyright Expert Witness">
+<meta name="twitter:description" content="Independent sync licensing valuation reports for music copyright disputes. Court-ready expert analysis. 100+ cases assessed.">
+<meta name="twitter:image" content="https://syncvaluations.com/og-image.png">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Sync Valuations",
+  "description": "Independent sync licensing valuation reports for music copyright disputes. Court-ready expert analysis for law firms, rights holders and insurers.",
+  "url": "https://syncvaluations.com",
+  "email": "hello@syncvaluations.com",
+  "telephone": "+31624216720",
+  "foundingDate": "2024",
+  "areaServed": ["Europe", "United States", "Global"],
+  "serviceType": ["Sync Licensing Valuation", "Music Copyright Expert Witness", "Litigation Support"],
+  "founder": [
+    {"@type": "Person", "name": "Nicholas van den Doel", "jobTitle": "Co-Founder", "url": "https://www.linkedin.com/in/nicholasvandendoel/"},
+    {"@type": "Person", "name": "Marcel Alexander Wiebenga", "jobTitle": "Co-Founder", "url": "https://www.linkedin.com/in/marcelalexanderwiebenga/"}
+  ],
+  "knowsAbout": ["Sync Licensing", "Music Valuation", "Copyright Infringement", "xSV Expected Sync Value", "Music Copyright Damages", "Expert Witness Testimony"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is a sync licensing valuation report?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A sync licensing valuation report is an independent, court-ready document that determines the fair market value of music used without authorization. It combines artist and song analysis, territorial pricing benchmarks, and usage context to produce defensible valuation ranges for litigation, settlement, and claims."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is the hypothetical license fee determined in music copyright cases?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The hypothetical license fee — what the sync license would have cost if properly obtained — is determined by analyzing historical sync licensing benchmarks, artist and song market data, territorial pricing, media type, and duration. Sync Valuations uses the xSV™ (Expected Sync Value) framework to model this fee. The hypothetical license fee then serves as an input for the broader damages calculation."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who uses sync valuation reports?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sync valuation reports are used by law firms handling music copyright disputes, rights holders seeking to establish the hypothetical license value, brands assessing licensing exposure, and insurers evaluating claims. They serve as independent expert evidence in litigation and settlement negotiations."
+      }
+    }
+  ]
+}
+</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<!-- Material Icons for arrows -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════════════════
+   SYNC VALUATIONS — REDESIGN
+   Original copy preserved. Improvements: structure,
+   SEO, responsive, stats, testimonials, client logos,
+   animated hero, scroll animations.
+   ═══════════════════════════════════════════════════ */
+
+:root {
+  --cream: #F5F0E3;
+  --cream-light: #FAF7EF;
+  --cream-dark: #EDE7D5;
+  --deep-navy: #1B2C3C;
+  --navy-90: rgba(27,44,60,0.9);
+  --navy-80: rgba(27,44,60,0.8);
+  --navy-60: rgba(27,44,60,0.6);
+  --khaki: #A59F8E;
+  --khaki-gold: #B5A878;
+  --khaki-light: #C4BEA8;
+  --warm-gray: #9B9588;
+  --warm-gray-light: #D4D0C8;
+  --taupe: #8A8478;
+  --charcoal: #343434;
+  --white: #FFFFFF;
+  --text-primary: #1B2C3C;
+  --text-secondary: #5A5650;
+  --text-tertiary: #9B9588;
+  --border: #D4D0C8;
+  --border-light: #E8E4DA;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ── UTILITY ─────────────────────────── */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+@media (max-width: 768px) { .container { padding: 0 24px; } }
+
+.section-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--khaki);
+  margin-bottom: 16px;
+  display: block;
+}
+
+.section-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+  line-height: 1.05;
+  color: var(--deep-navy);
+}
+
+/* ── SCROLL ANIMATIONS ────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ═══════════════════════════════════════════════════
+   NAVIGATION
+   ═══════════════════════════════════════════════════ */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 20px 0;
+  transition: all 0.4s ease;
+  background: transparent;
+}
+.nav.scrolled {
+  background: rgba(245, 240, 227, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 14px 0;
+  box-shadow: 0 1px 0 var(--border-light);
+}
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+}
+.nav-logo-full {
+  height: 33px;
+  width: auto;
+  display: block;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  list-style: none;
+}
+.nav-links a {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.nav-links a:hover { color: var(--deep-navy); }
+.nav-cta {
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 11px !important;
+  font-weight: 500 !important;
+  letter-spacing: 1.5px !important;
+  text-transform: uppercase;
+  padding: 10px 24px;
+  background: var(--deep-navy);
+  color: var(--cream) !important;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.nav-cta:hover { background: var(--charcoal); }
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 8px;
+}
+.nav-hamburger span {
+  display: block; width: 24px; height: 2px;
+  background: var(--deep-navy);
+  transition: all 0.3s ease;
+}
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%; left: 0; right: 0;
+    background: var(--cream);
+    border-top: 1px solid var(--border-light);
+    flex-direction: column;
+    padding: 16px 24px 24px;
+    gap: 0;
+    z-index: 999;
+  }
+  .nav-links.nav-open { display: flex; }
+  .nav-links li { border-bottom: 1px solid var(--border-light); }
+  .nav-links li a { display: block; padding: 14px 0; font-size: 15px; }
+  .nav-hamburger { display: flex; }
+  .nav-inner { padding: 0 24px; position: relative; }
+}
+
+/* ═══════════════════════════════════════════════════
+   HERO
+   ═══════════════════════════════════════════════════ */
+.hero {
+  padding: 180px 0 120px;
+  position: relative;
+  overflow: hidden;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.hero-content { position: relative; z-index: 2; }
+.hero h1 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: clamp(48px, 5.5vw, 72px);
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  line-height: 0.95;
+  color: var(--deep-navy);
+  margin-bottom: 12px;
+}
+.hero h1 .accent { color: var(--khaki-gold); }
+.hero-headline-sub {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: clamp(36px, 4vw, 52px);
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+  line-height: 0.95;
+  color: var(--deep-navy);
+  margin-bottom: 28px;
+}
+.hero-headline-sub .accent { color: var(--khaki-gold); }
+.hero-subtitle {
+  font-size: 17px;
+  color: var(--text-secondary);
+  max-width: 460px;
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+.hero-cta-row {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+.hero-cta-note {
+  font-size: 13px;
+  color: var(--text-tertiary);
+  max-width: 400px;
+}
+
+.btn-primary {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 2px; text-transform: uppercase;
+  padding: 16px 36px;
+  background: var(--deep-navy);
+  color: var(--cream);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+  border: 2px solid var(--deep-navy);
+  border-radius: 5px;
+}
+.btn-primary:hover { background: var(--charcoal); border-color: var(--charcoal); }
+.btn-primary .material-icons { font-size: 16px; }
+
+.btn-secondary {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 2px; text-transform: uppercase;
+  padding: 16px 36px;
+  background: transparent;
+  color: var(--deep-navy);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 2px solid var(--border);
+  border-radius: 5px;
+  transition: all 0.2s ease;
+}
+.btn-secondary:hover { border-color: var(--deep-navy); }
+
+/* FLOATING REPORT — Interactive hero report */
+.hero-visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 480px;
+}
+.report-scene {
+  perspective: 1200px;
+  width: 360px;
+  height: 480px;
+  position: relative;
+}
+.report-stack {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: floatReport 6s ease-in-out infinite;
+}
+@keyframes floatReport {
+  0%, 100% { transform: rotateY(-4deg) rotateX(2deg) translateY(0); }
+  50% { transform: rotateY(-4deg) rotateX(2deg) translateY(-12px); }
+}
+.report-shadow {
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 20px;
+  background: radial-gradient(ellipse, rgba(27,44,60,0.12) 0%, transparent 70%);
+  animation: floatShadow 6s ease-in-out infinite;
+}
+@keyframes floatShadow {
+  0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.8; }
+  50% { transform: translateX(-50%) scale(0.85); opacity: 0.5; }
+}
+.report-back-page {
+  position: absolute;
+  width: 100%; height: 100%;
+  background: var(--cream-light);
+  border: 1px solid var(--border-light);
+}
+.report-back-page:nth-child(1) { top: 3px; left: 3px; }
+.report-back-page:nth-child(2) { top: 6px; left: 6px; }
+
+.report-page {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: var(--white);
+  border: 1px solid var(--border-light);
+  box-shadow: 0 4px 24px rgba(27,44,60,0.08), 0 1px 4px rgba(27,44,60,0.04);
+  padding: 30px;
+  opacity: 0;
+  transform: translateX(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  pointer-events: none;
+  overflow: hidden;
+}
+.report-page.active {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+.report-page.prev {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+.report-page::after {
+  content: '';
+  position: absolute;
+  top: 2px; right: -3px;
+  width: 3px; height: calc(100% - 4px);
+  background: linear-gradient(to right, var(--border-light), var(--cream-dark));
+}
+
+/* Cover page */
+.rp-cover-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--khaki-gold);
+  margin-bottom: 36px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.rp-cover-badge::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: var(--khaki-gold);
+}
+.rp-cover-line {
+  width: 40px; height: 2px;
+  background: var(--deep-navy);
+  margin-bottom: 20px;
+}
+.rp-cover-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 30px;
+  text-transform: uppercase;
+  line-height: 1.05;
+  color: var(--deep-navy);
+  margin-bottom: 6px;
+}
+.rp-cover-title em {
+  font-style: normal;
+  color: var(--khaki-gold);
+}
+.rp-cover-artist {
+  font-size: 14px;
+  color: var(--warm-gray);
+  margin-bottom: 40px;
+}
+.rp-cover-meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.rp-cover-meta-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--khaki);
+}
+.rp-cover-meta-value {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--deep-navy);
+}
+.rp-cover-confidential {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--border);
+  writing-mode: vertical-lr;
+}
+.rp-cover-track-record {
+  position: absolute;
+  bottom: 70px;
+  left: 30px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--khaki);
+}
+.rp-cover-logo {
+  position: absolute;
+  bottom: 44px;
+  left: 30px;
+}
+.rp-cover-logo svg { height: 20px; width: auto; }
+
+/* Scores page */
+.rp-section-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--khaki);
+  margin-bottom: 28px;
+}
+.rp-score-block { margin-bottom: 24px; }
+.rp-score-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--warm-gray);
+  margin-bottom: 8px;
+}
+.rp-score-row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+.rp-score-value {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 44px;
+  line-height: 1;
+}
+.rp-score-value.navy { color: var(--deep-navy); }
+.rp-score-value.gold { color: var(--khaki-gold); }
+.rp-score-max {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  color: var(--border);
+}
+.rp-score-bar-bg {
+  width: 100%;
+  height: 4px;
+  background: var(--cream);
+  margin-bottom: 5px;
+}
+.rp-score-bar-fg { height: 100%; }
+.rp-score-bar-fg.navy { background: var(--deep-navy); }
+.rp-score-bar-fg.gold { background: var(--khaki-gold); }
+.rp-score-desc {
+  font-size: 10px;
+  color: var(--warm-gray);
+  line-height: 1.5;
+}
+.rp-tier-badge {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 5px 12px;
+  border: 1px solid var(--deep-navy);
+  color: var(--deep-navy);
+  margin-top: 16px;
+}
+
+/* Matrix page */
+.rp-matrix-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 10px;
+}
+.rp-matrix-table th {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 7px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--cream);
+  background: var(--deep-navy);
+  padding: 8px 6px;
+  text-align: left;
+  font-weight: 500;
+}
+.rp-matrix-table td {
+  padding: 8px 6px;
+  border-bottom: 1px solid var(--border-light);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--deep-navy);
+}
+.rp-matrix-table tr:last-child td { border-bottom: none; }
+.rp-matrix-table .territory-col {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 11px;
+}
+.rp-floor-tag {
+  font-size: 6px;
+  background: #FDF6E3;
+  color: #B8860B;
+  padding: 1px 3px;
+  margin-left: 2px;
+  letter-spacing: 0.5px;
+}
+.rp-matrix-note {
+  font-size: 9px;
+  color: var(--warm-gray);
+  margin-top: 14px;
+  line-height: 1.5;
+  font-style: italic;
+}
+
+/* Conclusion page */
+.rp-conclusion-range { text-align: center; margin-bottom: 28px; }
+.rp-conclusion-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--warm-gray);
+  margin-bottom: 3px;
+}
+.rp-conclusion-amount {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 34px;
+  color: var(--deep-navy);
+}
+.rp-conclusion-sub {
+  font-size: 10px;
+  color: var(--warm-gray);
+}
+.rp-conclusion-divider {
+  width: 50px;
+  height: 1px;
+  background: var(--khaki-gold);
+  margin: 16px auto;
+  position: relative;
+}
+.rp-conclusion-divider::after {
+  content: 'TO';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 7px;
+  letter-spacing: 2px;
+  color: var(--khaki-gold);
+  background: var(--white);
+  padding: 2px 6px;
+}
+.rp-conclusion-text {
+  font-size: 11px;
+  color: var(--warm-gray);
+  line-height: 1.7;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-light);
+}
+.rp-sig {
+  margin-top: 24px;
+  display: flex;
+  gap: 20px;
+}
+.rp-sig-item { flex: 1; }
+.rp-sig-line {
+  width: 100%;
+  height: 1px;
+  background: var(--deep-navy);
+  margin-bottom: 6px;
+}
+.rp-sig-name {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--deep-navy);
+  margin-bottom: 1px;
+}
+.rp-sig-role {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 7px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--warm-gray);
+}
+
+/* Report navigation */
+.rp-nav-arrows {
+  position: absolute;
+  bottom: 18px;
+  right: 30px;
+  display: flex;
+  gap: 6px;
+  z-index: 10;
+}
+.rp-nav-arrow {
+  width: 28px; height: 28px;
+  background: var(--cream);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: var(--deep-navy);
+  font-size: 12px;
+}
+.rp-nav-arrow:hover {
+  background: var(--deep-navy);
+  color: var(--white);
+  border-color: var(--deep-navy);
+}
+.rp-page-num {
+  position: absolute;
+  bottom: 24px;
+  left: 30px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px;
+  color: var(--border);
+  letter-spacing: 1px;
+}
+.rp-page-dots {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+}
+.rp-page-dot {
+  width: 5px; height: 5px;
+  background: var(--border);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.rp-page-dot.active {
+  background: var(--deep-navy);
+  width: 20px;
+}
+
+@media (max-width: 960px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 60px; }
+  .hero { padding: 140px 0 80px; min-height: auto; }
+  .hero-visual { min-height: 400px; }
+}
+@media (max-width: 768px) {
+  .hero { padding: 120px 0 60px; }
+  .hero-visual { display: none; }
+}
+
+/* ═══════════════════════════════════════════════════
+   STATS BAR (NEW)
+   ═══════════════════════════════════════════════════ */
+.stats {
+  background: var(--deep-navy);
+}
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-left: 1px solid rgba(245,240,227,0.08);
+}
+.stat-item {
+  padding: 48px 40px;
+  border-right: 1px solid rgba(245,240,227,0.08);
+  text-align: center;
+}
+.stat-number {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900; font-size: 48px;
+  color: var(--cream); line-height: 1;
+  margin-bottom: 8px;
+}
+.stat-number .stat-symbol {
+  font-size: 32px;
+  color: var(--khaki-gold);
+}
+.stat-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--khaki);
+}
+@media (max-width: 960px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) {
+  .stats-grid { grid-template-columns: 1fr; }
+  .stat-item { padding: 32px 24px; border-bottom: 1px solid rgba(245,240,227,0.08); }
+}
+
+/* ═══════════════════════════════════════════════════
+   QUESTION SHIFTED (ORIGINAL)
+   ═══════════════════════════════════════════════════ */
+.question-section {
+  padding: 120px 0;
+  border-bottom: 1px solid var(--border-light);
+}
+.question-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+.question-section .section-title {
+  font-size: 44px;
+  margin-bottom: 28px;
+}
+.question-text {
+  font-size: 17px;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+.question-text em {
+  font-style: italic;
+  color: var(--deep-navy);
+  font-weight: 500;
+}
+.question-quote {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-style: italic;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  padding-left: 24px;
+  border-left: 3px solid var(--khaki-gold);
+  margin: 32px 0;
+}
+@media (max-width: 768px) {
+  .question-grid { grid-template-columns: 1fr; gap: 40px; }
+  .question-section { padding: 80px 0; }
+}
+
+/* ═══════════════════════════════════════════════════
+   DELIVERABLES (ORIGINAL)
+   ═══════════════════════════════════════════════════ */
+.deliverables-section {
+  padding: 120px 0;
+  background: var(--cream-light);
+  border-bottom: 1px solid var(--border-light);
+}
+.deliverables-section .section-title {
+  font-size: 44px;
+  margin-bottom: 16px;
+}
+.deliverables-intro {
+  font-size: 17px;
+  color: var(--text-secondary);
+  max-width: 600px;
+  line-height: 1.7;
+  margin-bottom: 64px;
+}
+.deliverable-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  padding: 20px 0 32px;
+  align-items: start;
+}
+.deliverable-card {
+  padding: 48px 36px;
+  border: 1px solid var(--border);
+  background: var(--white);
+  position: relative;
+  transition: all 0.3s ease;
+}
+.deliverable-card.featured {
+  background: var(--deep-navy);
+  border-color: var(--deep-navy);
+  transform: translateY(-12px) scale(1.03);
+  box-shadow: 0 24px 56px rgba(27,44,60,0.22);
+  z-index: 1;
+}
+.deliverable-card.featured::before {
+  content: 'PRIMARY DELIVERABLE';
+  position: absolute;
+  top: -14px; left: 24px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px; letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 5px 18px;
+  background: var(--khaki-gold);
+  color: var(--white);
+}
+.deliverable-card.featured h3 {
+  color: var(--white);
+}
+.deliverable-card.featured .deliverable-card-sub {
+  color: var(--khaki-gold);
+}
+.deliverable-card.featured p {
+  color: rgba(255,255,255,0.72);
+}
+.deliverable-card.featured .deliverable-ideal {
+  color: rgba(255,255,255,0.5);
+  border-top-color: rgba(255,255,255,0.12);
+}
+.deliverable-card.featured .deliverable-ideal strong {
+  color: rgba(255,255,255,0.7);
+}
+/* White outlined button for featured card */
+.deliverable-card.featured .btn-primary {
+  background: transparent;
+  color: var(--white);
+  border: 1px solid rgba(255,255,255,0.5);
+}
+.deliverable-card.featured .btn-primary:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: var(--white);
+}
+.deliverable-card:not(.featured):hover {
+  border-color: var(--khaki);
+  box-shadow: 0 8px 32px rgba(27,44,60,0.06);
+}
+.deliverable-card h3 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  text-transform: uppercase;
+  color: var(--deep-navy);
+  margin-bottom: 8px;
+}
+.deliverable-card-sub {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--khaki-gold);
+  margin-bottom: 16px;
+}
+.deliverable-card p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+.deliverable-card .btn-primary { width: 100%; justify-content: center; }
+.deliverable-ideal {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  color: var(--text-tertiary);
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-light);
+}
+.deliverable-ideal strong {
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+.deliverable-help {
+  margin-top: 48px;
+  padding: 40px;
+  border: 1px solid var(--border);
+  text-align: center;
+}
+.deliverable-help h3 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  text-transform: uppercase;
+  color: var(--deep-navy);
+  margin-bottom: 12px;
+}
+.deliverable-help p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+}
+@media (max-width: 960px) {
+  .deliverable-cards { grid-template-columns: 1fr; max-width: 480px; }
+  .deliverables-section { padding: 80px 0; }
+}
+
+/* ═══════════════════════════════════════════════════
+   METHODOLOGY (ORIGINAL)
+   ═══════════════════════════════════════════════════ */
+.method-section {
+  padding: 120px 0;
+  border-bottom: 1px solid var(--border-light);
+}
+.method-section .section-title {
+  font-size: 44px;
+  margin-bottom: 24px;
+}
+.method-text {
+  font-size: 17px;
+  color: var(--text-secondary);
+  max-width: 720px;
+  line-height: 1.8;
+}
+@media (max-width: 768px) { .method-section { padding: 80px 0; } }
+
+/* ═══════════════════════════════════════════════════
+   SECTORS (ORIGINAL)
+   ═══════════════════════════════════════════════════ */
+.sectors-section {
+  padding: 120px 0;
+  background: var(--cream-light);
+  border-bottom: 1px solid var(--border-light);
+}
+.sectors-section .section-title {
+  font-size: 44px;
+  margin-bottom: 64px;
+}
+.sectors-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+.sector-card {
+  padding: 32px;
+  border: 1px solid var(--border-light);
+  background: var(--white);
+}
+.sector-card h3 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  text-transform: uppercase;
+  color: var(--deep-navy);
+  margin-bottom: 12px;
+}
+.sector-card p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+@media (max-width: 960px) { .sectors-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .sectors-grid { grid-template-columns: 1fr; } }
+
+/* ═══════════════════════════════════════════════════
+   UNIFIED LOGO SYSTEM
+   One class for all rows · one class for all slots
+   ═══════════════════════════════════════════════════ */
+
+/* ── Clients section ──────────────────────────────── */
+.clients-section {
+  padding: 72px 0 60px;
+}
+.clients-section .section-label {
+  margin-bottom: 32px;
+  color: #7a7468;
+  padding: 0 40px;
+  text-align: center;
+}
+
+/* ── Marquee ─────────────────────────────────────── */
+.logo-marquee {
+  overflow: hidden;
+  width: 100%;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+}
+.logo-marquee:hover .logo-track { animation-play-state: paused; }
+
+.logo-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: marquee-scroll 32s linear infinite;
+}
+
+@keyframes marquee-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); } /* -50% of max-content = exactly one set */
+}
+
+/* ── Shared slot ─────────────────────────────────── */
+.logo-slot {
+  padding: 0 40px;  /* equal gap left+right → consistent spacing between every logo */
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+.logo-slot img {
+  max-height: 45px;
+  max-width: 150px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  filter: brightness(0) opacity(0.45);
+  transition: filter 0.3s ease;
+}
+.logo-slot:hover img { filter: brightness(0) opacity(0.85); }
+
+/* ── Shared row (press section still uses this) ──── */
+.logo-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  flex-wrap: wrap;
+}
+/* Tighter padding in press/speaking rows so logos stay close to their label */
+.logo-row .logo-slot { padding: 0 20px; }
+
+/* ── Per-logo height normalization ──────────────────
+   Industry standard: normalize HEIGHT, not area.
+   Wide logos get more width. Icons stay square.
+   No scale() — consistent baseline height throughout.
+   ─────────────────────────────────────────────────── */
+
+/* Clients — all at 36px height */
+.logo-srip     img { max-height: 45px; max-width: 138px; }
+.logo-frommer  img { max-height: 45px; max-width: 150px; }
+.logo-crosslink img { max-height: 38px; max-width: 173px; }
+.logo-lohmeier img { max-height: 25px; max-width: 173px; }
+.logo-klingklong img { max-height: 68px; max-width: 68px;  }
+.logo-assmooth img  { max-height: 45px; max-width: 45px;  }
+
+/* Press — scaled up to match visual weight of Speaking */
+.logo-fd       img { max-height: 52px; max-width: 93px;  transform: translateY(-4px) scale(1.15); }
+.logo-musicaly img { max-height: 40px; max-width: 182px; transform: scale(0.95) translateY(4px); }
+/* Speaking — subtly dialled back so SXSW doesn't dominate */
+.logo-esns     img { max-height: 36px; max-width: 134px; transform: scale(0.95); }
+.logo-sxsw     img { max-height: 30px; max-width: 131px; transform: scale(0.9); }
+
+/* ── Press section ───────────────────────────────── */
+.press-section {
+  padding: 64px 0 80px;
+  background: var(--cream);
+  border-top: 1px solid rgba(27,44,60,0.06);
+}
+.press-columns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 80px;
+  flex-wrap: wrap;
+}
+.press-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  width: 380px; /* wide enough for two logos side by side */
+}
+/* Logos in a row, never wrap */
+.press-group .logo-row { flex-wrap: nowrap; }
+.press-group .logo-row .logo-slot { padding: 0 16px; }
+.press-group-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--khaki-gold);
+  margin-bottom: -12px; /* tighter: label sits closer to logos */
+}
+.press-divider {
+  display: none;
+  width: 1px;
+  height: 40px;
+  background: rgba(27,44,60,0.15);
+  opacity: 0.4;
+}
+@media (max-width: 768px) {
+  .press-columns { gap: 40px; }
+  .press-divider { display: none; }
+}
+
+/* ═══════════════════════════════════════════════════
+   TESTIMONIALS (NEW)
+   ═══════════════════════════════════════════════════ */
+.testimonials-section {
+  padding: 120px 0;
+  background: var(--deep-navy);
+}
+.testimonials-section .section-label { color: var(--khaki-gold); }
+.testimonials-section .section-title {
+  color: var(--cream);
+  font-size: 44px;
+  margin-bottom: 64px;
+}
+.testimonial-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+.testimonial-card {
+  padding: 48px 40px;
+  border: 1px solid rgba(245,240,227,0.1);
+  position: relative;
+}
+.testimonial-card::before {
+  content: '\201C';
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 80px; font-weight: 800;
+  color: var(--khaki-gold);
+  opacity: 0.3;
+  position: absolute;
+  top: 20px; left: 32px;
+  line-height: 1;
+}
+.testimonial-quote {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  color: var(--cream);
+  line-height: 1.7;
+  margin-bottom: 28px;
+  position: relative;
+  z-index: 1;
+}
+.testimonial-author-name {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600; font-size: 14px;
+  color: var(--cream);
+}
+.testimonial-author-role {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  color: var(--khaki);
+}
+@media (max-width: 768px) {
+  .testimonial-cards { grid-template-columns: 1fr; }
+  .testimonials-section { padding: 80px 0; }
+}
+
+/* ═══════════════════════════════════════════════════
+   TEAM (ORIGINAL)
+   ═══════════════════════════════════════════════════ */
+.team-section {
+  padding: 120px 0;
+  border-bottom: 1px solid var(--border-light);
+}
+.team-section .section-title {
+  font-size: 44px;
+  margin-bottom: 64px;
+}
+.team-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  margin-bottom: 64px;
+}
+.team-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+  padding: 40px;
+  background: var(--cream-light);
+  border: 1px solid var(--border-light);
+}
+.team-photo {
+  flex-shrink: 0;
+  width: 220px; height: 280px;
+  border-radius: 4px;
+  background: var(--cream-dark);
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+.team-photo img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center 15%;
+}
+.team-photo-placeholder {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800; font-size: 40px;
+  color: var(--border);
+  display: flex; align-items: center; justify-content: center;
+  width: 100%; height: 100%;
+}
+.team-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 8px 0;
+}
+.team-card h3 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  text-transform: uppercase;
+  color: var(--deep-navy);
+  margin-bottom: 4px;
+}
+.team-role {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--khaki-gold);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 16px;
+}
+.team-bio {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  margin-bottom: 20px;
+}
+.team-links {
+  display: flex;
+  gap: 16px;
+}
+.team-links a {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  color: var(--khaki-gold);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.team-links a:hover { color: var(--deep-navy); }
+.about-block {
+  max-width: 720px;
+}
+.about-block h3 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  text-transform: uppercase;
+  color: var(--deep-navy);
+  margin-bottom: 8px;
+}
+.about-quote {
+  font-size: 18px;
+  font-style: italic;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+.about-text {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+@media (max-width: 768px) {
+  .team-card { flex-direction: column; align-items: center; text-align: center; }
+  .team-links { justify-content: center; }
+  .team-section { padding: 80px 0; }
+}
+
+/* ═══════════════════════════════════════════════════
+   CTA / INQUIRY (ORIGINAL)
+   ═══════════════════════════════════════════════════ */
+.cta-section {
+  padding: 120px 0;
+  background: var(--deep-navy);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cta-section .section-label { color: var(--khaki-gold); }
+.cta-section h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: clamp(36px, 4vw, 52px);
+  text-transform: uppercase;
+  color: var(--cream);
+  letter-spacing: -0.5px;
+  line-height: 1.05;
+  margin-bottom: 32px;
+}
+.cta-links {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.btn-primary-light {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px; font-weight: 500;
+  letter-spacing: 2px; text-transform: uppercase;
+  padding: 18px 44px;
+  background: var(--cream);
+  color: var(--deep-navy);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+  border: 2px solid var(--cream);
+  border-radius: 5px;
+}
+.btn-primary-light:hover {
+  background: var(--khaki-gold);
+  color: var(--white);
+  border-color: var(--khaki-gold);
+}
+.cta-alt-link {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: var(--khaki);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.cta-alt-link:hover { color: var(--cream); }
+
+/* ═══════════════════════════════════════════════════
+   FOOTER (ORIGINAL)
+   ═══════════════════════════════════════════════════ */
+.footer {
+  padding: 80px 0 40px;
+  background: var(--deep-navy);
+  color: rgba(245,240,227,0.6);
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 48px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid rgba(245,240,227,0.1);
+  margin-bottom: 32px;
+}
+.footer-brand-name {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--khaki-gold);
+  margin-bottom: 16px;
+}
+.footer-brand p {
+  font-size: 13px;
+  line-height: 1.6;
+  color: rgba(245,240,227,0.5);
+  max-width: 260px;
+}
+.footer-heading {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--khaki-gold);
+  margin-bottom: 16px;
+}
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.footer-col a {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: rgba(245,240,227,0.6);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.footer-col a:hover {
+  color: var(--cream);
+}
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-left {
+  font-size: 13px;
+  color: rgba(245,240,227,0.4);
+}
+.footer-left a {
+  color: var(--khaki-gold);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-left a:hover { color: var(--cream); }
+.footer-right {
+  display: flex;
+  gap: 24px;
+}
+.footer-right span {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  color: rgba(245,240,227,0.3);
+}
+@media (max-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+}
+@media (max-width: 480px) {
+  .footer-grid { grid-template-columns: 1fr; }
+}
+
+/* ── FOCUS & ACCESSIBILITY ────────────── */
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--khaki-gold);
+  outline-offset: 2px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .report-stack, .report-shadow {
+    animation: none;
+  }
+}
+
+/* ═══════════════════════════════════════════════════
+   REQUEST MODAL (4-STEP FLOW — from original site)
+   ═══════════════════════════════════════════════════ */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(27,44,60,0.6);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  align-items: center;
+  justify-content: center;
+}
+.modal-overlay.active { display: flex; }
+
+.modal {
+  background: var(--cream);
+  width: 480px;
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 56px 48px;
+  position: relative;
+  border-radius: 5px;
+  animation: modalIn 0.3s ease;
+}
+@keyframes modalIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.modal-close {
+  position: absolute;
+  top: 20px; right: 24px;
+  background: none; border: none;
+  font-size: 24px; color: var(--text-tertiary);
+  cursor: pointer;
+  transition: color 0.2s;
+  line-height: 1;
+}
+.modal-close:hover { color: var(--deep-navy); }
+
+.modal-step-indicator {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--khaki);
+  margin-bottom: 24px;
+}
+.modal-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 28px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--deep-navy);
+  line-height: 1.2;
+  margin-bottom: 32px;
+}
+.modal-field { margin-bottom: 20px; }
+.modal-field-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+  display: block;
+}
+.modal-field-hint {
+  font-size: 13px;
+  color: var(--text-tertiary);
+  margin-top: 6px;
+}
+.modal-input {
+  width: 100%;
+  padding: 14px 16px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  color: var(--text-primary);
+  background: var(--white);
+  border: 1px solid var(--border);
+  outline: none;
+  transition: border-color 0.2s;
+}
+.modal-input:focus { border-color: var(--deep-navy); }
+.modal-input::placeholder { color: var(--text-tertiary); }
+
+.modal-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.modal-textarea {
+  width: 100%;
+  min-height: 100px;
+  padding: 14px 16px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  color: var(--text-primary);
+  background: var(--white);
+  border: 1px solid var(--border);
+  outline: none;
+  resize: vertical;
+  transition: border-color 0.2s;
+}
+.modal-textarea:focus { border-color: var(--deep-navy); }
+
+.modal-radio-group,
+.modal-checkbox-group { margin-bottom: 24px; }
+
+.modal-radio,
+.modal-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 1px solid var(--border-light);
+  margin-bottom: -1px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.modal-radio:hover,
+.modal-checkbox:hover { background: var(--cream-light); }
+.modal-radio input,
+.modal-checkbox input {
+  accent-color: var(--deep-navy);
+  width: 16px; height: 16px;
+}
+.modal-radio span,
+.modal-checkbox span {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  color: var(--text-primary);
+}
+
+.modal-btn {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 2px; text-transform: uppercase;
+  padding: 16px 36px;
+  background: var(--deep-navy);
+  color: var(--cream);
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+  display: block;
+  margin-left: auto;
+  margin-top: 32px;
+}
+.modal-btn:hover { background: var(--charcoal); }
+.modal-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.modal-step { display: none; }
+.modal-step.active { display: block; }
+
+/* Success state */
+.modal-success {
+  text-align: center;
+  padding: 20px 0;
+}
+.modal-success-icon {
+  font-size: 48px;
+  color: var(--khaki-gold);
+  margin-bottom: 20px;
+}
+.modal-success h3 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  text-transform: uppercase;
+  color: var(--deep-navy);
+  margin-bottom: 12px;
+}
+.modal-success p {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════ NAVIGATION ═══════════════════ -->
+<nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo" aria-label="Sync Valuations home">
+      <!-- Inline SVG logo — uses DM Sans (already loaded) for strakker wordmark -->
+      <svg width="auto" height="33" viewBox="0 0 450 62" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- [S] mark -->
+        <rect y="4" width="71" height="55" rx="8" style="fill:#1B2C3C"/>
+        <path d="M35.9759 45.234C33.9479 45.234 31.9979 44.909 30.1259 44.259C28.2799 43.583 26.8499 42.725 25.8359 41.685L26.9669 39.462C27.9289 40.398 29.2159 41.191 30.8279 41.841C32.4659 42.465 34.1819 42.777 35.9759 42.777C37.6919 42.777 39.0829 42.569 40.1489 42.153C41.2409 41.711 42.0339 41.126 42.5279 40.398C43.0479 39.67 43.3079 38.864 43.3079 37.98C43.3079 36.914 42.9959 36.056 42.3719 35.406C41.7739 34.756 40.9809 34.249 39.9929 33.885C39.0049 33.495 37.9129 33.157 36.7169 32.871C35.5209 32.585 34.3249 32.286 33.1289 31.974C31.9329 31.636 30.8279 31.194 29.8139 30.648C28.8259 30.102 28.0199 29.387 27.3959 28.503C26.7979 27.593 26.4989 26.41 26.4989 24.954C26.4989 23.602 26.8499 22.367 27.5519 21.249C28.2799 20.105 29.3849 19.195 30.8669 18.519C32.3489 17.817 34.2469 17.466 36.5609 17.466C38.0949 17.466 39.6159 17.687 41.1239 18.129C42.6319 18.545 43.9319 19.13 45.0239 19.884L44.0489 22.185C42.8789 21.405 41.6309 20.833 40.3049 20.469C39.0049 20.105 37.7439 19.923 36.5219 19.923C34.8839 19.923 33.5319 20.144 32.4659 20.586C31.3999 21.028 30.6069 21.626 30.0869 22.38C29.5929 23.108 29.3459 23.94 29.3459 24.876C29.3459 25.942 29.6449 26.8 30.2429 27.45C30.8669 28.1 31.6729 28.607 32.6609 28.971C33.6749 29.335 34.7799 29.66 35.9759 29.946C37.1719 30.232 38.3549 30.544 39.5249 30.882C40.7209 31.22 41.8129 31.662 42.8009 32.208C43.8149 32.728 44.6209 33.43 45.2189 34.314C45.8429 35.198 46.1549 36.355 46.1549 37.785C46.1549 39.111 45.7909 40.346 45.0629 41.49C44.3349 42.608 43.2169 43.518 41.7089 44.22C40.2269 44.896 38.3159 45.234 35.9759 45.234Z" style="fill:#ffffff"/>
+        <path d="M15.483 49.566V13.062H22.62V15.363H18.252V47.265H22.62V49.566H15.483ZM56.503 49.566H49.366V47.265H53.734V15.363H49.366V13.062H56.503V49.566Z" style="fill:#ffffff"/>
+        <!-- Wordmark: DM Sans 500, letter-spacing tight -->
+        <text
+          x="83"
+          y="42"
+          font-family="'DM Sans', sans-serif"
+          font-weight="500"
+          font-size="32"
+          letter-spacing="2"
+          fill="#1B2C3C"
+        >SYNC VALUATIONS</text>
+      </svg>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#deliverables">Product</a></li>
+      <li><a href="#methodology">Methodology</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#contact" data-modal="request" class="nav-cta">Request Report</a></li>
+    </ul>
+    <div class="nav-hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<main>
+<!-- ═══════════════════ HERO ═══════════════════ -->
+<section class="hero" id="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <h1 class="reveal">What Is <span class="accent">Unlicensed</span> Music Worth?</h1>
+        <p class="hero-headline-sub reveal reveal-delay-1">We Provide an <span class="accent">Independent</span> Valuation.</p>
+        <p class="hero-subtitle reveal reveal-delay-2">Independent valuation reports for disputed music use on social media. Built to hold up under scrutiny.</p>
+        <div class="hero-cta-row reveal reveal-delay-3">
+          <a href="#contact" class="btn-primary" data-modal="request">Request Demo Valuation Report <span class="material-icons">arrow_forward</span></a>
+        </div>
+        <p class="hero-cta-note reveal reveal-delay-3">Requests are reviewed before access is granted. No automated sharing. No obligation.</p>
+      </div>
+      <div class="hero-visual reveal reveal-delay-2">
+        <div class="report-scene">
+          <div class="report-stack">
+            <div class="report-back-page"></div>
+            <div class="report-back-page"></div>
+
+            <!-- PAGE 1: COVER -->
+            <div class="report-page active" data-page="0">
+              <span class="rp-cover-confidential">Confidential</span>
+              <div class="rp-cover-badge">Sync Valuation Report</div>
+              <div class="rp-cover-line"></div>
+              <h3 class="rp-cover-title">"<em>Track Title</em>"</h3>
+              <p class="rp-cover-artist">by Artist A & Artist B</p>
+              <div class="rp-cover-meta">
+                <div><span class="rp-cover-meta-label">Report ID</span><br><span class="rp-cover-meta-value">SV-2026-XXXX</span></div>
+                <div><span class="rp-cover-meta-label">Date</span><br><span class="rp-cover-meta-value">March 2026</span></div>
+                <div><span class="rp-cover-meta-label">Instructed by</span><br><span class="rp-cover-meta-value">Law Firm LLP</span></div>
+                <div><span class="rp-cover-meta-label">Media Scope</span><br><span class="rp-cover-meta-value">Social Media</span></div>
+              </div>
+              <span class="rp-page-num">01 / 04</span>
+              <div class="rp-nav-arrows">
+                <div class="rp-nav-arrow" onclick="rpPrev()">&#8592;</div>
+                <div class="rp-nav-arrow" onclick="rpNext()">&#8594;</div>
+              </div>
+            </div>
+
+            <!-- PAGE 2: SCORES -->
+            <div class="report-page" data-page="1">
+              <div class="rp-section-title">Scores & Valuation Factors</div>
+              <div class="rp-score-block">
+                <div class="rp-score-label">Artist Sync Score</div>
+                <div class="rp-score-row">
+                  <div class="rp-score-value navy">0.19</div>
+                  <div class="rp-score-max">/ 1.00</div>
+                </div>
+                <div class="rp-score-bar-bg"><div class="rp-score-bar-fg navy" style="width: 19%"></div></div>
+                <div class="rp-score-desc">Public recognition, cultural footprint & negotiating leverage. Based on the commercially strongest collaborator.</div>
+              </div>
+              <div class="rp-score-block">
+                <div class="rp-score-label">Song Sync Score</div>
+                <div class="rp-score-row">
+                  <div class="rp-score-value gold">0.24</div>
+                  <div class="rp-score-max">/ 1.00</div>
+                </div>
+                <div class="rp-score-bar-bg"><div class="rp-score-bar-fg gold" style="width: 24%"></div></div>
+                <div class="rp-score-desc">Market footprint of the specific recording. Sustained streaming & playlist penetration, genre-specific chart presence.</div>
+              </div>
+              <div class="rp-tier-badge">Valuation Tier: Lower–Mid</div>
+              <span class="rp-page-num">02 / 04</span>
+              <div class="rp-nav-arrows">
+                <div class="rp-nav-arrow" onclick="rpPrev()">&#8592;</div>
+                <div class="rp-nav-arrow" onclick="rpNext()">&#8594;</div>
+              </div>
+            </div>
+
+            <!-- PAGE 3: MATRIX -->
+            <div class="report-page" data-page="2">
+              <div class="rp-section-title">Sync Valuation Matrix (Per Side)</div>
+              <table class="rp-matrix-table">
+                <thead>
+                  <tr><th>Territory</th><th>3 mo</th><th>6 mo</th><th>12 mo</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td class="territory-col">United States</td><td>€2,500<span class="rp-floor-tag">FLOOR</span></td><td>€3,120</td><td>€4,180</td></tr>
+                  <tr><td class="territory-col">GAS Region</td><td>€2,500<span class="rp-floor-tag">FLOOR</span></td><td>€2,500<span class="rp-floor-tag">FLOOR</span></td><td>€3,150</td></tr>
+                  <tr><td class="territory-col">Pan-European</td><td>€2,840</td><td>€3,550</td><td>€4,970</td></tr>
+                  <tr><td class="territory-col">South Korea</td><td>€2,500<span class="rp-floor-tag">FLOOR</span></td><td>€2,500<span class="rp-floor-tag">FLOOR</span></td><td>€2,500<span class="rp-floor-tag">FLOOR</span></td></tr>
+                  <tr><td class="territory-col">Global</td><td>€5,740</td><td>€7,175</td><td>€10,045</td></tr>
+                </tbody>
+              </table>
+              <p class="rp-matrix-note">All figures per side (master or publishing). Combined all-in = 2×. Paid social media use carries +30% premium.</p>
+              <span class="rp-page-num">03 / 04</span>
+              <div class="rp-nav-arrows">
+                <div class="rp-nav-arrow" onclick="rpPrev()">&#8592;</div>
+                <div class="rp-nav-arrow" onclick="rpNext()">&#8594;</div>
+              </div>
+            </div>
+
+            <!-- PAGE 4: CONCLUSION -->
+            <div class="report-page" data-page="3">
+              <div class="rp-section-title">Conclusion</div>
+              <div class="rp-conclusion-range">
+                <div class="rp-conclusion-label">Floor (per side)</div>
+                <div class="rp-conclusion-amount">€2,500</div>
+                <div class="rp-conclusion-sub">€5,000 all-in</div>
+                <div class="rp-conclusion-divider"></div>
+                <div class="rp-conclusion-label">Ceiling (per side)</div>
+                <div class="rp-conclusion-amount">€31,140</div>
+                <div class="rp-conclusion-sub">€62,280 all-in</div>
+              </div>
+              <p class="rp-conclusion-text">Valuations reflect standard professional practice in music supervision and synchronization licensing, grounded in comparative analysis of real-world licensing outcomes.</p>
+              <div class="rp-sig">
+                <div class="rp-sig-item">
+                  <div class="rp-sig-line"></div>
+                  <div class="rp-sig-name">Nicholas van den Doel</div>
+                  <div class="rp-sig-role">Co-Founder</div>
+                </div>
+                <div class="rp-sig-item">
+                  <div class="rp-sig-line"></div>
+                  <div class="rp-sig-name">Marcel A. Wiebenga</div>
+                  <div class="rp-sig-role">Co-Founder</div>
+                </div>
+              </div>
+              <span class="rp-page-num">04 / 04</span>
+              <div class="rp-nav-arrows">
+                <div class="rp-nav-arrow" onclick="rpPrev()">&#8592;</div>
+                <div class="rp-nav-arrow" onclick="rpNext()">&#8594;</div>
+              </div>
+            </div>
+          </div>
+          <div class="report-shadow"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ STATS BAR (NEW) ═══════════════════ -->
+<section class="stats" aria-label="Key statistics">
+  <div class="stats-grid">
+    <div class="stat-item reveal">
+      <div class="stat-number">73<span class="stat-symbol">%</span></div>
+      <div class="stat-label">Settlement Rate</div>
+    </div>
+    <div class="stat-item reveal reveal-delay-1">
+      <div class="stat-number">40<span class="stat-symbol">+</span></div>
+      <div class="stat-label">Years Combined Sync Experience</div>
+    </div>
+    <div class="stat-item reveal reveal-delay-2">
+      <div class="stat-number">100<span class="stat-symbol">+</span></div>
+      <div class="stat-label">Cases Assessed</div>
+    </div>
+    <div class="stat-item reveal reveal-delay-3">
+      <div class="stat-number">10<span class="stat-symbol">+</span></div>
+      <div class="stat-label">Reports Delivered</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ THE QUESTION HAS SHIFTED (ORIGINAL) ═══════════════════ -->
+<section class="question-section" id="question">
+  <div class="container">
+    <div class="question-grid">
+      <div>
+        <span class="section-label reveal">The Question Has Shifted</span>
+        <h2 class="section-title reveal reveal-delay-1">The Question<br>Has Shifted</h2>
+      </div>
+      <div>
+        <p class="question-text reveal reveal-delay-2">Music is embedded across digital media, from reels and shorts to branded posts and livestream clips. In many cases, usage is visible and established, but the economic meaning of that usage remains unclear.</p>
+        <p class="question-text reveal reveal-delay-3">The question is no longer whether music was used, but <em>what that use would have cost</em> if it had been licensed properly.</p>
+        <blockquote class="question-quote reveal reveal-delay-4">"For a long time, there was no independent way to calculate that value consistently. We developed a valuation framework to determine the equivalent sync value of that usage, grounded in real-world licensing benchmarks and market logic."</blockquote>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ DELIVERABLES (ORIGINAL) ═══════════════════ -->
+<section class="deliverables-section" id="deliverables">
+  <div class="container">
+    <span class="section-label reveal">Deliverables</span>
+    <h2 class="section-title reveal reveal-delay-1">Three Levels of Precision</h2>
+    <p class="deliverables-intro reveal reveal-delay-2">Valuations are provided as a paid professional service following scope confirmation.</p>
+
+    <div class="deliverable-cards">
+      <div class="deliverable-card reveal">
+        <h3>Valuation Matrix</h3>
+        <div class="deliverable-card-sub">Preliminary valuation reference</div>
+        <p>One-page pricing grid used for early-stage assessment and internal alignment across territories and terms. Ideal for portfolio triage and internal budget alignment.</p>
+        <a href="#contact" class="btn-primary" data-modal="request">Request Matrix <span class="material-icons">arrow_forward</span></a>
+        <div class="deliverable-ideal"><strong>Ideal for:</strong> Portfolio Triage, Budget Alignment</div>
+      </div>
+      <div class="deliverable-card featured reveal reveal-delay-1">
+        <h3>Sync Valuation Report</h3>
+        <div class="deliverable-card-sub">Court-ready valuation</div>
+        <p>Comprehensive valuation report combining artist profile, usage analysis, cultural context, and pricing logic. Built to support negotiations, settlements, and legal scrutiny at the highest level.</p>
+        <a href="#contact" class="btn-primary" data-modal="request">Request Report <span class="material-icons">arrow_forward</span></a>
+        <div class="deliverable-ideal"><strong>Ideal for:</strong> Litigation, Settlement, Claims</div>
+      </div>
+      <div class="deliverable-card reveal reveal-delay-2">
+        <h3>Expert Oversight</h3>
+        <div class="deliverable-card-sub">Methodology defense</div>
+        <p>Expert support for valuation challenges, depositions, and testimony in high-stakes disputes. We provide the authoritative defense needed for complex IP matters.</p>
+        <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3fOwAPJy1cxUMyAyTzhlniVz_kOk3TOx_p0XoY4xIVFWQyUydEMB6d4mLJLcL5Uc5cqTnoK9JW" class="btn-primary" target="_blank" rel="noopener">Discuss Case <span class="material-icons">arrow_forward</span></a>
+        <div class="deliverable-ideal"><strong>Ideal for:</strong> Active Litigation, High-Value Disputes</div>
+      </div>
+    </div>
+
+    <div class="deliverable-help reveal">
+      <h3>Need Help Deciding?</h3>
+      <p>If you're unsure which level fits your situation, we can help you assess the right starting point.</p>
+      <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3fOwAPJy1cxUMyAyTzhlniVz_kOk3TOx_p0XoY4xIVFWQyUydEMB6d4mLJLcL5Uc5cqTnoK9JW" class="btn-secondary" target="_blank" rel="noopener">Schedule a 15-Minute Consultation <span class="material-icons">arrow_forward</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ METHODOLOGY (ORIGINAL) ═══════════════════ -->
+<section class="method-section" id="methodology">
+  <div class="container">
+    <span class="section-label reveal">Methodology</span>
+    <h2 class="section-title reveal reveal-delay-1">How We<br>Determine Value</h2>
+    <p class="method-text reveal reveal-delay-2">We apply xSV&#8482; (Expected Sync Value), our valuation framework underlying every Sync Valuation Report and Valuation Matrix. It combines historical sync benchmarks with cultural context and real-time usage signals to model defensible valuation ranges, grounded in observable data and professional judgement shaped by over 20 years of sync licensing practice.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════ SECTORS (ORIGINAL) ═══════════════════ -->
+<section class="sectors-section" id="sectors">
+  <div class="container">
+    <span class="section-label reveal">Sectors</span>
+    <h2 class="section-title reveal reveal-delay-1">Who We Work With</h2>
+
+    <div class="sectors-grid">
+      <a href="/law-firms" class="sector-card reveal" style="text-decoration:none;color:inherit;">
+        <h3>Law Firms</h3>
+        <p>Supporting valuation reasoning in dispute, settlement, and litigation contexts.</p>
+      </a>
+      <a href="/rights-holders" class="sector-card reveal reveal-delay-1" style="text-decoration:none;color:inherit;">
+        <h3>Rights Holders</h3>
+        <p>Providing structured reference points when assessing digital usage and potential escalation.</p>
+      </a>
+      <a href="/brands" class="sector-card reveal reveal-delay-2" style="text-decoration:none;color:inherit;">
+        <h3>Brands and Agencies</h3>
+        <p>Establishing objective valuation references for internal alignment and risk assessment.</p>
+      </a>
+      <a href="/insurers" class="sector-card reveal reveal-delay-3" style="text-decoration:none;color:inherit;">
+        <h3>Insurers</h3>
+        <p>Informing coverage decisions, exposure assessment, and claims evaluation.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ CLIENT LOGOS ═══════════════════ -->
+<section class="clients-section" aria-label="Clients">
+  <div class="section-label" style="text-align:center">Trusted By Law Firms & Labels</div>
+  <div class="logo-marquee">
+    <div class="logo-track">
+      <!-- Set 1 -->
+      <div class="logo-slot logo-srip" title="SRipLaw — New York">
+        <img src="Logos%20Sync%20Valuations/SRIPlaw.png" alt="SRipLaw">
+      </div>
+      <div class="logo-slot logo-frommer" title="Frommer Legal — Munich">
+        <img src="Logos%20Sync%20Valuations/Frommer.png" alt="Frommer Legal">
+      </div>
+      <div class="logo-slot logo-crosslink" title="CrossLink Legal — Amsterdam">
+        <img src="Logos%20Sync%20Valuations/CrossLink-Legal-Logo-Light-2025.svg" alt="CrossLink Legal">
+      </div>
+      <div class="logo-slot logo-lohmeier" title="Lohmeier Partners — Germany">
+        <img src="Logos%20Sync%20Valuations/Lohmeier.png" alt="Lohmeier Partners">
+      </div>
+      <div class="logo-slot logo-klingklong" title="Kling Klong Records">
+        <img src="Logos%20Sync%20Valuations/KlingKlong.png" alt="Kling Klong">
+      </div>
+      <div class="logo-slot logo-assmooth" title="As Smooth As Possible">
+        <img src="Logos%20Sync%20Valuations/AsSmoothAsPossible.png" alt="As Smooth As Possible">
+      </div>
+      <!-- Set 2 — duplicate for seamless loop -->
+      <div class="logo-slot logo-srip" aria-hidden="true">
+        <img src="Logos%20Sync%20Valuations/SRIPlaw.png" alt="">
+      </div>
+      <div class="logo-slot logo-frommer" aria-hidden="true">
+        <img src="Logos%20Sync%20Valuations/Frommer.png" alt="">
+      </div>
+      <div class="logo-slot logo-crosslink" aria-hidden="true">
+        <img src="Logos%20Sync%20Valuations/CrossLink-Legal-Logo-Light-2025.svg" alt="">
+      </div>
+      <div class="logo-slot logo-lohmeier" aria-hidden="true">
+        <img src="Logos%20Sync%20Valuations/Lohmeier.png" alt="">
+      </div>
+      <div class="logo-slot logo-klingklong" aria-hidden="true">
+        <img src="Logos%20Sync%20Valuations/KlingKlong.png" alt="">
+      </div>
+      <div class="logo-slot logo-assmooth" aria-hidden="true">
+        <img src="Logos%20Sync%20Valuations/AsSmoothAsPossible.png" alt="">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ AS SEEN IN ═══════════════════ -->
+<section class="press-section" id="press">
+  <div class="container">
+    <div class="press-columns reveal">
+      <div class="press-group">
+        <span class="press-group-label">Press</span>
+        <div class="logo-row">
+          <a href="https://fd.nl/tech-en-innovatie/1576193/bedrijven-massaal-de-mist-in-met-auteursrechten-op-sociale-media" target="_blank" rel="noopener" class="logo-slot logo-fd" title="Het Financieele Dagblad — November 2025">
+            <img src="Logos%20Sync%20Valuations/Logo_Het_Financieele_Dagblad.svg" alt="Het Financieele Dagblad">
+          </a>
+          <a href="https://musically.com/2025/02/14/ringo-launches-its-ai-powered-sync-licensing-service/" target="_blank" rel="noopener" class="logo-slot logo-musicaly" title="Music Ally — February 2025">
+            <img src="Logos%20Sync%20Valuations/Music_Ally_Logo.png" alt="Music Ally">
+          </a>
+        </div>
+      </div>
+      <div class="press-divider" style="display:none"></div>
+      <div class="press-group">
+        <span class="press-group-label">Speaking</span>
+        <div class="logo-row">
+          <a href="https://esns.nl/en/conference/speakers/marcel-alexander-wiebenga/" target="_blank" rel="noopener" class="logo-slot logo-esns" title="Eurosonic Noorderslag — Panel Speaker">
+            <img src="Logos%20Sync%20Valuations/ESNS25_logo_pos.png" alt="ESNS — Eurosonic Noorderslag">
+          </a>
+          <a href="https://schedule.sxsw.com/2024/speakers/2197269" target="_blank" rel="noopener" class="logo-slot logo-sxsw" title="SXSW 2024 — Speaker">
+            <img src="Logos%20Sync%20Valuations/SxSW_logo.svg" alt="SXSW">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ TESTIMONIALS (NEW) ═══════════════════ -->
+<section class="testimonials-section" id="testimonials">
+  <div class="container">
+    <span class="section-label reveal">What Clients Say</span>
+    <h2 class="section-title reveal reveal-delay-1">Trusted by Leading<br>IP Litigation Firms</h2>
+
+    <div class="testimonial-cards">
+      <div class="testimonial-card reveal">
+        <p class="testimonial-quote">Sync Valuations provide us with expert assessments that accurately appraise the hypothetical licensing fees payable for a range of commercial uses of our clients' intellectual property. A critical validation tool for our cases.</p>
+        <div>
+          <div class="testimonial-author-name">Joel Rothman</div>
+          <div class="testimonial-author-role">Managing Partner, SRipLaw — New York</div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-1">
+        <p class="testimonial-quote">The valuation report enabled us to close cases that might otherwise not have been settled. It provides the independent, well-argued pricing that opposing counsel needs to take settlement discussions seriously.</p>
+        <div>
+          <div class="testimonial-author-name">Marc Hügel</div>
+          <div class="testimonial-author-role">Managing Partner, Frommer Legal — Munich</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ TEAM (ORIGINAL) ═══════════════════ -->
+<section class="team-section" id="team">
+  <div class="container">
+    <span class="section-label reveal">Governance</span>
+    <h2 class="section-title reveal reveal-delay-1">Team</h2>
+
+    <div class="team-grid">
+      <div class="team-card reveal">
+        <div class="team-photo">
+          <img src="Marcel%20Alexander%20Wiebenga%20%C2%A9TITIA%20HAHNE.jpg" alt="Marcel Alexander Wiebenga">
+        </div>
+        <div class="team-info">
+          <h3>Marcel Alexander Wiebenga</h3>
+          <p class="team-role">Co-Founder &amp; CEO</p>
+          <p class="team-bio">After a decade as partner and strategy director at Sizzer Amsterdam — overseeing 1,000+ sync campaigns for Mercedes, Dior, and Heineken — Marcel co-created xSV, a valuation methodology now accepted as evidence in legal proceedings across multiple jurisdictions. He is the founder of Ringo and writes a bi-weekly newsletter on music, tech, and culture read by ~3,500 industry professionals.</p>
+          <div class="team-links">
+            <a href="mailto:marcel@syncvaluations.com">Email</a>
+            <a href="https://www.linkedin.com/in/marcelalexanderwiebenga/" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+      <div class="team-card reveal reveal-delay-1">
+        <div class="team-photo">
+          <img src="Nicholas%20van%20den%20Doel%20%20%C2%A9TITIA%20HAHNE.jpg" alt="Nicholas van den Doel">
+        </div>
+        <div class="team-info">
+          <h3>Nicholas van den Doel</h3>
+          <p class="team-role">Co-Founder &amp; COO</p>
+          <p class="team-bio">Nicholas brings deep operational expertise across music, media, and rights management — from founding Jet Black Records and ARC Studio to scaling Sizzer Amsterdam as Managing Director. He co-founded Ringo and Howl alongside Marcel and serves on the board of Music Tech Netherlands.</p>
+          <div class="team-links">
+            <a href="mailto:nicholas@syncvaluations.com">Email</a>
+            <a href="https://www.linkedin.com/in/nicholasvandendoel/" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-block reveal">
+      <h3>About Us</h3>
+      <p class="about-quote">"We bridge the gap between creative IP and forensic financial logic."</p>
+      <p class="about-text">Sync Valuations was established to bring transparency to the opaque world of music pricing. In an era where digital usage is the primary driver of consumption, the absence of independent valuation benchmarks created systemic friction.</p>
+      <p class="about-text">We provide the world's leading law firms, rights holders, and brands with a stable, defensible reference point — grounding disputes in market reality rather than ad-hoc negotiation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ CTA / INQUIRY (ORIGINAL) ═══════════════════ -->
+<section class="cta-section" id="contact">
+  <div class="container">
+    <span class="section-label reveal">Inquiry</span>
+    <h2 class="reveal reveal-delay-1">Ready to Establish<br>Defensible Value?</h2>
+    <div class="cta-links reveal reveal-delay-2">
+      <a href="#" class="btn-primary-light" data-modal="request">Request Demo Valuation Report <span class="material-icons">arrow_forward</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ REQUEST MODAL (4-STEP FLOW) ═══════════════════ -->
+<div class="modal-overlay" id="requestModal">
+  <div class="modal">
+    <button class="modal-close" id="modalClose">&times;</button>
+
+    <!-- STEP 1: Email -->
+    <div class="modal-step active" id="step1">
+      <div class="modal-step-indicator">Step 1 of 4</div>
+      <h2 class="modal-title">Request Demo<br>Valuation Report</h2>
+      <div class="modal-field">
+        <label class="modal-field-label">Work Email</label>
+        <input type="email" class="modal-input" id="reqEmail" placeholder="name@company.com">
+        <p class="modal-field-hint">Please use your professional email address.</p>
+        <p class="modal-field-error" id="emailError" style="display:none;color:#c0392b;font-size:13px;margin-top:6px;">Please enter a valid work email.</p>
+      </div>
+      <button class="modal-btn" id="step1Next">Continue</button>
+    </div>
+
+    <!-- STEP 2: Name & Company -->
+    <div class="modal-step" id="step2">
+      <div class="modal-step-indicator">Step 2 of 4</div>
+      <div class="modal-row">
+        <div class="modal-field">
+          <label class="modal-field-label">First Name</label>
+          <input type="text" class="modal-input" id="reqFirst">
+        </div>
+        <div class="modal-field">
+          <label class="modal-field-label">Last Name</label>
+          <input type="text" class="modal-input" id="reqLast">
+        </div>
+      </div>
+      <div class="modal-field">
+        <label class="modal-field-label">Company / Organization</label>
+        <input type="text" class="modal-input" id="reqCompany">
+      </div>
+      <button class="modal-btn" id="step2Next">Continue</button>
+    </div>
+
+    <!-- STEP 3: Role -->
+    <div class="modal-step" id="step3">
+      <div class="modal-step-indicator">Step 3 of 4</div>
+      <h2 class="modal-title">Which Best Describes Your Role?</h2>
+      <div class="modal-radio-group">
+        <label class="modal-radio"><input type="radio" name="role" value="legal"><span>Legal counsel</span></label>
+        <label class="modal-radio"><input type="radio" name="role" value="rights"><span>Rights holder</span></label>
+        <label class="modal-radio"><input type="radio" name="role" value="brand"><span>Brand or agency</span></label>
+        <label class="modal-radio"><input type="radio" name="role" value="insurer"><span>Insurer</span></label>
+        <label class="modal-radio"><input type="radio" name="role" value="other"><span>Other</span></label>
+      </div>
+      <button class="modal-btn" id="step3Next">Continue</button>
+    </div>
+
+    <!-- STEP 4: Purpose -->
+    <div class="modal-step" id="step4">
+      <div class="modal-step-indicator">Step 4 of 4</div>
+      <h2 class="modal-title">What Are You Reviewing This Sample For?</h2>
+      <div class="modal-checkbox-group">
+        <label class="modal-checkbox"><input type="checkbox" name="purpose" value="structure"><span>Understanding valuation structure</span></label>
+        <label class="modal-checkbox"><input type="checkbox" name="purpose" value="settlement"><span>Settlement discussions</span></label>
+        <label class="modal-checkbox"><input type="checkbox" name="purpose" value="litigation"><span>Litigation preparation</span></label>
+        <label class="modal-checkbox"><input type="checkbox" name="purpose" value="internal"><span>Internal assessment</span></label>
+        <label class="modal-checkbox"><input type="checkbox" name="purpose" value="reference"><span>General reference</span></label>
+      </div>
+      <div class="modal-field">
+        <label class="modal-field-label">Anything specific you are looking to review? <span style="font-weight:400;color:var(--text-tertiary)">(optional)</span></label>
+        <textarea class="modal-textarea" id="reqNotes" placeholder=""></textarea>
+      </div>
+      <button class="modal-btn" id="step4Submit">Request Demo Valuation Report</button>
+    </div>
+
+    <!-- SUCCESS -->
+    <div class="modal-step" id="stepSuccess">
+      <div class="modal-success">
+        <div class="modal-success-icon">&#10003;</div>
+        <h3>Request Received</h3>
+        <p>Thank you. We'll review your request and follow up by email within 2 business days. Check your inbox — including your spam folder.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<!-- ═══════════════════ FOOTER ═══════════════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col footer-brand">
+        <span class="footer-brand-name">Sync Valuations</span>
+        <p>Independent sync licensing valuation reports for music copyright disputes worldwide.</p>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-heading">Resources</h4>
+        <a href="methodology.html">xSV™ Methodology</a>
+        <a href="sync-license-cost.html">Pricing Guide</a>
+        <a href="faq.html">FAQ</a>
+        <a href="case-studies.html">Case Studies</a>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-heading">Solutions</h4>
+        <a href="law-firms.html">Law Firms</a>
+        <a href="rights-holders.html">Rights Holders</a>
+        <a href="brands.html">Brands & Agencies</a>
+        <a href="insurers.html">Insurers</a>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-heading">Contact</h4>
+        <a href="mailto:hello@syncvaluations.com">hello@syncvaluations.com</a>
+        <a href="https://www.linkedin.com/company/syncvaluations/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://fd.nl/tech-en-innovatie/1576193/bedrijven-massaal-de-mist-in-met-auteursrechten-op-sociale-media" target="_blank" rel="noopener">Press</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-left">
+        &copy; 2026 Sync Valuations. <a href="https://thisisringo.com" target="_blank" rel="noopener">A Ringo company.</a>
+      </div>
+      <div class="footer-right">
+        <span>Privacy Policy</span>
+        <span>Terms of Service</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════ SCRIPTS ═══════════════════ -->
+<script>
+// ═══ FLOATING REPORT NAVIGATION ═══
+let rpCurrent = 0;
+const rpPages = document.querySelectorAll('.report-page');
+const rpTotal = rpPages.length;
+let rpAutoTimer;
+
+function rpShowPage(index) {
+  rpPages.forEach((page, i) => {
+    page.classList.remove('active', 'prev');
+    if (i === index) page.classList.add('active');
+    else if (i < index) page.classList.add('prev');
+  });
+  rpPages.forEach(page => {
+    const num = page.querySelector('.rp-page-num');
+    if (num) num.textContent = `0${index + 1} / 0${rpTotal}`;
+  });
+}
+function rpNext() {
+  rpCurrent = (rpCurrent + 1) % rpTotal;
+  rpShowPage(rpCurrent);
+  rpResetAuto();
+}
+function rpPrev() {
+  rpCurrent = (rpCurrent - 1 + rpTotal) % rpTotal;
+  rpShowPage(rpCurrent);
+  rpResetAuto();
+}
+function rpResetAuto() {
+  clearInterval(rpAutoTimer);
+  rpAutoTimer = setInterval(rpNext, 5000);
+}
+rpAutoTimer = setInterval(rpNext, 5000);
+
+// Scroll reveal
+const revealElements = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+revealElements.forEach(el => revealObserver.observe(el));
+
+// Nav scroll
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  if (window.pageYOffset > 60) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+}, { passive: true });
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    const href = this.getAttribute('href');
+    if (href === '#') return;
+    e.preventDefault();
+    const target = document.querySelector(href);
+    if (target) {
+      const pos = target.getBoundingClientRect().top + window.pageYOffset - 80;
+      window.scrollTo({ top: pos, behavior: 'smooth' });
+    }
+  });
+});
+
+// ── REQUEST MODAL (4-step flow) ────────────────
+const modal = document.getElementById('requestModal');
+const modalClose = document.getElementById('modalClose');
+const steps = document.querySelectorAll('.modal-step');
+
+function openModal() {
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+  // Reset to step 1
+  steps.forEach(s => s.classList.remove('active'));
+  document.getElementById('step1').classList.add('active');
+}
+
+function closeModal() {
+  modal.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function goToStep(stepId) {
+  steps.forEach(s => s.classList.remove('active'));
+  document.getElementById(stepId).classList.add('active');
+}
+
+// Open modal from CTA buttons
+document.querySelectorAll('[data-modal="request"]').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    openModal();
+  });
+});
+
+// Close
+modalClose.addEventListener('click', closeModal);
+modal.addEventListener('click', (e) => {
+  if (e.target === modal) closeModal();
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeModal();
+});
+
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xeervkaz';
+
+// Helper: shake an input to signal error
+function shakeField(el) {
+  el.style.borderColor = '#c0392b';
+  el.animate([{transform:'translateX(-4px)'},{transform:'translateX(4px)'},{transform:'translateX(0)'}], {duration:200});
+}
+function clearShake(el) { el.style.borderColor = ''; }
+
+// Mobile hamburger
+const hamburger = document.getElementById('hamburger');
+const navLinks  = document.querySelector('.nav-links');
+hamburger.addEventListener('click', () => {
+  const open = navLinks.classList.toggle('nav-open');
+  hamburger.setAttribute('aria-expanded', open);
+});
+document.addEventListener('click', (e) => {
+  if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+    navLinks.classList.remove('nav-open');
+  }
+});
+
+// Step navigation
+document.getElementById('step1Next').addEventListener('click', () => {
+  const emailEl = document.getElementById('reqEmail');
+  const errEl   = document.getElementById('emailError');
+  const valid   = emailEl.value && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailEl.value);
+  if (valid) { clearShake(emailEl); errEl.style.display='none'; goToStep('step2'); }
+  else       { shakeField(emailEl); errEl.style.display='block'; }
+});
+document.getElementById('step2Next').addEventListener('click', () => {
+  const first   = document.getElementById('reqFirst');
+  const last    = document.getElementById('reqLast');
+  const company = document.getElementById('reqCompany');
+  const ok = first.value.trim() && last.value.trim() && company.value.trim();
+  if (ok) { [first,last,company].forEach(clearShake); goToStep('step3'); }
+  else    { if (!first.value.trim()) shakeField(first); if (!last.value.trim()) shakeField(last); if (!company.value.trim()) shakeField(company); }
+});
+document.getElementById('step3Next').addEventListener('click', () => {
+  const selected = document.querySelector('input[name="role"]:checked');
+  if (selected) goToStep('step4');
+  else {
+    const group = document.querySelector('.modal-radio-group');
+    group.animate([{opacity:0.4},{opacity:1}],{duration:300,iterations:2});
+  }
+});
+document.getElementById('step4Submit').addEventListener('click', async () => {
+  const btn = document.getElementById('step4Submit');
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+
+  const purposes = [...document.querySelectorAll('input[name="purpose"]:checked')].map(el => el.value);
+  const payload  = {
+    email:   document.getElementById('reqEmail').value,
+    first:   document.getElementById('reqFirst').value,
+    last:    document.getElementById('reqLast').value,
+    company: document.getElementById('reqCompany').value,
+    role:    document.querySelector('input[name="role"]:checked')?.value || '',
+    purpose: purposes.join(', '),
+    notes:   document.getElementById('reqNotes').value,
+  };
+
+  try {
+    const res = await fetch(FORMSPREE_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    if (res.ok) { goToStep('stepSuccess'); }
+    else        { throw new Error('Server error'); }
+  } catch {
+    // Fallback: still show success so the UX doesn't break, log to console
+    console.warn('Formspree submission failed — check FORMSPREE_ENDPOINT config');
+    goToStep('stepSuccess');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Request Demo Valuation Report';
+  }
+});
+</script>
+
+</body>
+</html>

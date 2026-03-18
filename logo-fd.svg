@@ -1,0 +1,6 @@
+<svg width="120" height="50" viewBox="0 0 120 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- FD logo: recognizable red-ish square with white "fd" in serif -->
+  <!-- Rendered monochrome in deep navy for press bar -->
+  <rect x="0" y="2" width="46" height="46" rx="3" fill="#1B2C3C"/>
+  <text x="23" y="38" text-anchor="middle" font-family="'Georgia', 'Times New Roman', serif" font-weight="700" font-size="30" fill="white" font-style="italic">fd</text>
+</svg>

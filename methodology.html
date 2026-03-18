@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>xSV™ Methodology — How We Determine Sync Licensing Value | Sync Valuations</title>
+<meta name="description" content="The xSV™ (Expected Sync Value) framework combines historical sync benchmarks, artist and song market data, territorial pricing and usage context to model defensible valuation ranges for music copyright disputes.">
+<link rel="canonical" href="https://syncvaluations.com/methodology">
+
+<!-- Open Graph -->
+<meta property="og:title" content="xSV™ Methodology — How We Determine Sync Licensing Value">
+<meta property="og:description" content="The xSV™ framework: how we calculate defensible sync licensing valuations for music copyright disputes.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://syncvaluations.com/methodology">
+<meta property="og:image" content="https://syncvaluations.com/og-image.png">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="xSV™ Methodology — How We Determine Sync Licensing Value">
+<meta name="twitter:description" content="The xSV™ framework: how we calculate defensible sync licensing valuations for music copyright disputes.">
+<meta name="twitter:image" content="https://syncvaluations.com/og-image.png">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "xSV™ Methodology — How We Determine Sync Licensing Value",
+  "description": "The xSV™ (Expected Sync Value) framework combines historical sync benchmarks, artist and song market data, territorial pricing and usage context to model defensible valuation ranges.",
+  "author": [
+    {"@type": "Person", "name": "Nicholas van den Doel"},
+    {"@type": "Person", "name": "Marcel Alexander Wiebenga"}
+  ],
+  "publisher": {
+    "@type": "Organization",
+    "name": "Sync Valuations",
+    "url": "https://syncvaluations.com"
+  },
+  "mainEntityOfPage": "https://syncvaluations.com/methodology"
+}
+</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<style>
+:root {
+  --cream: #F5F0E3;
+  --cream-light: #FAF7EF;
+  --cream-dark: #EDE7D5;
+  --deep-navy: #1B2C3C;
+  --khaki: #A59F8E;
+  --khaki-gold: #B5A878;
+  --khaki-light: #C4BEA8;
+  --warm-gray: #9B9588;
+  --warm-gray-light: #D4D0C8;
+  --charcoal: #343434;
+  --white: #FFFFFF;
+  --text-primary: #1B2C3C;
+  --text-secondary: #5A5650;
+  --text-tertiary: #9B9588;
+  --border: #D4D0C8;
+  --border-light: #E8E4DA;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+@media (max-width: 768px) { .container { padding: 0 24px; } }
+
+/* NAV */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(245,240,227,0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-light);
+  padding: 16px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.nav-logo svg.logo-full { height: 28px; width: auto; }
+.nav-back {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  text-decoration: none;
+  display: flex; align-items: center; gap: 6px;
+}
+.nav-back:hover { color: var(--deep-navy); }
+
+/* HERO */
+.page-hero {
+  padding: 160px 0 80px;
+  border-bottom: 1px solid var(--border-light);
+}
+.section-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--khaki-gold);
+  display: flex; align-items: center; gap: 8px;
+  margin-bottom: 24px;
+}
+.section-label::before {
+  content: '';
+  width: 8px; height: 8px;
+  background: var(--khaki-gold);
+}
+.page-hero h1 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: clamp(40px, 5vw, 60px);
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  line-height: 0.95;
+  color: var(--deep-navy);
+  margin-bottom: 20px;
+}
+.page-hero h1 .accent { color: var(--khaki-gold); }
+.page-hero-intro {
+  font-size: 18px;
+  color: var(--text-secondary);
+  max-width: 620px;
+  line-height: 1.7;
+}
+
+/* CONTENT */
+.content-section {
+  padding: 64px 0;
+  border-bottom: 1px solid var(--border-light);
+}
+.content-section:last-of-type { border-bottom: none; }
+
+.content-section h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 28px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--deep-navy);
+  margin-bottom: 20px;
+}
+
+.content-section p {
+  font-size: 16px;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 16px;
+  max-width: 700px;
+}
+.content-section p:last-child { margin-bottom: 0; }
+
+.content-section strong { color: var(--text-primary); font-weight: 600; }
+
+/* SCORE EXPLAINER */
+.score-explainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin: 32px 0;
+}
+@media (max-width: 640px) { .score-explainer { grid-template-columns: 1fr; } }
+
+.score-card {
+  background: var(--white);
+  border: 1px solid var(--border-light);
+  padding: 28px;
+}
+.score-card-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--khaki);
+  margin-bottom: 12px;
+}
+.score-card-value {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 48px;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.score-card-value.navy { color: var(--deep-navy); }
+.score-card-value.gold { color: var(--khaki-gold); }
+.score-card-range {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--border);
+  margin-bottom: 16px;
+}
+.score-card-desc {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* FACTOR LIST */
+.factor-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin: 28px 0;
+}
+@media (max-width: 640px) { .factor-grid { grid-template-columns: 1fr; } }
+
+.factor-item {
+  padding: 20px;
+  border-left: 3px solid var(--khaki-gold);
+  background: var(--cream-light);
+}
+.factor-item-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--deep-navy);
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+.factor-item-desc {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* PROCESS STEPS */
+.process-steps {
+  margin: 32px 0;
+  counter-reset: step;
+}
+.process-step {
+  display: flex;
+  gap: 24px;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--border-light);
+  counter-increment: step;
+}
+.process-step:last-child { border-bottom: none; }
+.process-step::before {
+  content: counter(step, decimal-leading-zero);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 32px;
+  color: var(--border);
+  min-width: 48px;
+  line-height: 1;
+}
+.process-step-content h3 {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--deep-navy);
+  margin-bottom: 6px;
+}
+.process-step-content p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 0;
+}
+
+/* CTA */
+.page-cta {
+  padding: 80px 0;
+  text-align: center;
+}
+.page-cta h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 36px;
+  text-transform: uppercase;
+  color: var(--deep-navy);
+  margin-bottom: 16px;
+}
+.page-cta p {
+  font-size: 16px;
+  color: var(--text-secondary);
+  margin-bottom: 32px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.btn-primary {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 2px; text-transform: uppercase;
+  padding: 16px 36px;
+  background: var(--deep-navy);
+  color: var(--cream);
+  text-decoration: none;
+  display: inline-flex; align-items: center; gap: 8px;
+  border: 2px solid var(--deep-navy);
+  transition: all 0.2s;
+}
+.btn-primary:hover { background: var(--charcoal); border-color: var(--charcoal); }
+
+/* FOOTER */
+.page-footer {
+  padding: 32px 0;
+  border-top: 1px solid var(--border-light);
+  text-align: center;
+}
+.page-footer p {
+  font-size: 12px;
+  color: var(--text-tertiary);
+}
+.page-footer a { color: var(--text-secondary); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="/" class="nav-logo">
+    <svg class="logo-full" viewBox="0 0 448 62" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g><rect y="4" width="71" height="55" rx="5" fill="#1B2C3C"/><path d="M35.9759 45.234C33.9479 45.234 31.9979 44.909 30.1259 44.259C28.2799 43.583 26.8499 42.725 25.8359 41.685L26.9669 39.462C27.9289 40.398 29.2159 41.191 30.8279 41.841C32.4659 42.465 34.1819 42.777 35.9759 42.777C37.6919 42.777 39.0829 42.569 40.1489 42.153C41.2409 41.711 42.0339 41.126 42.5279 40.398C43.0479 39.67 43.3079 38.864 43.3079 37.98C43.3079 36.914 42.9959 36.056 42.3719 35.406C41.7739 34.756 40.9809 34.249 39.9929 33.885C39.0049 33.495 37.9129 33.157 36.7169 32.871C35.5209 32.585 34.3249 32.286 33.1289 31.974C31.9329 31.636 30.8279 31.194 29.8139 30.648C28.8259 30.102 28.0199 29.387 27.3959 28.503C26.7979 27.593 26.4989 26.41 26.4989 24.954C26.4989 23.602 26.8499 22.367 27.5519 21.249C28.2799 20.105 29.3849 19.195 30.8669 18.519C32.3489 17.817 34.2469 17.466 36.5609 17.466C38.0949 17.466 39.6159 17.687 41.1239 18.129C42.6319 18.545 43.9319 19.13 45.0239 19.884L44.0489 22.185C42.8789 21.405 41.6309 20.833 40.3049 20.469C39.0049 20.105 37.7439 19.923 36.5219 19.923C34.8839 19.923 33.5319 20.144 32.4659 20.586C31.3999 21.028 30.6069 21.626 30.0869 22.38C29.5929 23.108 29.3459 23.94 29.3459 24.876C29.3459 25.942 29.6449 26.8 30.2429 27.45C30.8669 28.1 31.6729 28.607 32.6609 28.971C33.6749 29.335 34.7799 29.66 35.9759 29.946C37.1719 30.232 38.3549 30.544 39.5249 30.882C40.7209 31.22 41.8129 31.662 42.8009 32.208C43.8149 32.728 44.6209 33.43 45.2189 34.314C45.8429 35.198 46.1549 36.355 46.1549 37.785C46.1549 39.111 45.7909 40.346 45.0629 41.49C44.3349 42.608 43.2169 43.518 41.7089 44.22C40.2269 44.896 38.3159 45.234 35.9759 45.234Z" fill="white"/><path d="M15.483 49.566V13.062H22.62V15.363H18.252V47.265H22.62V49.566H15.483ZM56.503 49.566H49.366V47.265H53.734V15.363H49.366V13.062H56.503V49.566Z" fill="white"/></g>
+        <g transform="translate(83,9)"><path d="M11.5312 35.216C9.65922 35.216 7.85922 34.916 6.13122 34.316C4.42722 33.692 3.10722 32.9 2.17122 31.94L3.21522 29.888C4.10322 30.752 5.29122 31.484 6.77922 32.084C8.29122 32.66 9.87522 32.948 11.5312 32.948C13.1152 32.948 14.3992 32.756 15.3832 32.372C16.3912 31.964 17.1232 31.424 17.5792 30.752C18.0592 30.08 18.2992 29.336 18.2992 28.52C18.2992 27.536 18.0112 26.744 17.4352 26.144C16.8832 25.544 16.1512 25.076 15.2392 24.74C14.3272 24.38 13.3192 24.068 12.2152 23.804C11.1112 23.54 10.0072 23.264 8.90322 22.976C7.79922 22.664 6.77922 22.256 5.84322 21.752C4.93122 21.248 4.18722 20.588 3.61122 19.772C3.05922 18.932 2.78322 17.84 2.78322 16.496C2.78322 15.248 3.10722 14.108 3.75522 13.076C4.42722 12.02 5.44722 11.18 6.81522 10.556C8.18322 9.908 9.93522 9.584 12.0712 9.584C13.4872 9.584 14.8912 9.788 16.2832 10.196C17.6752 10.58 18.8752 11.12 19.8832 11.816L18.9832 13.94C17.9032 13.22 16.7512 12.692 15.5272 12.356C14.3272 12.02 13.1632 11.852 12.0352 11.852C10.5232 11.852 9.27522 12.056 8.29122 12.464C7.30722 12.872 6.57522 13.424 6.09522 14.12C5.63922 14.792 5.41122 15.56 5.41122 16.424C5.41122 17.408 5.68722 18.2 6.23922 18.8C6.81522 19.4 7.55922 19.868 8.47122 20.204C9.40722 20.54 10.4272 20.84 11.5312 21.104C12.6352 21.368 13.7272 21.656 14.8072 21.968C15.9112 22.28 16.9192 22.688 17.8312 23.192C18.7672 23.672 19.5112 24.32 20.0632 25.136C20.6392 25.952 20.9272 27.02 20.9272 28.34C20.9272 29.564 20.5912 30.704 19.9192 31.76C19.2472 32.792 18.2152 33.632 16.8232 34.28C15.4552 34.904 13.6912 35.216 11.5312 35.216ZM33.6563 35V25.64L34.2683 27.296L23.5763 9.8H26.4203L35.8163 25.172H34.3043L43.7003 9.8H46.3643L35.6723 27.296L36.2843 25.64V35H33.6563ZM51.4085 35V9.8H53.6045L70.9925 31.688H69.8405V9.8H72.4685V35H70.2725L52.9205 13.112H54.0725V35H51.4085ZM93.0777 35.216C91.1817 35.216 89.4297 34.904 87.8217 34.28C86.2137 33.632 84.8217 32.732 83.6457 31.58C82.4697 30.428 81.5457 29.072 80.8737 27.512C80.2257 25.952 79.9017 24.248 79.9017 22.4C79.9017 20.552 80.2257 18.848 80.8737 17.288C81.5457 15.728 82.4697 14.372 83.6457 13.22C84.8457 12.068 86.2497 11.18 87.8577 10.556C89.4657 9.908 91.2177 9.584 93.1137 9.584C94.9377 9.584 96.6537 9.896 98.2617 10.52C99.8697 11.12 101.226 12.032 102.33 13.256L100.638 14.948C99.6057 13.892 98.4657 13.136 97.2177 12.68C95.9697 12.2 94.6257 11.96 93.1857 11.96C91.6737 11.96 90.2697 12.224 88.9737 12.752C87.6777 13.256 86.5497 13.988 85.5897 14.948C84.6297 15.884 83.8737 16.988 83.3217 18.26C82.7937 19.508 82.5297 20.888 82.5297 22.4C82.5297 23.912 82.7937 25.304 83.3217 26.576C83.8737 27.824 84.6297 28.928 85.5897 29.888C86.5497 30.824 87.6777 31.556 88.9737 32.084C90.2697 32.588 91.6737 32.84 93.1857 32.84C94.6257 32.84 95.9697 32.6 97.2177 32.12C98.4657 31.64 99.6057 30.872 100.638 29.816L102.33 31.508C101.226 32.732 99.8697 33.656 98.2617 34.28C96.6537 34.904 94.9257 35.216 93.0777 35.216ZM126.755 35L115.595 9.8H118.475L128.915 33.524H127.331L137.843 9.8H140.543L129.383 35H126.755ZM140.834 35L152.354 9.8H154.982L166.502 35H163.694L153.11 11.348H154.19L143.606 35H140.834ZM145.37 28.268L146.162 26.108H160.814L161.606 28.268H145.37ZM172.111 35V9.8H174.775V32.696H188.887V35H172.111ZM204.445 35.216C201.229 35.216 198.697 34.292 196.849 32.444C195.001 30.596 194.077 27.86 194.077 24.236V9.8H196.741V24.128C196.741 27.104 197.413 29.3 198.757 30.716C200.101 32.132 201.997 32.84 204.445 32.84C206.917 32.84 208.825 32.132 210.169 30.716C211.513 29.3 212.185 27.104 212.185 24.128V9.8H214.777V24.236C214.777 27.86 213.853 30.596 212.005 32.444C210.181 34.292 207.661 35.216 204.445 35.216ZM219.686 35L231.206 9.8H233.834L245.354 35H242.546L231.962 11.348H233.042L222.458 35H219.686ZM224.222 28.268L225.014 26.108H239.666L240.458 28.268H224.222ZM254.593 35V12.104H245.737V9.8H266.113V12.104H257.257V35H254.593ZM271.809 35V9.8H274.473V35H271.809ZM295.128 35.216C293.232 35.216 291.468 34.904 289.836 34.28C288.228 33.632 286.824 32.732 285.624 31.58C284.448 30.404 283.524 29.048 282.852 27.512C282.204 25.952 281.88 24.248 281.88 22.4C281.88 20.552 282.204 18.86 282.852 17.324C283.524 15.764 284.448 14.408 285.624 13.256C286.824 12.08 288.228 11.18 289.836 10.556C291.444 9.908 293.208 9.584 295.128 9.584C297.024 9.584 298.776 9.908 300.384 10.556C301.992 11.18 303.384 12.068 304.56 13.22C305.76 14.372 306.684 15.728 307.332 17.288C308.004 18.848 308.34 20.552 308.34 22.4C308.34 24.248 308.004 25.952 307.332 27.512C306.684 29.072 305.76 30.428 304.56 31.58C303.384 32.732 301.992 33.632 300.384 34.28C298.776 34.904 297.024 35.216 295.128 35.216ZM295.128 32.84C296.64 32.84 298.032 32.588 299.304 32.084C300.6 31.556 301.716 30.824 302.652 29.888C303.612 28.928 304.356 27.824 304.884 26.576C305.412 25.304 305.676 23.912 305.676 22.4C305.676 20.888 305.412 19.508 304.884 18.26C304.356 16.988 303.612 15.884 302.652 14.948C301.716 13.988 300.6 13.256 299.304 12.752C298.032 12.224 296.64 11.96 295.128 11.96C293.616 11.96 292.212 12.224 290.916 12.752C289.62 13.256 288.492 13.988 287.532 14.948C286.596 15.884 285.852 16.988 285.3 18.26C284.772 19.508 284.508 20.888 284.508 22.4C284.508 23.888 284.772 25.268 285.3 26.54C285.852 27.812 286.596 28.928 287.532 29.888C288.492 30.824 289.62 31.556 290.916 32.084C292.212 32.588 293.616 32.84 295.128 32.84ZM315.751 35V9.8H317.947L335.335 31.688H334.183V9.8H336.811V35H334.615L317.263 13.112H318.415V35H315.751ZM353.424 35.216C351.552 35.216 349.752 34.916 348.024 34.316C346.32 33.692 345 32.9 344.064 31.94L345.108 29.888C345.996 30.752 347.184 31.484 348.672 32.084C350.184 32.66 351.768 32.948 353.424 32.948C355.008 32.948 356.292 32.756 357.276 32.372C358.284 31.964 359.016 31.424 359.472 30.752C359.952 30.08 360.192 29.336 360.192 28.52C360.192 27.536 359.904 26.744 359.328 26.144C358.776 25.544 358.044 25.076 357.132 24.74C356.22 24.38 355.212 24.068 354.108 23.804C353.004 23.54 351.9 23.264 350.796 22.976C349.692 22.664 348.672 22.256 347.736 21.752C346.824 21.248 346.08 20.588 345.504 19.772C344.952 18.932 344.676 17.84 344.676 16.496C344.676 15.248 345 14.108 345.648 13.076C346.32 12.02 347.34 11.18 348.708 10.556C350.076 9.908 351.828 9.584 353.964 9.584C355.38 9.584 356.784 9.788 358.176 10.196C359.568 10.58 360.768 11.12 361.776 11.816L360.876 13.94C359.796 13.22 358.644 12.692 357.42 12.356C356.22 12.02 355.056 11.852 353.928 11.852C352.416 11.852 351.168 12.056 350.184 12.464C349.2 12.872 348.468 13.424 347.988 14.12C347.532 14.792 347.304 15.56 347.304 16.424C347.304 17.408 347.58 18.2 348.132 18.8C348.708 19.4 349.452 19.868 350.364 20.204C351.3 20.54 352.32 20.84 353.424 21.104C354.528 21.368 355.62 21.656 356.7 21.968C357.804 22.28 358.812 22.688 359.724 23.192C360.66 23.672 361.404 24.32 361.956 25.136C362.532 25.952 362.82 27.02 362.82 28.34C362.82 29.564 362.484 30.704 361.812 31.76C361.14 32.792 360.108 33.632 358.716 34.28C357.348 34.904 355.584 35.216 353.424 35.216Z" fill="#1B2C3C"/></g>
+      </svg>
+  </a>
+  <a href="/" class="nav-back"><span class="material-icons" style="font-size:16px">arrow_back</span> Back to Home</a>
+</nav>
+
+<main>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="container">
+    <span class="section-label">Methodology</span>
+    <h1>The <span class="accent">xSV&#8482;</span> Framework</h1>
+    <p class="page-hero-intro">xSV&#8482; (Expected Sync Value) is our proprietary valuation framework. It determines what music would have cost if it had been licensed properly — grounded in real-world benchmarks, not hypothetical estimates.</p>
+  </div>
+</section>
+
+<!-- WHY xSV EXISTS -->
+<section class="content-section">
+  <div class="container">
+    <h2>Why xSV&#8482; Exists</h2>
+    <p>For decades, sync licensing has operated without a consistent, independent method for determining the value of music used without authorization. When disputes arise — and they increasingly do, especially around social media usage — the question shifts from <em>whether</em> music was used to <em>what that use would have cost</em>.</p>
+    <p>Courts, law firms, and rights holders need a defensible answer to that question. Not a guess. Not a range pulled from thin air. A structured, evidence-based valuation grounded in how the sync licensing market actually works.</p>
+    <p>That is what xSV&#8482; provides. Developed from over 40 years of combined sync licensing experience and informed by 100+ cases assessed, it translates complex market dynamics into clear, defensible numbers.</p>
+  </div>
+</section>
+
+<!-- TWO CORE SCORES -->
+<section class="content-section">
+  <div class="container">
+    <h2>Two Core Scores</h2>
+    <p>Every xSV&#8482; valuation produces two independent scores that together determine a track's sync licensing value. Both are expressed on a 0.00–1.00 scale.</p>
+
+    <div class="score-explainer">
+      <div class="score-card">
+        <div class="score-card-label">Artist Sync Score</div>
+        <div class="score-card-value navy">0.00–1.00</div>
+        <div class="score-card-range">Scale</div>
+        <div class="score-card-desc">Measures the artist's public recognition, cultural footprint, and negotiating leverage in the sync market. Based on the commercially strongest collaborator on the track. Higher scores indicate artists with significant cultural presence and licensing power.</div>
+      </div>
+      <div class="score-card">
+        <div class="score-card-label">Song Sync Score</div>
+        <div class="score-card-value gold">0.00–1.00</div>
+        <div class="score-card-range">Scale</div>
+        <div class="score-card-desc">Measures the specific recording's market footprint: streaming performance, playlist penetration, chart presence, and genre-specific commercial relevance. A track can score higher or lower than its artist — reflecting the reality that not every song carries equal sync value.</div>
+      </div>
+    </div>
+
+    <p>The combination of both scores places a track within a <strong>Valuation Tier</strong> — from Lower to Premium — which anchors the pricing logic across territories and license durations.</p>
+  </div>
+</section>
+
+<!-- WHAT xSV FACTORS IN -->
+<section class="content-section">
+  <div class="container">
+    <h2>What xSV&#8482; Factors In</h2>
+    <p>Each valuation draws on multiple data layers. No single factor determines the outcome — the model considers how they interact.</p>
+
+    <div class="factor-grid">
+      <div class="factor-item">
+        <div class="factor-item-title">Historical Sync Benchmarks</div>
+        <div class="factor-item-desc">Real-world licensing fees from comparable deals across media types, territories, and artist tiers. Informed by 20+ years of direct sync licensing practice.</div>
+      </div>
+      <div class="factor-item">
+        <div class="factor-item-title">Artist Market Data</div>
+        <div class="factor-item-desc">Streaming performance, playlist presence, social following, cultural footprint, and catalog depth. Weighted by genre-specific relevance.</div>
+      </div>
+      <div class="factor-item">
+        <div class="factor-item-title">Song-Level Metrics</div>
+        <div class="factor-item-desc">Track-specific streaming data, chart history, Shazam signals, editorial playlist inclusion, and cross-platform performance.</div>
+      </div>
+      <div class="factor-item">
+        <div class="factor-item-title">Territory & Duration</div>
+        <div class="factor-item-desc">Pricing varies significantly by territory (US, EU, GAS, Asia, Global) and license duration (3, 6, or 12 months). Each combination produces a distinct valuation.</div>
+      </div>
+      <div class="factor-item">
+        <div class="factor-item-title">Media Type & Context</div>
+        <div class="factor-item-desc">Social media, broadcast, film, gaming, and advertising each carry different pricing norms. Paid media use carries a premium over organic placement.</div>
+      </div>
+      <div class="factor-item">
+        <div class="factor-item-title">Cultural Weight</div>
+        <div class="factor-item-desc">Some tracks transcend their metrics — iconic status, cultural moments, emotional resonance. The model recognizes context that pure data cannot capture.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE PROCESS -->
+<section class="content-section">
+  <div class="container">
+    <h2>How a Valuation Works</h2>
+
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="process-step-content">
+          <h3>Scope Confirmation</h3>
+          <p>We define the exact parameters: which track, which usage, which territories, which media type, which duration. Every valuation is scoped before it begins.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="process-step-content">
+          <h3>Data Collection & Scoring</h3>
+          <p>We gather artist and song data across streaming platforms, chart databases, and sync market references. The xSV&#8482; algorithm processes this into Artist Sync Score and Song Sync Score.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="process-step-content">
+          <h3>Valuation Matrix Generation</h3>
+          <p>Scores feed into the Valuation Matrix — a territory-by-duration pricing grid showing floor, mid, and ceiling values per side (master and publishing separately).</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="process-step-content">
+          <h3>Expert Review & Context Layer</h3>
+          <p>Every output is reviewed by our team. We apply professional judgment shaped by decades of sync practice — accounting for market nuance, cultural context, and factors that algorithms alone cannot assess.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="process-step-content">
+          <h3>Report Delivery</h3>
+          <p>The final deliverable — whether a one-page Valuation Matrix or a comprehensive Sync Valuation Report — is structured to withstand legal scrutiny and support settlement negotiations.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEFENSIBILITY -->
+<section class="content-section">
+  <div class="container">
+    <h2>Built for Scrutiny</h2>
+    <p>xSV&#8482; was designed from the ground up for adversarial environments. Every number in a Sync Valuation Report can be traced back to its source data, methodology, and reasoning. This matters because opposing counsel will challenge it.</p>
+    <p>Our 73% settlement rate reflects that: when the methodology is transparent and the data is defensible, cases resolve. The framework doesn't produce convenient numbers — it produces accurate ones. Sometimes that means a valuation comes in lower than a client hopes. That independence is precisely what makes it credible.</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="page-cta">
+  <div class="container">
+    <h2>See xSV&#8482; in Action</h2>
+    <p>Request a demo valuation report to see how xSV&#8482; translates real market data into defensible sync licensing valuations.</p>
+    <a href="/#contact" class="btn-primary">Request Demo Report <span class="material-icons" style="font-size:16px">arrow_forward</span></a>
+  </div>
+</section>
+
+</main>
+
+<footer class="page-footer">
+  <div class="container">
+    <p>&copy; 2026 Sync Valuations. <a href="mailto:hello@syncvaluations.com">hello@syncvaluations.com</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

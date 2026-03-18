@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SV Report — Sunny Bossa by Jonny Wolf & Erwin Do</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #F5F0E3;
+  --cream-light: #FAF7EF;
+  --cream-dark: #EDE7D5;
+  --deep-navy: #1B2C3C;
+  --navy-90: rgba(27,44,60,0.9);
+  --navy-80: rgba(27,44,60,0.8);
+  --navy-60: rgba(27,44,60,0.6);
+  --khaki: #A59F8E;
+  --khaki-gold: #B5A878;
+  --khaki-light: #C4BEA8;
+  --warm-gray: #9B9588;
+  --taupe: #8A8478;
+  --charcoal: #343434;
+  --white: #FFFFFF;
+  --border: #D4D0C8;
+  --border-light: #E8E4DA;
+  --green: #3D7A5F;
+  --green-light: #E8F2EC;
+  --amber: #B8860B;
+  --amber-light: #FDF6E3;
+  --red: #9B3D3D;
+  --red-light: #F8ECEC;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--deep-navy);
+  line-height: 1.6;
+}
+
+/* ═══ REPORT HEADER ═══ */
+.report-header {
+  background: var(--deep-navy);
+  color: var(--cream);
+  padding: 48px 40px 40px;
+}
+.report-header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.report-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--khaki-gold);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.report-badge::before {
+  content: '';
+  width: 8px; height: 8px;
+  background: var(--khaki-gold);
+  display: inline-block;
+}
+.report-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 42px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  line-height: 1.1;
+  margin-bottom: 6px;
+}
+.report-title em {
+  font-style: normal;
+  color: var(--khaki-gold);
+}
+.report-artist {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--khaki-light);
+  margin-bottom: 32px;
+}
+.report-meta {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+.report-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.report-meta-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--khaki);
+}
+.report-meta-value {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--cream);
+}
+
+/* ═══ SCORE CARDS ═══ */
+.scores-section {
+  max-width: 1100px;
+  margin: -40px auto 0;
+  padding: 0 40px;
+  position: relative;
+  z-index: 2;
+}
+.scores-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+}
+.score-card {
+  background: var(--white);
+  border: 1px solid var(--border-light);
+  padding: 32px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.score-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+}
+.score-card.artist::before { background: var(--deep-navy); }
+.score-card.song::before { background: var(--khaki-gold); }
+.score-card.combined::before { background: var(--green); }
+
+.score-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--warm-gray);
+  margin-bottom: 16px;
+}
+.score-value {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 64px;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.score-card.artist .score-value { color: var(--deep-navy); }
+.score-card.song .score-value { color: var(--khaki-gold); }
+.score-card.combined .score-value { color: var(--green); }
+
+.score-max {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--warm-gray);
+}
+.score-bar {
+  width: 100%;
+  height: 6px;
+  background: var(--cream-dark);
+  margin-top: 20px;
+  position: relative;
+}
+.score-bar-fill {
+  height: 100%;
+  transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+  width: 0;
+}
+.score-card.artist .score-bar-fill { background: var(--deep-navy); }
+.score-card.song .score-bar-fill { background: var(--khaki-gold); }
+.score-card.combined .score-bar-fill { background: var(--green); }
+
+.score-description {
+  font-size: 13px;
+  color: var(--warm-gray);
+  margin-top: 16px;
+  line-height: 1.5;
+}
+
+/* ═══ VALUATION RANGE ═══ */
+.valuation-section {
+  max-width: 1100px;
+  margin: 48px auto;
+  padding: 0 40px;
+}
+.section-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--warm-gray);
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.valuation-highlight {
+  background: var(--white);
+  border: 1px solid var(--border-light);
+  padding: 40px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 32px;
+}
+.val-range-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--warm-gray);
+  margin-bottom: 8px;
+}
+.val-range-amount {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 36px;
+  color: var(--deep-navy);
+}
+.val-range-note {
+  font-size: 12px;
+  color: var(--warm-gray);
+  margin-top: 4px;
+}
+.val-range-divider {
+  width: 60px;
+  height: 2px;
+  background: var(--khaki-gold);
+  position: relative;
+}
+.val-range-divider::after {
+  content: 'TO';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--khaki-gold);
+  background: var(--white);
+  padding: 4px 8px;
+}
+
+/* ═══ TERRITORY TABLE ═══ */
+.territory-table {
+  background: var(--white);
+  border: 1px solid var(--border-light);
+  overflow: hidden;
+}
+.territory-table-header {
+  display: grid;
+  grid-template-columns: 200px 1fr 1fr 1fr 1fr;
+  background: var(--deep-navy);
+  color: var(--cream);
+  padding: 16px 24px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+.territory-row {
+  display: grid;
+  grid-template-columns: 200px 1fr 1fr 1fr 1fr;
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--border-light);
+  font-size: 14px;
+  transition: background 0.15s;
+}
+.territory-row:hover {
+  background: var(--cream-light);
+}
+.territory-row:last-child {
+  border-bottom: none;
+}
+.territory-name {
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.territory-flag {
+  font-size: 16px;
+}
+.territory-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+}
+.floor-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  background: var(--amber-light);
+  color: var(--amber);
+  padding: 2px 6px;
+  margin-left: 6px;
+  letter-spacing: 0.5px;
+}
+
+/* ═══ CODE REFERENCE ═══ */
+.code-section {
+  max-width: 1100px;
+  margin: 48px auto;
+  padding: 0 40px;
+}
+.code-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+}
+.code-card {
+  background: var(--white);
+  border: 1px solid var(--border-light);
+  padding: 24px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.code-icon {
+  width: 40px; height: 40px;
+  background: var(--cream-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--deep-navy);
+}
+.code-content {
+  flex: 1;
+}
+.code-id {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--deep-navy);
+  margin-bottom: 4px;
+}
+.code-desc {
+  font-size: 12px;
+  color: var(--warm-gray);
+  line-height: 1.4;
+}
+
+/* ═══ REPORT NAV ═══ */
+.report-nav {
+  max-width: 1100px;
+  margin: 0 auto 48px;
+  padding: 0 40px;
+}
+.report-nav-inner {
+  background: var(--white);
+  border: 1px solid var(--border-light);
+  padding: 24px 32px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.report-nav-item {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--warm-gray);
+  padding: 8px 16px;
+  background: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+.report-nav-item:hover,
+.report-nav-item.active {
+  color: var(--deep-navy);
+  border-color: var(--border);
+  background: var(--cream-light);
+}
+.report-nav-item .nav-num {
+  color: var(--khaki-gold);
+  margin-right: 6px;
+}
+
+/* ═══ DISCLAIMER ═══ */
+.report-footer {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px;
+}
+.report-footer-inner {
+  border-top: 1px solid var(--border);
+  padding-top: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+}
+.report-footer-text {
+  font-size: 12px;
+  color: var(--warm-gray);
+  line-height: 1.6;
+  max-width: 600px;
+}
+.report-footer-logo {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: var(--deep-navy);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* ═══ RESPONSIVE ═══ */
+@media (max-width: 768px) {
+  .scores-grid { grid-template-columns: 1fr; }
+  .valuation-highlight { grid-template-columns: 1fr; text-align: center; }
+  .val-range-divider { width: 100%; height: 1px; }
+  .territory-table-header,
+  .territory-row { grid-template-columns: 140px 1fr 1fr; }
+  .territory-table-header > *:nth-child(4),
+  .territory-table-header > *:nth-child(5),
+  .territory-row > *:nth-child(4),
+  .territory-row > *:nth-child(5) { display: none; }
+  .report-title { font-size: 28px; }
+  .score-value { font-size: 48px; }
+  .report-header { padding: 32px 20px 40px; }
+  .scores-section, .valuation-section, .code-section, .report-nav, .report-footer { padding: 0 20px; }
+}
+
+/* ═══ ANIMATIONS ═══ */
+.fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ REPORT HEADER ═══ -->
+<header class="report-header">
+  <div class="report-header-inner">
+    <div class="report-badge">Sync Valuation Report — Draft v1.1</div>
+    <h1 class="report-title">"<em>Sunny Bossa</em>"</h1>
+    <p class="report-artist">by Jonny Wolf & Erwin Do</p>
+    <div class="report-meta">
+      <div class="report-meta-item">
+        <span class="report-meta-label">Report ID</span>
+        <span class="report-meta-value">SV-2025-0042</span>
+      </div>
+      <div class="report-meta-item">
+        <span class="report-meta-label">Date</span>
+        <span class="report-meta-value">March 2025</span>
+      </div>
+      <div class="report-meta-item">
+        <span class="report-meta-label">Instructed by</span>
+        <span class="report-meta-value">Lohmeier Partners</span>
+      </div>
+      <div class="report-meta-item">
+        <span class="report-meta-label">Media Scope</span>
+        <span class="report-meta-value">Social Media (Instagram, TikTok)</span>
+      </div>
+      <div class="report-meta-item">
+        <span class="report-meta-label">Status</span>
+        <span class="report-meta-value">Confidential</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ═══ SCORE CARDS ═══ -->
+<section class="scores-section">
+  <div class="scores-grid">
+    <div class="score-card artist fade-up">
+      <div class="score-label">Artist Sync Score</div>
+      <div class="score-value">0.20</div>
+      <div class="score-max">/ 1.00</div>
+      <div class="score-bar"><div class="score-bar-fill" data-width="20"></div></div>
+      <p class="score-description">Public recognition, cultural footprint & negotiating leverage of the artist profile.</p>
+    </div>
+    <div class="score-card song fade-up" style="transition-delay: 0.1s">
+      <div class="score-label">Song Sync Score</div>
+      <div class="score-value">0.22</div>
+      <div class="score-max">/ 1.00</div>
+      <div class="score-bar"><div class="score-bar-fill" data-width="22"></div></div>
+      <p class="score-description">Market footprint & recognition of the specific recording, independent of general artist profile.</p>
+    </div>
+    <div class="score-card combined fade-up" style="transition-delay: 0.2s">
+      <div class="score-label">Valuation Tier</div>
+      <div class="score-value" style="font-size: 36px; padding-top: 14px;">LOWER–MID</div>
+      <div class="score-max">Niche-recognised instrumental</div>
+      <div class="score-bar"><div class="score-bar-fill" data-width="21"></div></div>
+      <p class="score-description">Above minimal-demand catalogue, below established or iconic repertoire tiers.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ REPORT NAV ═══ -->
+<section class="report-nav" style="margin-top: 48px;">
+  <div class="report-nav-inner">
+    <a class="report-nav-item active"><span class="nav-num">01</span>Executive Summary</a>
+    <a class="report-nav-item"><span class="nav-num">02</span>Scope</a>
+    <a class="report-nav-item"><span class="nav-num">03</span>Artist Profile</a>
+    <a class="report-nav-item"><span class="nav-num">04</span>Variables</a>
+    <a class="report-nav-item"><span class="nav-num">05</span>Valuation Matrix</a>
+    <a class="report-nav-item"><span class="nav-num">06</span>Benchmarks</a>
+    <a class="report-nav-item"><span class="nav-num">07</span>Scores</a>
+    <a class="report-nav-item"><span class="nav-num">08</span>Conclusion</a>
+  </div>
+</section>
+
+<!-- ═══ VALUATION RANGE ═══ -->
+<section class="valuation-section fade-up">
+  <div class="section-label">Valuation Range — All Territories Combined</div>
+  <div class="valuation-highlight">
+    <div>
+      <div class="val-range-label">Floor (per side)</div>
+      <div class="val-range-amount">€2,000</div>
+      <div class="val-range-note">€4,000 all-in (master + publishing)</div>
+    </div>
+    <div class="val-range-divider"></div>
+    <div style="text-align: right;">
+      <div class="val-range-label">Ceiling (per side)</div>
+      <div class="val-range-amount">€26,426</div>
+      <div class="val-range-note">€52,853 all-in (master + publishing)</div>
+    </div>
+  </div>
+
+  <!-- Territory Breakdown -->
+  <div class="section-label">Territory Breakdown — Unpaid Social Media, Per Side</div>
+  <div class="territory-table">
+    <div class="territory-table-header">
+      <div>Territory</div>
+      <div>3 months</div>
+      <div>6 months</div>
+      <div>12 months</div>
+      <div>24 months</div>
+    </div>
+    <div class="territory-row">
+      <div class="territory-name"><span class="territory-flag">🇺🇸</span> United States</div>
+      <div class="territory-value">€2,000 <span class="floor-badge">FLOOR</span></div>
+      <div class="territory-value">€2,373</div>
+      <div class="territory-value">€3,322</div>
+      <div class="territory-value">€4,652</div>
+    </div>
+    <div class="territory-row">
+      <div class="territory-name"><span class="territory-flag">🇩🇪</span> GAS Region</div>
+      <div class="territory-value">€2,000 <span class="floor-badge">FLOOR</span></div>
+      <div class="territory-value">€2,000 <span class="floor-badge">FLOOR</span></div>
+      <div class="territory-value">€2,488</div>
+      <div class="territory-value">€3,484</div>
+    </div>
+    <div class="territory-row">
+      <div class="territory-name"><span class="territory-flag">🇪🇺</span> Pan-European</div>
+      <div class="territory-value">€2,254</div>
+      <div class="territory-value">€2,817</div>
+      <div class="territory-value">€3,944</div>
+      <div class="territory-value">€5,522</div>
+    </div>
+    <div class="territory-row">
+      <div class="territory-name"><span class="territory-flag">🇧🇷</span> Brazil</div>
+      <div class="territory-value">€2,000 <span class="floor-badge">FLOOR</span></div>
+      <div class="territory-value">€2,000 <span class="floor-badge">FLOOR</span></div>
+      <div class="territory-value">€2,000 <span class="floor-badge">FLOOR</span></div>
+      <div class="territory-value">€2,093</div>
+    </div>
+    <div class="territory-row">
+      <div class="territory-name"><span class="territory-flag">🌍</span> Global</div>
+      <div class="territory-value">€4,864</div>
+      <div class="territory-value">€6,080</div>
+      <div class="territory-value">€8,512</div>
+      <div class="territory-value">€11,916</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ REFERENCE CODES ═══ -->
+<section class="code-section fade-up">
+  <div class="section-label">Key Variables & Reference Codes</div>
+  <div class="code-grid">
+    <div class="code-card">
+      <div class="code-icon">T</div>
+      <div class="code-content">
+        <div class="code-id">Territory Scope</div>
+        <div class="code-desc">9 regions modeled: US, CA, US+CA, GAS, W. Europe, Pan-EU, BR, MX, KR, AU, Global</div>
+      </div>
+    </div>
+    <div class="code-card">
+      <div class="code-icon">D</div>
+      <div class="code-content">
+        <div class="code-id">Duration / Term</div>
+        <div class="code-desc">3, 6, 12, and 24 month license periods. Longer = higher fee (scaling factor applied)</div>
+      </div>
+    </div>
+    <div class="code-card">
+      <div class="code-icon">M</div>
+      <div class="code-content">
+        <div class="code-id">Media Type</div>
+        <div class="code-desc">Unpaid social vs. Paid social (+30% premium for commercial/promotional use)</div>
+      </div>
+    </div>
+    <div class="code-card">
+      <div class="code-icon">±</div>
+      <div class="code-content">
+        <div class="code-id">Negotiation Band</div>
+        <div class="code-desc">±15% around each valuation to reflect real-world negotiation variance. Floor-clamped on downside.</div>
+      </div>
+    </div>
+    <div class="code-card">
+      <div class="code-icon">F</div>
+      <div class="code-content">
+        <div class="code-id">Minimum Fee Floor</div>
+        <div class="code-desc">€2,000 per side — industry minimum below which rights holders generally will not license</div>
+      </div>
+    </div>
+    <div class="code-card">
+      <div class="code-icon">MFN</div>
+      <div class="code-content">
+        <div class="code-id">Most Favoured Nations</div>
+        <div class="code-desc">Master & publishing rights valued equally when original recording and composition licensed together</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="report-footer">
+  <div class="report-footer-inner">
+    <p class="report-footer-text">
+      This report is confidential and intended solely for the use of the instructing party. The valuations reflect standard professional practice in music supervision and synchronization licensing, grounded in comparative analysis of real-world licensing outcomes and market-referenced benchmarks.
+    </p>
+    <div class="report-footer-logo">
+      <svg width="200" height="28" viewBox="0 0 448 62" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g><rect y="4" width="71" height="55" rx="5" fill="#1B2C3C"/><path d="M35.9759 45.234C33.9479 45.234 31.9979 44.909 30.1259 44.259C28.2799 43.583 26.8499 42.725 25.8359 41.685L26.9669 39.462C27.9289 40.398 29.2159 41.191 30.8279 41.841C32.4659 42.465 34.1819 42.777 35.9759 42.777C37.6919 42.777 39.0829 42.569 40.1489 42.153C41.2409 41.711 42.0339 41.126 42.5279 40.398C43.0479 39.67 43.3079 38.864 43.3079 37.98C43.3079 36.914 42.9959 36.056 42.3719 35.406C41.7739 34.756 40.9809 34.249 39.9929 33.885C39.0049 33.495 37.9129 33.157 36.7169 32.871C35.5209 32.585 34.3249 32.286 33.1289 31.974C31.9329 31.636 30.8279 31.194 29.8139 30.648C28.8259 30.102 28.0199 29.387 27.3959 28.503C26.7979 27.593 26.4989 26.41 26.4989 24.954C26.4989 23.602 26.8499 22.367 27.5519 21.249C28.2799 20.105 29.3849 19.195 30.8669 18.519C32.3489 17.817 34.2469 17.466 36.5609 17.466C38.0949 17.466 39.6159 17.687 41.1239 18.129C42.6319 18.545 43.9319 19.13 45.0239 19.884L44.0489 22.185C42.8789 21.405 41.6309 20.833 40.3049 20.469C39.0049 20.105 37.7439 19.923 36.5219 19.923C34.8839 19.923 33.5319 20.144 32.4659 20.586C31.3999 21.028 30.6069 21.626 30.0869 22.38C29.5929 23.108 29.3459 23.94 29.3459 24.876C29.3459 25.942 29.6449 26.8 30.2429 27.45C30.8669 28.1 31.6729 28.607 32.6609 28.971C33.6749 29.335 34.7799 29.66 35.9759 29.946C37.1719 30.232 38.3549 30.544 39.5249 30.882C40.7209 31.22 41.8129 31.662 42.8009 32.208C43.8149 32.728 44.6209 33.43 45.2189 34.314C45.8429 35.198 46.1549 36.355 46.1549 37.785C46.1549 39.111 45.7909 40.346 45.0629 41.49C44.3349 42.608 43.2169 43.518 41.7089 44.22C40.2269 44.896 38.3159 45.234 35.9759 45.234Z" fill="white"/><path d="M15.483 49.566V13.062H22.62V15.363H18.252V47.265H22.62V49.566H15.483ZM56.503 49.566H49.366V47.265H53.734V15.363H49.366V13.062H56.503V49.566Z" fill="white"/></g>
+        <g transform="translate(83,9)"><path d="M11.5312 35.216C9.65922 35.216 7.85922 34.916 6.13122 34.316C4.42722 33.692 3.10722 32.9 2.17122 31.94L3.21522 29.888C4.10322 30.752 5.29122 31.484 6.77922 32.084C8.29122 32.66 9.87522 32.948 11.5312 32.948C13.1152 32.948 14.3992 32.756 15.3832 32.372C16.3912 31.964 17.1232 31.424 17.5792 30.752C18.0592 30.08 18.2992 29.336 18.2992 28.52C18.2992 27.536 18.0112 26.744 17.4352 26.144C16.8832 25.544 16.1512 25.076 15.2392 24.74C14.3272 24.38 13.3192 24.068 12.2152 23.804C11.1112 23.54 10.0072 23.264 8.90322 22.976C7.79922 22.664 6.77922 22.256 5.84322 21.752C4.93122 21.248 4.18722 20.588 3.61122 19.772C3.05922 18.932 2.78322 17.84 2.78322 16.496C2.78322 15.248 3.10722 14.108 3.75522 13.076C4.42722 12.02 5.44722 11.18 6.81522 10.556C8.18322 9.908 9.93522 9.584 12.0712 9.584C13.4872 9.584 14.8912 9.788 16.2832 10.196C17.6752 10.58 18.8752 11.12 19.8832 11.816L18.9832 13.94C17.9032 13.22 16.7512 12.692 15.5272 12.356C14.3272 12.02 13.1632 11.852 12.0352 11.852C10.5232 11.852 9.27522 12.056 8.29122 12.464C7.30722 12.872 6.57522 13.424 6.09522 14.12C5.63922 14.792 5.41122 15.56 5.41122 16.424C5.41122 17.408 5.68722 18.2 6.23922 18.8C6.81522 19.4 7.55922 19.868 8.47122 20.204C9.40722 20.54 10.4272 20.84 11.5312 21.104C12.6352 21.368 13.7272 21.656 14.8072 21.968C15.9112 22.28 16.9192 22.688 17.8312 23.192C18.7672 23.672 19.5112 24.32 20.0632 25.136C20.6392 25.952 20.9272 27.02 20.9272 28.34C20.9272 29.564 20.5912 30.704 19.9192 31.76C19.2472 32.792 18.2152 33.632 16.8232 34.28C15.4552 34.904 13.6912 35.216 11.5312 35.216Z" fill="#1B2C3C"/></g>
+      </svg>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Animate score bars on load
+document.addEventListener('DOMContentLoaded', () => {
+  // Fade-up observer
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Animate score bars
+  setTimeout(() => {
+    document.querySelectorAll('.score-bar-fill').forEach(bar => {
+      const width = bar.dataset.width;
+      bar.style.width = width + '%';
+    });
+  }, 500);
+});
+</script>
+
+</body>
+</html>

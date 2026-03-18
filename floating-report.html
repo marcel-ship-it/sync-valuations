@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SV Floating Report</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #F5F0E3;
+  --cream-light: #FAF7EF;
+  --deep-navy: #1B2C3C;
+  --khaki-gold: #B5A878;
+  --khaki: #A59F8E;
+  --warm-gray: #9B9588;
+  --border: #D4D0C8;
+  --border-light: #E8E4DA;
+  --white: #FFFFFF;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  font-family: 'DM Sans', sans-serif;
+  overflow: hidden;
+}
+
+/* ═══ SCENE ═══ */
+.scene {
+  perspective: 1200px;
+  width: 420px;
+  height: 560px;
+  position: relative;
+}
+
+/* ═══ REPORT STACK ═══ */
+.report-stack {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: floatReport 6s ease-in-out infinite;
+}
+
+@keyframes floatReport {
+  0%, 100% { transform: rotateY(-4deg) rotateX(2deg) translateY(0); }
+  50% { transform: rotateY(-4deg) rotateX(2deg) translateY(-12px); }
+}
+
+/* ═══ SHADOW ═══ */
+.report-shadow {
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 360px;
+  height: 20px;
+  background: radial-gradient(ellipse, rgba(27,44,60,0.12) 0%, transparent 70%);
+  animation: floatShadow 6s ease-in-out infinite;
+}
+@keyframes floatShadow {
+  0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.8; }
+  50% { transform: translateX(-50%) scale(0.85); opacity: 0.5; }
+}
+
+/* ═══ PAGES ═══ */
+.report-page {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: var(--white);
+  border: 1px solid var(--border-light);
+  box-shadow: 0 4px 24px rgba(27,44,60,0.08), 0 1px 4px rgba(27,44,60,0.04);
+  padding: 36px;
+  opacity: 0;
+  transform: translateX(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  pointer-events: none;
+  overflow: hidden;
+}
+.report-page.active {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+.report-page.prev {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+/* Back pages for depth effect */
+.report-page::after {
+  content: '';
+  position: absolute;
+  top: 2px; right: -3px;
+  width: 3px; height: calc(100% - 4px);
+  background: linear-gradient(to right, var(--border-light), var(--cream-dark, #EDE7D5));
+}
+
+.back-page {
+  position: absolute;
+  width: 100%; height: 100%;
+  background: var(--cream-light);
+  border: 1px solid var(--border-light);
+}
+.back-page:nth-child(1) { top: 3px; left: 3px; }
+.back-page:nth-child(2) { top: 6px; left: 6px; }
+
+/* ═══ PAGE CONTENT STYLES ═══ */
+
+/* Page indicator */
+.page-indicator {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+}
+.page-dot {
+  width: 6px; height: 6px;
+  background: var(--border);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.page-dot.active {
+  background: var(--deep-navy);
+  width: 24px;
+}
+
+/* Cover page */
+.cover-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--khaki-gold);
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.cover-badge::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: var(--khaki-gold);
+}
+.cover-line {
+  width: 40px; height: 2px;
+  background: var(--deep-navy);
+  margin-bottom: 24px;
+}
+.cover-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 36px;
+  text-transform: uppercase;
+  line-height: 1.05;
+  color: var(--deep-navy);
+  margin-bottom: 8px;
+}
+.cover-title em {
+  font-style: normal;
+  color: var(--khaki-gold);
+}
+.cover-artist {
+  font-size: 16px;
+  color: var(--warm-gray);
+  margin-bottom: 48px;
+}
+.cover-meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.cover-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.cover-meta-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--khaki);
+}
+.cover-meta-value {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--deep-navy);
+}
+.cover-logo {
+  position: absolute;
+  bottom: 50px;
+  left: 36px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.cover-logo svg { height: 22px; width: auto; }
+.cover-confidential {
+  position: absolute;
+  top: 36px;
+  right: 36px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--border);
+  writing-mode: vertical-lr;
+}
+
+/* Scores page */
+.scores-page-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--khaki);
+  margin-bottom: 32px;
+}
+.score-block {
+  margin-bottom: 28px;
+}
+.score-block-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--warm-gray);
+  margin-bottom: 10px;
+}
+.score-block-row {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+.score-block-value {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 52px;
+  line-height: 1;
+}
+.score-block-value.navy { color: var(--deep-navy); }
+.score-block-value.gold { color: var(--khaki-gold); }
+.score-block-max {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  color: var(--border);
+}
+.score-bar-bg {
+  width: 100%;
+  height: 5px;
+  background: var(--cream);
+  margin-bottom: 6px;
+}
+.score-bar-fg {
+  height: 100%;
+  transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.score-bar-fg.navy { background: var(--deep-navy); }
+.score-bar-fg.gold { background: var(--khaki-gold); }
+.score-block-desc {
+  font-size: 11px;
+  color: var(--warm-gray);
+  line-height: 1.5;
+}
+.tier-badge {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 6px 14px;
+  border: 1px solid var(--deep-navy);
+  color: var(--deep-navy);
+  margin-top: 20px;
+}
+
+/* Matrix page */
+.matrix-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--khaki);
+  margin-bottom: 20px;
+}
+.matrix-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11px;
+}
+.matrix-table th {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--cream);
+  background: var(--deep-navy);
+  padding: 10px 8px;
+  text-align: left;
+  font-weight: 500;
+}
+.matrix-table td {
+  padding: 10px 8px;
+  border-bottom: 1px solid var(--border-light);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--deep-navy);
+}
+.matrix-table tr:last-child td { border-bottom: none; }
+.matrix-table .territory-col {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+}
+.floor-tag {
+  font-size: 7px;
+  background: #FDF6E3;
+  color: #B8860B;
+  padding: 1px 4px;
+  margin-left: 3px;
+  letter-spacing: 0.5px;
+}
+.matrix-note {
+  font-size: 10px;
+  color: var(--warm-gray);
+  margin-top: 16px;
+  line-height: 1.5;
+  font-style: italic;
+}
+
+/* Conclusion page */
+.conclusion-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--khaki);
+  margin-bottom: 28px;
+}
+.conclusion-range {
+  text-align: center;
+  margin-bottom: 32px;
+}
+.conclusion-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--warm-gray);
+  margin-bottom: 4px;
+}
+.conclusion-amount {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 40px;
+  color: var(--deep-navy);
+}
+.conclusion-sub {
+  font-size: 11px;
+  color: var(--warm-gray);
+}
+.conclusion-divider {
+  width: 60px;
+  height: 1px;
+  background: var(--khaki-gold);
+  margin: 20px auto;
+  position: relative;
+}
+.conclusion-divider::after {
+  content: 'TO';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 2px;
+  color: var(--khaki-gold);
+  background: var(--white);
+  padding: 2px 6px;
+}
+.conclusion-text {
+  font-size: 12px;
+  color: var(--warm-gray);
+  line-height: 1.7;
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border-light);
+}
+.conclusion-sig {
+  margin-top: 28px;
+  display: flex;
+  gap: 24px;
+}
+.sig-item {
+  flex: 1;
+}
+.sig-name {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--deep-navy);
+  margin-bottom: 2px;
+}
+.sig-role {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--warm-gray);
+}
+.sig-line {
+  width: 100%;
+  height: 1px;
+  background: var(--deep-navy);
+  margin-bottom: 8px;
+}
+
+/* ═══ NAV ARROWS ═══ */
+.nav-arrows {
+  position: absolute;
+  bottom: 20px;
+  right: 36px;
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+.nav-arrow {
+  width: 32px; height: 32px;
+  background: var(--cream);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: var(--deep-navy);
+  font-size: 14px;
+}
+.nav-arrow:hover {
+  background: var(--deep-navy);
+  color: var(--white);
+  border-color: var(--deep-navy);
+}
+
+/* Page number */
+.page-num {
+  position: absolute;
+  bottom: 28px;
+  left: 36px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  color: var(--border);
+  letter-spacing: 1px;
+}
+</style>
+</head>
+<body>
+
+<div class="scene">
+  <div class="report-stack">
+    <!-- Back pages for depth -->
+    <div class="back-page"></div>
+    <div class="back-page"></div>
+
+    <!-- PAGE 1: COVER -->
+    <div class="report-page active" data-page="0">
+      <span class="cover-confidential">Confidential</span>
+      <div class="cover-badge">Sync Valuation Report</div>
+      <div class="cover-line"></div>
+      <h1 class="cover-title">"<em>Track Title</em>"</h1>
+      <p class="cover-artist">by Artist A & Artist B</p>
+      <div class="cover-meta">
+        <div class="cover-meta-item">
+          <span class="cover-meta-label">Report ID</span>
+          <span class="cover-meta-value">SV-2026-XXXX</span>
+        </div>
+        <div class="cover-meta-item">
+          <span class="cover-meta-label">Date</span>
+          <span class="cover-meta-value">March 2026</span>
+        </div>
+        <div class="cover-meta-item">
+          <span class="cover-meta-label">Instructed by</span>
+          <span class="cover-meta-value">Law Firm LLP</span>
+        </div>
+        <div class="cover-meta-item">
+          <span class="cover-meta-label">Media Scope</span>
+          <span class="cover-meta-value">Social Media</span>
+        </div>
+      </div>
+      <div class="cover-logo">
+        <svg viewBox="0 0 71 62" fill="none" xmlns="http://www.w3.org/2000/svg"><rect y="4" width="71" height="55" rx="5" fill="#1B2C3C"/><path d="M35.9759 45.234C33.9479 45.234 31.9979 44.909 30.1259 44.259C28.2799 43.583 26.8499 42.725 25.8359 41.685L26.9669 39.462C27.9289 40.398 29.2159 41.191 30.8279 41.841C32.4659 42.465 34.1819 42.777 35.9759 42.777C37.6919 42.777 39.0829 42.569 40.1489 42.153C41.2409 41.711 42.0339 41.126 42.5279 40.398C43.0479 39.67 43.3079 38.864 43.3079 37.98C43.3079 36.914 42.9959 36.056 42.3719 35.406C41.7739 34.756 40.9809 34.249 39.9929 33.885C39.0049 33.495 37.9129 33.157 36.7169 32.871C35.5209 32.585 34.3249 32.286 33.1289 31.974C31.9329 31.636 30.8279 31.194 29.8139 30.648C28.8259 30.102 28.0199 29.387 27.3959 28.503C26.7979 27.593 26.4989 26.41 26.4989 24.954C26.4989 23.602 26.8499 22.367 27.5519 21.249C28.2799 20.105 29.3849 19.195 30.8669 18.519C32.3489 17.817 34.2469 17.466 36.5609 17.466C38.0949 17.466 39.6159 17.687 41.1239 18.129C42.6319 18.545 43.9319 19.13 45.0239 19.884L44.0489 22.185C42.8789 21.405 41.6309 20.833 40.3049 20.469C39.0049 20.105 37.7439 19.923 36.5219 19.923C34.8839 19.923 33.5319 20.144 32.4659 20.586C31.3999 21.028 30.6069 21.626 30.0869 22.38C29.5929 23.108 29.3459 23.94 29.3459 24.876C29.3459 25.942 29.6449 26.8 30.2429 27.45C30.8669 28.1 31.6729 28.607 32.6609 28.971C33.6749 29.335 34.7799 29.66 35.9759 29.946C37.1719 30.232 38.3549 30.544 39.5249 30.882C40.7209 31.22 41.8129 31.662 42.8009 32.208C43.8149 32.728 44.6209 33.43 45.2189 34.314C45.8429 35.198 46.1549 36.355 46.1549 37.785C46.1549 39.111 45.7909 40.346 45.0629 41.49C44.3349 42.608 43.2169 43.518 41.7089 44.22C40.2269 44.896 38.3159 45.234 35.9759 45.234Z" fill="white"/><path d="M15.483 49.566V13.062H22.62V15.363H18.252V47.265H22.62V49.566H15.483ZM56.503 49.566H49.366V47.265H53.734V15.363H49.366V13.062H56.503V49.566Z" fill="white"/></svg>
+      </div>
+      <span class="page-num">01 / 04</span>
+      <div class="nav-arrows">
+        <div class="nav-arrow" onclick="prevPage()">&#8592;</div>
+        <div class="nav-arrow" onclick="nextPage()">&#8594;</div>
+      </div>
+    </div>
+
+    <!-- PAGE 2: SCORES -->
+    <div class="report-page" data-page="1">
+      <div class="scores-page-title">Section 7 — Scores & Valuation Factors</div>
+      <div class="score-block">
+        <div class="score-block-label">Artist Sync Score</div>
+        <div class="score-block-row">
+          <div class="score-block-value navy">0.20</div>
+          <div class="score-block-max">/ 1.00</div>
+        </div>
+        <div class="score-bar-bg"><div class="score-bar-fg navy" style="width: 20%"></div></div>
+        <div class="score-block-desc">Public recognition, cultural footprint & negotiating leverage. Based on the commercially strongest collaborator.</div>
+      </div>
+      <div class="score-block">
+        <div class="score-block-label">Song Sync Score</div>
+        <div class="score-block-row">
+          <div class="score-block-value gold">0.22</div>
+          <div class="score-block-max">/ 1.00</div>
+        </div>
+        <div class="score-bar-bg"><div class="score-bar-fg gold" style="width: 22%"></div></div>
+        <div class="score-block-desc">Market footprint of the specific recording. Sustained streaming & playlist penetration, genre-specific chart presence.</div>
+      </div>
+      <div class="tier-badge">Valuation Tier: Lower–Mid</div>
+      <span class="page-num">02 / 04</span>
+      <div class="nav-arrows">
+        <div class="nav-arrow" onclick="prevPage()">&#8592;</div>
+        <div class="nav-arrow" onclick="nextPage()">&#8594;</div>
+      </div>
+    </div>
+
+    <!-- PAGE 3: MATRIX -->
+    <div class="report-page" data-page="2">
+      <div class="matrix-title">Section 5 — Sync Valuation Matrix (Unpaid, Per Side)</div>
+      <table class="matrix-table">
+        <thead>
+          <tr>
+            <th>Territory</th>
+            <th>3 mo</th>
+            <th>6 mo</th>
+            <th>12 mo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="territory-col">🇺🇸 United States</td>
+            <td>€2,000<span class="floor-tag">FLOOR</span></td>
+            <td>€2,373</td>
+            <td>€3,322</td>
+          </tr>
+          <tr>
+            <td class="territory-col">🇩🇪 GAS Region</td>
+            <td>€2,000<span class="floor-tag">FLOOR</span></td>
+            <td>€2,000<span class="floor-tag">FLOOR</span></td>
+            <td>€2,488</td>
+          </tr>
+          <tr>
+            <td class="territory-col">🇪🇺 Pan-European</td>
+            <td>€2,254</td>
+            <td>€2,817</td>
+            <td>€3,944</td>
+          </tr>
+          <tr>
+            <td class="territory-col">🇰🇷 South Korea</td>
+            <td>€2,000<span class="floor-tag">FLOOR</span></td>
+            <td>€2,000<span class="floor-tag">FLOOR</span></td>
+            <td>€2,000<span class="floor-tag">FLOOR</span></td>
+          </tr>
+          <tr>
+            <td class="territory-col">🌍 Global</td>
+            <td>€4,864</td>
+            <td>€6,080</td>
+            <td>€8,512</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="matrix-note">All figures per side (master or publishing). Combined all-in = 2×. Paid social media use carries +30% premium. ±15% negotiation bandwidth applies.</p>
+      <span class="page-num">03 / 04</span>
+      <div class="nav-arrows">
+        <div class="nav-arrow" onclick="prevPage()">&#8592;</div>
+        <div class="nav-arrow" onclick="nextPage()">&#8594;</div>
+      </div>
+    </div>
+
+    <!-- PAGE 4: CONCLUSION -->
+    <div class="report-page" data-page="3">
+      <div class="conclusion-title">Section 8 — Conclusion</div>
+      <div class="conclusion-range">
+        <div class="conclusion-label">Floor (per side)</div>
+        <div class="conclusion-amount">€2,000</div>
+        <div class="conclusion-sub">€4,000 all-in</div>
+        <div class="conclusion-divider"></div>
+        <div class="conclusion-label">Ceiling (per side)</div>
+        <div class="conclusion-amount">€26,426</div>
+        <div class="conclusion-sub">€52,853 all-in</div>
+      </div>
+      <p class="conclusion-text">Valuations reflect standard professional practice in music supervision and synchronization licensing, grounded in comparative analysis of real-world licensing outcomes and market-referenced benchmarks.</p>
+      <div class="conclusion-sig">
+        <div class="sig-item">
+          <div class="sig-line"></div>
+          <div class="sig-name">Nicholas van den Doel</div>
+          <div class="sig-role">Co-Founder</div>
+        </div>
+        <div class="sig-item">
+          <div class="sig-line"></div>
+          <div class="sig-name">Marcel A. Wiebenga</div>
+          <div class="sig-role">Co-Founder</div>
+        </div>
+      </div>
+      <span class="page-num">04 / 04</span>
+      <div class="nav-arrows">
+        <div class="nav-arrow" onclick="prevPage()">&#8592;</div>
+        <div class="nav-arrow" onclick="nextPage()">&#8594;</div>
+      </div>
+    </div>
+  </div>
+  <div class="report-shadow"></div>
+</div>
+
+<script>
+let currentPage = 0;
+const pages = document.querySelectorAll('.report-page');
+const totalPages = pages.length;
+let autoTimer;
+
+function showPage(index) {
+  pages.forEach((page, i) => {
+    page.classList.remove('active', 'prev');
+    if (i === index) {
+      page.classList.add('active');
+    } else if (i < index) {
+      page.classList.add('prev');
+    }
+  });
+  // Update page numbers
+  pages.forEach(page => {
+    const num = page.querySelector('.page-num');
+    if (num) num.textContent = `0${index + 1} / 0${totalPages}`;
+  });
+}
+
+function nextPage() {
+  currentPage = (currentPage + 1) % totalPages;
+  showPage(currentPage);
+  resetAutoPlay();
+}
+
+function prevPage() {
+  currentPage = (currentPage - 1 + totalPages) % totalPages;
+  showPage(currentPage);
+  resetAutoPlay();
+}
+
+function resetAutoPlay() {
+  clearInterval(autoTimer);
+  autoTimer = setInterval(nextPage, 5000);
+}
+
+// Auto-play
+autoTimer = setInterval(nextPage, 5000);
+
+// Keyboard nav
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowRight') nextPage();
+  if (e.key === 'ArrowLeft') prevPage();
+});
+</script>
+
+</body>
+</html>
