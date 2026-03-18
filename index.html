@@ -213,10 +213,12 @@ body {
 }
 .nav-links a {
   font-family: 'DM Sans', sans-serif;
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 12px;
+  font-weight: 600;
   color: var(--text-secondary);
   text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
   transition: color 0.2s ease;
 }
 .nav-links a:hover { color: var(--deep-navy); }
@@ -261,7 +263,7 @@ body {
   }
   .nav-links.nav-open { display: flex; }
   .nav-links li { border-bottom: 1px solid var(--border-light); }
-  .nav-links li a { display: block; padding: 14px 0; font-size: 15px; }
+  .nav-links li a { display: block; padding: 14px 0; font-size: 13px; letter-spacing: 0.05em; }
   .nav-hamburger { display: flex; }
   .nav-inner { padding: 0 24px; position: relative; }
 }
@@ -1561,6 +1563,23 @@ a:focus-visible, button:focus-visible {
 }
 .modal-close:hover { color: var(--deep-navy); }
 
+/* Progress bar */
+.modal-progress {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 28px;
+}
+.modal-progress-bar {
+  flex: 1;
+  height: 3px;
+  background: var(--border-light);
+  border-radius: 2px;
+  transition: background 0.35s ease;
+}
+.modal-progress-bar.active {
+  background: var(--deep-navy);
+}
+
 .modal-step-indicator {
   font-family: 'JetBrains Mono', monospace;
   font-size: 10px;
@@ -2052,7 +2071,7 @@ a:focus-visible, button:focus-visible {
           <a href="https://esns.nl/en/conference/speakers/marcel-alexander-wiebenga/" target="_blank" rel="noopener" class="logo-slot logo-esns" title="Eurosonic Noorderslag — Panel Speaker">
             <img src="Logos%20Sync%20Valuations/ESNS25_logo_pos.png" alt="ESNS — Eurosonic Noorderslag">
           </a>
-          <a href="https://schedule.sxsw.com/2024/speakers/2197269" target="_blank" rel="noopener" class="logo-slot logo-sxsw" title="SXSW 2024 — Speaker">
+          <a href="https://schedule.sxsw.com/2024/contributors/2197269" target="_blank" rel="noopener" class="logo-slot logo-sxsw" title="SXSW 2024 — Speaker">
             <img src="Logos%20Sync%20Valuations/SxSW_logo.svg" alt="SXSW">
           </a>
         </div>
@@ -2147,6 +2166,14 @@ a:focus-visible, button:focus-visible {
 <div class="modal-overlay" id="requestModal">
   <div class="modal">
     <button class="modal-close" id="modalClose">&times;</button>
+
+    <!-- PROGRESS BAR -->
+    <div class="modal-progress" id="modalProgress">
+      <div class="modal-progress-bar active"></div>
+      <div class="modal-progress-bar"></div>
+      <div class="modal-progress-bar"></div>
+      <div class="modal-progress-bar"></div>
+    </div>
 
     <!-- STEP 1: Email -->
     <div class="modal-step active" id="step1">
@@ -2340,9 +2367,7 @@ const steps = document.querySelectorAll('.modal-step');
 function openModal() {
   modal.classList.add('active');
   document.body.style.overflow = 'hidden';
-  // Reset to step 1
-  steps.forEach(s => s.classList.remove('active'));
-  document.getElementById('step1').classList.add('active');
+  goToStep('step1');
 }
 
 function closeModal() {
@@ -2353,6 +2378,13 @@ function closeModal() {
 function goToStep(stepId) {
   steps.forEach(s => s.classList.remove('active'));
   document.getElementById(stepId).classList.add('active');
+  // Update progress bar
+  const progressMap = { step1: 1, step2: 2, step3: 3, step4: 4, stepSuccess: 4 };
+  const current = progressMap[stepId] || 1;
+  const bars = document.querySelectorAll('.modal-progress-bar');
+  const progressEl = document.getElementById('modalProgress');
+  bars.forEach((bar, i) => bar.classList.toggle('active', i < current));
+  progressEl.style.display = stepId === 'stepSuccess' ? 'none' : 'flex';
 }
 
 // Open modal from CTA buttons
