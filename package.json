@@ -6,6 +6,6 @@
     "serve": "^14.2.0"
   },
   "scripts": {
-    "start": "serve . -p ${PORT:-3000} -s"
+    "start": "serve . -p ${PORT:-3000} --config serve.json"
   }
 }

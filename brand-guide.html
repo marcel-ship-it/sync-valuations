@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sync Valuations — Brand Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F5F0E3;
+    --navy: #1B2C3C;
+    --gold: #B5A878;
+    --gold-muted: #A59F8E;
+    --black: #0A0A0A;
+    --text-body: #2C3E50;
+    --border: rgba(27,44,60,0.15);
+    --border-light: rgba(27,44,60,0.08);
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--navy);
+    min-height: 100vh;
+  }
+
+  /* ── PASSWORD SCREEN ── */
+  #passwordScreen {
+    position: fixed; inset: 0;
+    background: var(--cream);
+    display: flex; align-items: center; justify-content: center;
+    z-index: 999;
+  }
+
+  .pw-box {
+    width: 100%; max-width: 400px;
+    padding: 48px 40px;
+    border: 1px solid var(--border);
+    background: var(--cream);
+  }
+
+  .pw-mark {
+    width: 52px; height: 52px;
+    margin-bottom: 32px;
+  }
+
+  .pw-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold-muted);
+    margin-bottom: 8px;
+  }
+
+  .pw-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 36px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: var(--navy);
+    line-height: 1;
+    margin-bottom: 32px;
+  }
+
+  .pw-input-wrap {
+    position: relative;
+    margin-bottom: 16px;
+  }
+
+  .pw-input {
+    width: 100%;
+    padding: 14px 16px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--navy);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .pw-input:focus { border-color: var(--navy); }
+  .pw-input.error { border-color: #C0392B; }
+
+  .pw-btn {
+    width: 100%;
+    padding: 14px;
+    background: var(--navy);
+    color: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+
+  .pw-btn:hover { opacity: 0.85; }
+
+  .pw-error {
+    font-size: 12px;
+    color: #C0392B;
+    margin-top: 10px;
+    display: none;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ── PORTAL ── */
+  #portal { display: none; }
+
+  /* Header */
+  .portal-header {
+    background: var(--navy);
+    padding: 0 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    position: sticky; top: 0; z-index: 100;
+  }
+
+  .portal-header-logo { display: flex; align-items: center; gap: 14px; }
+
+  .portal-header-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .portal-header-right {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(245,240,227,0.4);
+  }
+
+  /* Tab nav */
+  .tab-nav {
+    background: var(--cream);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    padding: 0 48px;
+    gap: 0;
+    position: sticky; top: 64px; z-index: 99;
+  }
+
+  .tab-btn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold-muted);
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    padding: 16px 20px;
+    cursor: pointer;
+    transition: color 0.2s, border-color 0.2s;
+    margin-bottom: -1px;
+  }
+
+  .tab-btn:hover { color: var(--navy); }
+  .tab-btn.active { color: var(--navy); border-bottom-color: var(--navy); }
+
+  /* ── VOICE TAB ── */
+  #voiceTab { max-width: 900px; margin: 0 auto; padding: 64px 48px; }
+
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+
+  .section-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 42px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: var(--navy);
+    line-height: 1;
+    margin-bottom: 24px;
+  }
+
+  .section-title.sm {
+    font-size: 28px;
+    margin-bottom: 16px;
+  }
+
+  .voice-section { margin-bottom: 72px; }
+
+  .voice-section + .voice-section { border-top: 1px solid var(--border-light); padding-top: 72px; }
+
+  .lead {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.6;
+    color: var(--navy);
+    margin-bottom: 20px;
+  }
+
+  .body-text {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text-body);
+    margin-bottom: 16px;
+  }
+
+  .callout {
+    border-left: 3px solid var(--gold);
+    padding: 16px 20px;
+    background: rgba(181,168,120,0.08);
+    margin: 20px 0;
+    font-size: 16px;
+    font-style: italic;
+    font-weight: 500;
+    color: var(--navy);
+    line-height: 1.5;
+  }
+
+  /* Tables */
+  .brand-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 14px;
+  }
+
+  .brand-table th {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold-muted);
+    text-align: left;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    background: rgba(27,44,60,0.03);
+  }
+
+  .brand-table td {
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--border-light);
+    vertical-align: top;
+    line-height: 1.6;
+    color: var(--text-body);
+  }
+
+  .brand-table td:first-child { font-weight: 500; color: var(--navy); }
+
+  .brand-table tr:last-child td { border-bottom: none; }
+
+  /* Do / Don't */
+  .do-dont-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 20px 0;
+  }
+
+  .do-card, .dont-card {
+    padding: 20px;
+    border: 1px solid var(--border-light);
+  }
+
+  .do-card { border-top: 3px solid #4A8C6F; }
+  .dont-card { border-top: 3px solid #C0392B; }
+
+  .do-card-label, .dont-card-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .do-card-label { color: #4A8C6F; }
+  .dont-card-label { color: #C0392B; }
+
+  .do-card p, .dont-card p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-body);
+  }
+
+  /* Key messages */
+  .message-list { list-style: none; margin: 16px 0; }
+  .message-list li {
+    display: flex;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border-light);
+    align-items: flex-start;
+  }
+
+  .message-list li:last-child { border-bottom: none; }
+
+  .msg-rank {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--gold);
+    line-height: 1;
+    min-width: 32px;
+  }
+
+  .msg-content { flex: 1; }
+  .msg-text { font-size: 15px; font-weight: 500; color: var(--navy); margin-bottom: 4px; }
+  .msg-when { font-size: 12px; color: var(--gold-muted); font-family: 'JetBrains Mono', monospace; }
+
+  /* Forbidden words */
+  .forbidden-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border-light);
+    border: 1px solid var(--border-light);
+    margin: 16px 0;
+  }
+
+  .forbidden-cell {
+    background: var(--cream);
+    padding: 12px 16px;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .forbidden-cell.never { color: #C0392B; text-decoration: line-through; }
+  .forbidden-cell.instead { color: #4A8C6F; }
+
+  .forbidden-header {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    background: rgba(27,44,60,0.04);
+    color: var(--gold-muted);
+  }
+
+  /* Colours in voice section */
+  .colour-chips { display: flex; gap: 12px; flex-wrap: wrap; margin: 16px 0; }
+  .chip { display: flex; align-items: center; gap: 10px; padding: 10px 14px; border: 1px solid var(--border-light); font-size: 12px; }
+  .chip-swatch { width: 24px; height: 24px; flex-shrink: 0; }
+  .chip-info { font-family: 'JetBrains Mono', monospace; font-size: 11px; line-height: 1.4; }
+  .chip-name { font-weight: 500; color: var(--navy); display: block; }
+  .chip-hex { color: var(--gold-muted); }
+
+  /* Quote */
+  .testimonial {
+    background: rgba(27,44,60,0.04);
+    border-left: 3px solid var(--navy);
+    padding: 20px 24px;
+    margin: 16px 0;
+  }
+  .testimonial blockquote { font-size: 15px; font-style: italic; line-height: 1.7; color: var(--navy); margin-bottom: 10px; }
+  .testimonial cite { font-size: 12px; font-family: 'JetBrains Mono', monospace; color: var(--gold-muted); letter-spacing: 0.06em; }
+
+  /* ── LOGOS TAB ── */
+  #logosTab { padding: 64px 48px; max-width: 1100px; margin: 0 auto; display: none; }
+
+  .logo-section { margin-bottom: 72px; }
+  .logo-section-header { margin-bottom: 28px; }
+
+  .logo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
+  }
+
+  .logo-card { border: 1px solid var(--border); overflow: hidden; }
+
+  .logo-preview {
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+  }
+
+  .logo-preview svg { max-width: 100%; max-height: 80px; }
+  .logo-preview.mark svg { max-height: 60px; max-width: 60px; }
+  .logo-preview.wordmark svg { max-height: 40px; max-width: 240px; }
+
+  .logo-preview.on-cream { background: var(--cream); }
+  .logo-preview.on-navy { background: var(--navy); }
+  .logo-preview.on-black { background: #0A0A0A; }
+
+  .logo-card-meta {
+    padding: 16px 20px;
+    border-top: 1px solid var(--border-light);
+    background: var(--cream);
+  }
+
+  .logo-card-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 2px;
+  }
+
+  .logo-card-use {
+    font-size: 12px;
+    color: var(--gold-muted);
+    font-family: 'JetBrains Mono', monospace;
+    margin-bottom: 14px;
+  }
+
+  .logo-actions { display: flex; gap: 8px; }
+
+  .btn-copy, .btn-dl {
+    padding: 8px 14px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--navy);
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .btn-copy:hover { background: var(--navy); color: var(--cream); }
+
+  .btn-dl {
+    background: var(--navy);
+    color: var(--cream);
+    border-color: var(--navy);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .btn-dl:hover { opacity: 0.8; }
+
+  .copied-msg {
+    font-size: 11px;
+    color: #4A8C6F;
+    font-family: 'JetBrains Mono', monospace;
+    margin-top: 6px;
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    .portal-header { padding: 0 24px; }
+    .tab-nav { padding: 0 24px; }
+    #voiceTab, #logosTab { padding: 40px 24px; }
+    .do-dont-grid { grid-template-columns: 1fr; }
+    .forbidden-grid { grid-template-columns: 1fr; }
+    .logo-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ PASSWORD SCREEN ══ -->
+<div id="passwordScreen">
+  <div class="pw-box">
+    <svg class="pw-mark" viewBox="0 0 71 63" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect y="4" width="71" height="55" rx="2" fill="#1B2C3C"/>
+      <path d="M35.9759 45.234C33.9479 45.234 31.9979 44.909 30.1259 44.259C28.2799 43.583 26.8499 42.725 25.8359 41.685L26.9669 39.462C27.9289 40.398 29.2159 41.191 30.8279 41.841C32.4659 42.465 34.1819 42.777 35.9759 42.777C37.6919 42.777 39.0829 42.569 40.1489 42.153C41.2409 41.711 42.0339 41.126 42.5279 40.398C43.0479 39.67 43.3079 38.864 43.3079 37.98C43.3079 36.914 42.9959 36.056 42.3719 35.406C41.7739 34.756 40.9809 34.249 39.9929 33.885C39.0049 33.495 37.9129 33.157 36.7169 32.871C35.5209 32.585 34.3249 32.286 33.1289 31.974C31.9329 31.636 30.8279 31.194 29.8139 30.648C28.8259 30.102 28.0199 29.387 27.3959 28.503C26.7979 27.593 26.4989 26.41 26.4989 24.954C26.4989 23.602 26.8499 22.367 27.5519 21.249C28.2799 20.105 29.3849 19.195 30.8669 18.519C32.3489 17.817 34.2469 17.466 36.5609 17.466C38.0949 17.466 39.6159 17.687 41.1239 18.129C42.6319 18.545 43.9319 19.13 45.0239 19.884L44.0489 22.185C42.8789 21.405 41.6309 20.833 40.3049 20.469C39.0049 20.105 37.7439 19.923 36.5219 19.923C34.8839 19.923 33.5319 20.144 32.4659 20.586C31.3999 21.028 30.6069 21.626 30.0869 22.38C29.5929 23.108 29.3459 23.94 29.3459 24.876C29.3459 25.942 29.6449 26.8 30.2429 27.45C30.8669 28.1 31.6729 28.607 32.6609 28.971C33.6749 29.335 34.7799 29.66 35.9759 29.946C37.1719 30.232 38.3549 30.544 39.5249 30.882C40.7209 31.22 41.8129 31.662 42.8009 32.208C43.8149 32.728 44.6209 33.43 45.2189 34.314C45.8429 35.198 46.1549 36.355 46.1549 37.785C46.1549 39.111 45.7909 40.346 45.0629 41.49C44.3349 42.608 43.2169 43.518 41.7089 44.22C40.2269 44.896 38.3159 45.234 35.9759 45.234Z" fill="white"/>
+      <path d="M15.483 49.566V13.062H22.62V15.363H18.252V47.265H22.62V49.566H15.483ZM56.503 49.566H49.366V47.265H53.734V15.363H49.366V13.062H56.503V49.566Z" fill="white"/>
+    </svg>
+    <p class="pw-label">Sync Valuations</p>
+    <h1 class="pw-title">Brand<br>Guide</h1>
+    <div class="pw-input-wrap">
+      <input type="password" class="pw-input" id="pwInput" placeholder="Password" autocomplete="off">
+    </div>
+    <button class="pw-btn" onclick="checkPassword()">Enter</button>
+    <p class="pw-error" id="pwError">Incorrect password.</p>
+  </div>
+</div>
+
+<!-- ══ PORTAL ══ -->
+<div id="portal">
+
+  <!-- Header -->
+  <header class="portal-header">
+    <div class="portal-header-logo">
+      <svg width="32" height="32" viewBox="0 0 71 63" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect y="4" width="71" height="55" rx="2" fill="white" opacity="0.15"/>
+        <path d="M35.9759 45.234C33.9479 45.234 31.9979 44.909 30.1259 44.259C28.2799 43.583 26.8499 42.725 25.8359 41.685L26.9669 39.462C27.9289 40.398 29.2159 41.191 30.8279 41.841C32.4659 42.465 34.1819 42.777 35.9759 42.777C37.6919 42.777 39.0829 42.569 40.1489 42.153C41.2409 41.711 42.0339 41.126 42.5279 40.398C43.0479 39.67 43.3079 38.864 43.3079 37.98C43.3079 36.914 42.9959 36.056 42.3719 35.406C41.7739 34.756 40.9809 34.249 39.9929 33.885C39.0049 33.495 37.9129 33.157 36.7169 32.871C35.5209 32.585 34.3249 32.286 33.1289 31.974C31.9329 31.636 30.8279 31.194 29.8139 30.648C28.8259 30.102 28.0199 29.387 27.3959 28.503C26.7979 27.593 26.4989 26.41 26.4989 24.954C26.4989 23.602 26.8499 22.367 27.5519 21.249C28.2799 20.105 29.3849 19.195 30.8669 18.519C32.3489 17.817 34.2469 17.466 36.5609 17.466C38.0949 17.466 39.6159 17.687 41.1239 18.129C42.6319 18.545 43.9319 19.13 45.0239 19.884L44.0489 22.185C42.8789 21.405 41.6309 20.833 40.3049 20.469C39.0049 20.105 37.7439 19.923 36.5219 19.923C34.8839 19.923 33.5319 20.144 32.4659 20.586C31.3999 21.028 30.6069 21.626 30.0869 22.38C29.5929 23.108 29.3459 23.94 29.3459 24.876C29.3459 25.942 29.6449 26.8 30.2429 27.45C30.8669 28.1 31.6729 28.607 32.6609 28.971C33.6749 29.335 34.7799 29.66 35.9759 29.946C37.1719 30.232 38.3549 30.544 39.5249 30.882C40.7209 31.22 41.8129 31.662 42.8009 32.208C43.8149 32.728 44.6209 33.43 45.2189 34.314C45.8429 35.198 46.1549 36.355 46.1549 37.785C46.1549 39.111 45.7909 40.346 45.0629 41.49C44.3349 42.608 43.2169 43.518 41.7089 44.22C40.2269 44.896 38.3159 45.234 35.9759 45.234Z" fill="white"/>
+        <path d="M15.483 49.566V13.062H22.62V15.363H18.252V47.265H22.62V49.566H15.483ZM56.503 49.566H49.366V47.265H53.734V15.363H49.366V13.062H56.503V49.566Z" fill="white"/>
+      </svg>
+      <span class="portal-header-label">Brand Guide</span>
+    </div>
+    <span class="portal-header-right">Confidential — March 2026</span>
+  </header>
+
+  <!-- Tabs -->
+  <nav class="tab-nav">
+    <button class="tab-btn active" onclick="showTab('voice', this)">Voice</button>
+    <button class="tab-btn" onclick="showTab('logos', this)">Logos</button>
+    <button class="tab-btn" onclick="showTab('colours', this)">Colours &amp; Type</button>
+  </nav>
+
+  <!-- ── VOICE TAB ── -->
+  <div id="voiceTab">
+
+    <div class="voice-section">
+      <p class="section-label">01 — Voice Identity</p>
+      <h2 class="section-title">The Core Voice</h2>
+      <p class="lead">Sync Valuations speaks as music industry veterans who have been in the room where sync deals get made — for 20+ years each, 40+ years combined.</p>
+      <p class="body-text">We don't perform expertise. We demonstrate it by explaining complex things simply, backing every claim with data, and never overselling.</p>
+      <div class="callout">"We've negotiated sync deals for over 20 years. Here's what it's worth and why."</div>
+      <p class="body-text">The voice is <strong>not</strong> institutional, consultative, legalese, or startup-speak.</p>
+    </div>
+
+    <div class="voice-section">
+      <p class="section-label">02 — We Are / We Are Not</p>
+      <h2 class="section-title">Positioning</h2>
+      <table class="brand-table">
+        <thead>
+          <tr><th>We Are</th><th>We Are Not</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Valuation experts establishing fair market price</td><td>Consultants offering advice</td></tr>
+          <tr><td>Independent third-party with no recovery interest</td><td>Lawyers providing legal counsel</td></tr>
+          <tr><td>Backed by xSV™ software and 20+ years of deal experience</td><td>Negotiators representing interests</td></tr>
+          <tr><td>Focused exclusively on post-infringement scenarios</td><td>Claim machines calculating penalties</td></tr>
+          <tr><td>Direct and concrete in every statement</td><td>Vague or hedging to sound important</td></tr>
+          <tr><td>Confident without arrogance</td><td>Self-aggrandising or credential-dropping</td></tr>
+          <tr><td>Transparent about methodology and limitations</td><td>Black-box or opaque about how we work</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="voice-section">
+      <p class="section-label">03 — Tone by Context</p>
+      <h2 class="section-title">When &amp; How</h2>
+      <table class="brand-table">
+        <thead>
+          <tr><th>Context</th><th>Tone</th><th>Pattern</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Cold outreach</td><td>Warm + confident</td><td>"Good talking with you. To recap what we discussed:" — straight to value, no preamble</td></tr>
+          <tr><td>Methodology explanation</td><td>Precise + accessible</td><td>"Our xSV™ framework operates on two proprietary scores…" — technical but readable</td></tr>
+          <tr><td>Pushback on scoring</td><td>Firm + respectful</td><td>"I understand the instinct, however these scores reflect…" — acknowledge, then hold ground</td></tr>
+          <tr><td>Follow-up / nudge</td><td>Light + direct</td><td>"Just checking in to see if this landed" — no pressure, easy exit offered</td></tr>
+          <tr><td>Website / marketing</td><td>Authoritative + clear</td><td>Short sentences. No jargon. Every word earns its place.</td></tr>
+          <tr><td>Report delivery</td><td>Structured + service-oriented</td><td>"Please find attached Draft v1.0…" — clean handoff, clear next steps</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="voice-section">
+      <p class="section-label">04 — Founders</p>
+      <h2 class="section-title">Two Voices, One Brand</h2>
+
+      <h3 class="section-title sm">Marcel — Relationship Builder</h3>
+      <p class="body-text">Conversational confidence. Opens with warmth, moves fast to substance. Frames complexity in one sentence. Uses concrete numbers without hedging. Short paragraphs.</p>
+      <table class="brand-table">
+        <thead><tr><th>Signature Phrases</th></tr></thead>
+        <tbody>
+          <tr><td>"Good question to ask, and a sign you're approaching this the right way."</td></tr>
+          <tr><td>"The core problem in these cases: [x]. That's where we come in."</td></tr>
+          <tr><td>"In other words: we are sync licensing valuation experts."</td></tr>
+          <tr><td>"Our reports are produced independently. […] full stop."</td></tr>
+        </tbody>
+      </table>
+
+      <h3 class="section-title sm" style="margin-top:32px">Nicholas — Methodology Defender</h3>
+      <p class="body-text">More structured and formal than Marcel, but never cold. Methodical — addresses feedback point by point. Diplomatic firmness. Expert-grade precision. Always provides clear next steps.</p>
+      <table class="brand-table">
+        <thead><tr><th>Signature Phrases</th></tr></thead>
+        <tbody>
+          <tr><td>"I understand the instinct that the numbers feel conservative. However…"</td></tr>
+          <tr><td>"From a litigation perspective, we have seen from other law firms we work with that…"</td></tr>
+          <tr><td>"Conservative scoring works in counsel's favour: it allows them to demonstrate to the court that even for a niche track, the fees are still substantial."</td></tr>
+          <tr><td>"Happy to jump on a call to discuss further."</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="voice-section">
+      <p class="section-label">05 — Combined Voice Rules</p>
+      <h2 class="section-title">Seven Rules</h2>
+      <table class="brand-table">
+        <thead><tr><th>#</th><th>Rule</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td><strong>Lead with the answer, then explain.</strong> Never build up to a conclusion.</td></tr>
+          <tr><td>2</td><td><strong>Use numbers, not adjectives.</strong> "73% settlement rate" beats "significantly improved outcomes."</td></tr>
+          <tr><td>3</td><td><strong>Short sentences for authority.</strong> Long sentences for nuance (methodology sections only).</td></tr>
+          <tr><td>4</td><td><strong>Acknowledge, then hold ground.</strong> When challenged on methodology, validate the question, then defend the framework.</td></tr>
+          <tr><td>5</td><td><strong>No jargon-for-impression.</strong> If a term doesn't make the explanation clearer, cut it.</td></tr>
+          <tr><td>6</td><td><strong>Independence is structural, not claimed.</strong> Don't say "we are independent." Show it: "We serve only one party per case."</td></tr>
+          <tr><td>7</td><td><strong>xSV™ is always software, never just methodology.</strong> It's systematised expertise, not a framework on paper.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="voice-section">
+      <p class="section-label">06 — Key Messages</p>
+      <h2 class="section-title">What to Say</h2>
+      <ul class="message-list">
+        <li>
+          <span class="msg-rank">1</span>
+          <div class="msg-content">
+            <p class="msg-text">"We determine what unlicensed music is worth."</p>
+            <p class="msg-when">Homepage, first contact, elevator pitch</p>
+          </div>
+        </li>
+        <li>
+          <span class="msg-rank">2</span>
+          <div class="msg-content">
+            <p class="msg-text">"Independent valuations for legal disputes."</p>
+            <p class="msg-when">Any context where positioning matters</p>
+          </div>
+        </li>
+        <li>
+          <span class="msg-rank">3</span>
+          <div class="msg-content">
+            <p class="msg-text">"20+ years negotiating sync deals → xSV™ software → independent valuations."</p>
+            <p class="msg-when">Credibility establishment — about pages, bios</p>
+          </div>
+        </li>
+        <li>
+          <span class="msg-rank">4</span>
+          <div class="msg-content">
+            <p class="msg-text">"Settlement rates increase from ~30% to ~70% when using our reports."</p>
+            <p class="msg-when">ROI conversation, website stats</p>
+          </div>
+        </li>
+        <li>
+          <span class="msg-rank">5</span>
+          <div class="msg-content">
+            <p class="msg-text">"We serve only one party per case — independence is structural."</p>
+            <p class="msg-when">Differentiation, trust-building</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="voice-section">
+      <p class="section-label">07 — Social Proof</p>
+      <h2 class="section-title">Client Voices</h2>
+
+      <div class="testimonial">
+        <blockquote>"Sync valuations produced by Ringo provide us with expert assessments of infringement damages that accurately appraise licensing fees payable for a range of commercial uses of our clients' intellectual property. Ringo delivers a critical validation tool for our cases."</blockquote>
+        <cite>Joel Rothman, Managing Partner — SRipLaw (US)</cite>
+      </div>
+
+      <div class="testimonial">
+        <blockquote>"The Elfe report enabled Frommer to close cases that might otherwise not have been settled."</blockquote>
+        <cite>Marc Hügel, Managing Partner — Frommer Legal (Germany)</cite>
+      </div>
+
+      <div class="testimonial">
+        <blockquote>"These provide illustrative examples of how we are already using your valuations in practice. We primarily use the Ringo report in response to the initial reaction from the opposing counsel."</blockquote>
+        <cite>Ron Bisle — Frommer Legal (Germany)</cite>
+      </div>
+
+      <p class="body-text" style="margin-top:16px; font-size:13px; color:var(--gold-muted);">Note: Joel's quote references "Ringo" — request updated attribution naming Sync Valuations. Marc's quote is paraphrased — consider requesting a formal written testimonial.</p>
+    </div>
+
+    <div class="voice-section">
+      <p class="section-label">08 — Copy Examples</p>
+      <h2 class="section-title">Do / Don't</h2>
+
+      <div class="do-dont-grid">
+        <div class="dont-card">
+          <p class="dont-card-label">Never write</p>
+          <p>"We help you understand the potential value range for this usage scenario."</p>
+        </div>
+        <div class="do-card">
+          <p class="do-card-label">Write instead</p>
+          <p>"What is unlicensed music worth? We provide an independent valuation."</p>
+        </div>
+      </div>
+
+      <div class="do-dont-grid">
+        <div class="dont-card">
+          <p class="dont-card-label">Never write</p>
+          <p>"Our methodology satisfies all Daubert requirements for expert testimony admissibility."</p>
+        </div>
+        <div class="do-card">
+          <p class="do-card-label">Write instead</p>
+          <p>"Our reports are built to hold up in court. We can testify as expert witnesses to defend the methodology."</p>
+        </div>
+      </div>
+
+      <div class="do-dont-grid">
+        <div class="dont-card">
+          <p class="dont-card-label">Never write</p>
+          <p>"I wanted to introduce our company and its services to you…"</p>
+        </div>
+        <div class="do-card">
+          <p class="do-card-label">Write instead</p>
+          <p>"The core problem in these cases: it's easy to prove infringement happened. It's hard to prove what that infringement is worth. That's where we come in."</p>
+        </div>
+      </div>
+
+      <div class="do-dont-grid">
+        <div class="dont-card">
+          <p class="dont-card-label">Never write (pricing)</p>
+          <p>"Our pricing is competitive and varies based on your specific needs."</p>
+        </div>
+        <div class="do-card">
+          <p class="do-card-label">Write instead</p>
+          <p>"€2,500 — single case use. €5,000 — up to three cases. €7,500 — unlimited cases."</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="voice-section">
+      <p class="section-label">09 — Forbidden Words</p>
+      <h2 class="section-title">Never Say / Say Instead</h2>
+      <div class="forbidden-grid">
+        <div class="forbidden-header">Never say</div>
+        <div class="forbidden-header">Say instead</div>
+        <div class="forbidden-cell never">"We can help you understand…"</div>
+        <div class="forbidden-cell instead">"We determine…" / "We establish…"</div>
+        <div class="forbidden-cell never">"Potential value range"</div>
+        <div class="forbidden-cell instead">"Market-conforming price"</div>
+        <div class="forbidden-cell never">"Comprehensive solution"</div>
+        <div class="forbidden-cell instead">Be specific about the deliverable</div>
+        <div class="forbidden-cell never">"Cutting-edge" / "innovative"</div>
+        <div class="forbidden-cell instead">"Built on 20+ years of deal experience"</div>
+        <div class="forbidden-cell never">"Our team of experts"</div>
+        <div class="forbidden-cell instead">"We've negotiated sync deals for 20+ years"</div>
+        <div class="forbidden-cell never">"Reach out to us"</div>
+        <div class="forbidden-cell instead">"Book a consultation" / "Request a report"</div>
+        <div class="forbidden-cell never">"Partnership" (for clients)</div>
+        <div class="forbidden-cell instead">"Engagement" or "commission"</div>
+        <div class="forbidden-cell never">"Damages" / "penalties"</div>
+        <div class="forbidden-cell instead">"Market-conforming license fee"</div>
+        <div class="forbidden-cell never">"Unique methodology"</div>
+        <div class="forbidden-cell instead">"xSV™ software"</div>
+        <div class="forbidden-cell never">XSV / Xsv / xsv</div>
+        <div class="forbidden-cell instead">Always: xSV™</div>
+      </div>
+    </div>
+
+  </div><!-- /voiceTab -->
+
+  <!-- ── LOGOS TAB ── -->
+  <div id="logosTab">
+
+    <div class="logo-section">
+      <div class="logo-section-header">
+        <p class="section-label">01 — Full Logo</p>
+        <h2 class="section-title">Mark + Wordmark</h2>
+      </div>
+      <div class="logo-grid">
+
+        <!-- Color / Primary -->
+        <div class="logo-card">
+          <div class="logo-preview on-cream">
+            <svg width="450" height="62" viewBox="0 0 450 62" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><style>@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&display=swap');</style></defs><rect y="4" width="71" height="55" rx="2" fill="#1B2C3C"/><path d="M35.9759 45.234C33.9479 45.234 31.9979 44.909 30.1259 44.259C28.2799 43.583 26.8499 42.725 25.8359 41.685L26.9669 39.462C27.9289 40.398 29.2159 41.191 30.8279 41.841C32.4659 42.465 34.1819 42.777 35.9759 42.777C37.6919 42.777 39.0829 42.569 40.1489 42.153C41.2409 41.711 42.0339 41.126 42.5279 40.398C43.0479 39.67 43.3079 38.864 43.3079 37.98C43.3079 36.914 42.9959 36.056 42.3719 35.406C41.7739 34.756 40.9809 34.249 39.9929 33.885C39.0049 33.495 37.9129 33.157 36.7169 32.871C35.5209 32.585 34.3249 32.286 33.1289 31.974C31.9329 31.636 30.8279 31.194 29.8139 30.648C28.8259 30.102 28.0199 29.387 27.3959 28.503C26.7979 27.593 26.4989 26.41 26.4989 24.954C26.4989 23.602 26.8499 22.367 27.5519 21.249C28.2799 20.105 29.3849 19.195 30.8669 18.519C32.3489 17.817 34.2469 17.466 36.5609 17.466C38.0949 17.466 39.6159 17.687 41.1239 18.129C42.6319 18.545 43.9319 19.13 45.0239 19.884L44.0489 22.185C42.8789 21.405 41.6309 20.833 40.3049 20.469C39.0049 20.105 37.7439 19.923 36.5219 19.923C34.8839 19.923 33.5319 20.144 32.4659 20.586C31.3999 21.028 30.6069 21.626 30.0869 22.38C29.5929 23.108 29.3459 23.94 29.3459 24.876C29.3459 25.942 29.6449 26.8 30.2429 27.45C30.8669 28.1 31.6729 28.607 32.6609 28.971C33.6749 29.335 34.7799 29.66 35.9759 29.946C37.1719 30.232 38.3549 30.544 39.5249 30.882C40.7209 31.22 41.8129 31.662 42.8009 32.208C43.8149 32.728 44.6209 33.43 45.2189 34.314C45.8429 35.198 46.1549 36.355 46.1549 37.785C46.1549 39.111 45.7909 40.346 45.0629 41.49C44.3349 42.608 43.2169 43.518 41.7089 44.22C40.2269 44.896 38.3159 45.234 35.9759 45.234Z" fill="white"/><path d="M15.483 49.566V13.062H22.62V15.363H18.252V47.265H22.62V49.566H15.483ZM56.503 49.566H49.366V47.265H53.734V15.363H49.366V13.062H56.503V49.566Z" fill="white"/><text x="83" y="42" font-family="'DM Sans', sans-serif" font-weight="500" font-size="32" letter-spacing="2" fill="#1B2C3C">SYNC VALUATIONS</text></svg>
+          </div>
+          <div class="logo-card-meta">
+            <p class="logo-card-name">Primary (Color)</p>
+            <p class="logo-card-use">Light backgrounds — cream, white</p>
+            <div class="logo-actions">
+              <button class="btn-copy" onclick="copyLogoSVG('logoColorFull', this)">Copy SVG</button>
+              <a class="btn-dl" onclick="downloadSVG('logoColorFull', 'sv-logo-color.svg')">Download</a>
+            </div>
+            <p class="copied-msg" id="logoColorFullMsg">Copied!</p>
+          </div>
+        </div>
+
+        <!-- Black -->
+        <div class="logo-card">
+          <div class="logo-preview on-cream">
+            <svg width="450" height="62" viewBox="0 0 450 62" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><style>@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&display=swap');</style></defs><rect y="4" width="71" height="55" rx="2" fill="#0A0A0A"/><path d="M35.9759 45.234C33.9479 45.234 31.9979 44.909 30.1259 44.259C28.2799 43.583 26.8499 42.725 25.8359 41.685L26.9669 39.462C27.9289 40.398 29.2159 41.191 30.8279 41.841C32.4659 42.465 34.1819 42.777 35.9759 42.777C37.6919 42.777 39.0829 42.569 40.1489 42.153C41.2409 41.711 42.0339 41.126 42.5279 40.398C43.0479 39.67 43.3079 38.864 43.3079 37.98C43.3079 36.914 42.9959 36.056 42.3719 35.406C41.7739 34.756 40.9809 34.249 39.9929 33.885C39.0049 33.495 37.9129 33.157 36.7169 32.871C35.5209 32.585 34.3249 32.286 33.1289 31.974C31.9329 31.636 30.8279 31.194 29.8139 30.648C28.8259 30.102 28.0199 29.387 27.3959 28.503C26.7979 27.593 26.4989 26.41 26.4989 24.954C26.4989 23.602 26.8499 22.367 27.5519 21.249C28.2799 20.105 29.3849 19.195 30.8669 18.519C32.3489 17.817 34.2469 17.466 36.5609 17.466C38.0949 17.466 39.6159 17.687 41.1239 18.129C42.6319 18.545 43.9319 19.13 45.0239 19.884L44.0489 22.185C42.8789 21.405 41.6309 20.833 40.3049 20.469C39.0049 20.105 37.7439 19.923 36.5219 19.923C34.8839 19.923 33.5319 20.144 32.4659 20.586C31.3999 21.028 30.6069 21.626 30.0869 22.38C29.5929 23.108 29.3459 23.94 29.3459 24.876C29.3459 25.942 29.6449 26.8 30.2429 27.45C30.8669 28.1 31.6729 28.607 32.6609 28.971C33.6749 29.335 34.7799 29.66 35.9759 29.946C37.1719 30.232 38.3549 30.544 39.5249 30.882C40.7209 31.22 41.8129 31.662 42.8009 32.208C43.8149 32.728 44.6209 33.43 45.2189 34.314C45.8429 35.198 46.1549 36.355 46.1549 37.785C46.1549 39.111 45.7909 40.346 45.0629 41.49C44.3349 42.608 43.2169 43.518 41.7089 44.22C40.2269 44.896 38.3159 45.234 35.9759 45.234Z" fill="white"/><path d="M15.483 49.566V13.062H22.62V15.363H18.252V47.265H22.62V49.566H15.483ZM56.503 49.566H49.366V47.265H53.734V15.363H49.366V13.062H56.503V49.566Z" fill="white"/><text x="83" y="42" font-family="'DM Sans', sans-serif" font-weight="500" font-size="32" letter-spacing="2" fill="#0A0A0A">SYNC VALUATIONS</text></svg>
+          </div>
+          <div class="logo-card-meta">
+            <p class="logo-card-name">Black</p>
+            <p class="logo-card-use">Light backgrounds — print, single-colour</p>
+            <div class="logo-actions">
+              <button class="btn-copy" onclick="copyLogoSVG('logoBlackFull', this)">Copy SVG</button>
+              <a class="btn-dl" onclick="downloadSVG('logoBlackFull', 'sv-logo-black.svg')">Download</a>
+            </div>
+            <p class="copied-msg" id="logoBlackFullMsg">Copied!</p>
+          </div>
+        </div>
+
+        <!-- White / Reversed -->
+        <div class="logo-card">
+          <div class="logo-preview on-navy">
+            <svg width="450" height="62" viewBox="0 0 450 62" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><style>@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&display=swap');</style></defs><rect y="4" width="71" height="55" rx="2" fill="white"/><path d="M35.9759 45.234C33.9479 45.234 31.9979 44.909 30.1259 44.259C28.2799 43.583 26.8499 42.725 25.8359 41.685L26.9669 39.462C27.9289 40.398 29.2159 41.191 30.8279 41.841C32.4659 42.465 34.1819 42.777 35.9759 42.777C37.6919 42.777 39.0829 42.569 40.1489 42.153C41.2409 41.711 42.0339 41.126 42.5279 40.398C43.0479 39.67 43.3079 38.864 43.3079 37.98C43.3079 36.914 42.9959 36.056 42.3719 35.406C41.7739 34.756 40.9809 34.249 39.9929 33.885C39.0049 33.495 37.9129 33.157 36.7169 32.871C35.5209 32.585 34.3249 32.286 33.1289 31.974C31.9329 31.636 30.8279 31.194 29.8139 30.648C28.8259 30.102 28.0199 29.387 27.3959 28.503C26.7979 27.593 26.4989 26.41 26.4989 24.954C26.4989 23.602 26.8499 22.367 27.5519 21.249C28.2799 20.105 29.3849 19.195 30.8669 18.519C32.3489 17.817 34.2469 17.466 36.5609 17.466C38.0949 17.466 39.6159 17.687 41.1239 18.129C42.6319 18.545 43.9319 19.13 45.0239 19.884L44.0489 22.185C42.8789 21.405 41.6309 20.833 40.3049 20.469C39.0049 20.105 37.7443 19.923 36.5219 19.923C34.8839 19.923 33.5319 20.144 32.4659 20.586C31.3999 21.028 30.6069 21.626 30.0869 22.38C29.5929 23.108 29.3459 23.94 29.3459 24.876C29.3459 25.942 29.6449 26.8 30.2429 27.45C30.8669 28.1 31.6729 28.607 32.6609 28.971C33.6749 29.335 34.7799 29.66 35.9759 29.946C37.1719 30.232 38.3549 30.544 39.5249 30.882C40.7209 31.22 41.8129 31.662 42.8009 32.208C43.8149 32.728 44.6209 33.43 45.2189 34.314C45.8429 35.198 46.1549 36.355 46.1549 37.785C46.1549 39.111 45.7909 40.346 45.0629 41.49C44.3349 42.608 43.2169 43.518 41.7089 44.22C40.2269 44.896 38.3159 45.234 35.9759 45.234Z" fill="#1B2C3C"/><path d="M15.483 49.566V13.062H22.62V15.363H18.252V47.265H22.62V49.566H15.483ZM56.503 49.566H49.366V47.265H53.734V15.363H49.366V13.062H56.503V49.566Z" fill="#1B2C3C"/><text x="83" y="42" font-family="'DM Sans', sans-serif" font-weight="500" font-size="32" letter-spacing="2" fill="white">SYNC VALUATIONS</text></svg>
+          </div>
+          <div class="logo-card-meta">
+            <p class="logo-card-name">Reversed (White)</p>
+            <p class="logo-card-use">Dark backgrounds — navy, black</p>
+            <div class="logo-actions">
+              <button class="btn-copy" onclick="copyLogoSVG('logoWhiteFull', this)">Copy SVG</button>
+              <a class="btn-dl" onclick="downloadSVG('logoWhiteFull', 'sv-logo-white.svg')">Download</a>
+            </div>
+            <p class="copied-msg" id="logoWhiteFullMsg">Copied!</p>
+          </div>
+        </div>
+
+      </div>
+    </div><!-- /Full Logo -->
+
+    <div class="logo-section">
+      <div class="logo-section-header">
+        <p class="section-label">02 — Mark Only</p>
+        <h2 class="section-title">[S] Mark</h2>
+      </div>
+      <div class="logo-grid">
+
+        <div class="logo-card">
+          <div class="logo-preview on-cream mark">
+            <svg width="71" height="63" viewBox="0 0 71 63" fill="none" xmlns="http://www.w3.org/2000/svg"><rect y="4" width="71" height="55" rx="2" fill="#1B2C3C"/><path d="M35.9759 45.234C33.9479 45.234 31.9979 44.909 30.1259 44.259C28.2799 43.583 26.8499 42.725 25.8359 41.685L26.9669 39.462C27.9289 40.398 29.2159 41.191 30.8279 41.841C32.4659 42.465 34.1819 42.777 35.9759 42.777C37.6919 42.777 39.0829 42.569 40.1489 42.153C41.2409 41.711 42.0339 41.126 42.5279 40.398C43.0479 39.67 43.3079 38.864 43.3079 37.98C43.3079 36.914 42.9959 36.056 42.3719 35.406C41.7739 34.756 40.9809 34.249 39.9929 33.885C39.0049 33.495 37.9129 33.157 36.7169 32.871C35.5209 32.585 34.3249 32.286 33.1289 31.974C31.9329 31.636 30.8279 31.194 29.8139 30.648C28.8259 30.102 28.0199 29.387 27.3959 28.503C26.7979 27.593 26.4989 26.41 26.4989 24.954C26.4989 23.602 26.8499 22.367 27.5519 21.249C28.2799 20.105 29.3849 19.195 30.8669 18.519C32.3489 17.817 34.2469 17.466 36.5609 17.466C38.0949 17.466 39.6159 17.687 41.1239 18.129C42.6319 18.545 43.9319 19.13 45.0239 19.884L44.0489 22.185C42.8789 21.405 41.6309 20.833 40.3049 20.469C39.0049 20.105 37.7439 19.923 36.5219 19.923C34.8839 19.923 33.5319 20.144 32.4659 20.586C31.3999 21.028 30.6069 21.626 30.0869 22.38C29.5929 23.108 29.3459 23.94 29.3459 24.876C29.3459 25.942 29.6449 26.8 30.2429 27.45C30.8669 28.1 31.6729 28.607 32.6609 28.971C33.6749 29.335 34.7799 29.66 35.9759 29.946C37.1719 30.232 38.3549 30.544 39.5249 30.882C40.7209 31.22 41.8129 31.662 42.8009 32.208C43.8149 32.728 44.6209 33.43 45.2189 34.314C45.8429 35.198 46.1549 36.355 46.1549 37.785C46.1549 39.111 45.7909 40.346 45.0629 41.49C44.3349 42.608 43.2169 43.518 41.7089 44.22C40.2269 44.896 38.3159 45.234 35.9759 45.234Z" fill="white"/><path d="M15.483 49.566V13.062H22.62V15.363H18.252V47.265H22.62V49.566H15.483ZM56.503 49.566H49.366V47.265H53.734V15.363H49.366V13.062H56.503V49.566Z" fill="white"/></svg>
+          </div>
+          <div class="logo-card-meta">
+            <p class="logo-card-name">Navy Mark</p>
+            <p class="logo-card-use">Light backgrounds — primary mark</p>
+            <div class="logo-actions">
+              <button class="btn-copy" onclick="copyLogoSVG('markColor', this)">Copy SVG</button>
+              <a class="btn-dl" onclick="downloadSVG('markColor', 'sv-mark-color.svg')">Download</a>
+            </div>
+            <p class="copied-msg" id="markColorMsg">Copied!</p>
+          </div>
+        </div>
+
+        <div class="logo-card">
+          <div class="logo-preview on-cream mark">
+            <svg width="71" height="63" viewBox="0 0 71 63" fill="none" xmlns="http://www.w3.org/2000/svg"><rect y="4" width="71" height="55" rx="2" fill="#0A0A0A"/><path d="M35.9759 45.234C33.9479 45.234 31.9979 44.909 30.1259 44.259C28.2799 43.583 26.8499 42.725 25.8359 41.685L26.9669 39.462C27.9289 40.398 29.2159 41.191 30.8279 41.841C32.4659 42.465 34.1819 42.777 35.9759 42.777C37.6919 42.777 39.0829 42.569 40.1489 42.153C41.2409 41.711 42.0339 41.126 42.5279 40.398C43.0479 39.67 43.3079 38.864 43.3079 37.98C43.3079 36.914 42.9959 36.056 42.3719 35.406C41.7739 34.756 40.9809 34.249 39.9929 33.885C39.0049 33.495 37.9129 33.157 36.7169 32.871C35.5209 32.585 34.3249 32.286 33.1289 31.974C31.9329 31.636 30.8279 31.194 29.8139 30.648C28.8259 30.102 28.0199 29.387 27.3959 28.503C26.7979 27.593 26.4989 26.41 26.4989 24.954C26.4989 23.602 26.8499 22.367 27.5519 21.249C28.2799 20.105 29.3849 19.195 30.8669 18.519C32.3489 17.817 34.2469 17.466 36.5609 17.466C38.0949 17.466 39.6159 17.687 41.1239 18.129C42.6319 18.545 43.9319 19.13 45.0239 19.884L44.0489 22.185C42.8789 21.405 41.6309 20.833 40.3049 20.469C39.0049 20.105 37.7439 19.923 36.5219 19.923C34.8839 19.923 33.5319 20.144 32.4659 20.586C31.3999 21.028 30.6069 21.626 30.0869 22.38C29.5929 23.108 29.3459 23.94 29.3459 24.876C29.3459 25.942 29.6449 26.8 30.2429 27.45C30.8669 28.1 31.6729 28.607 32.6609 28.971C33.6749 29.335 34.7799 29.66 35.9759 29.946C37.1719 30.232 38.3549 30.544 39.5249 30.882C40.7209 31.22 41.8129 31.662 42.8009 32.208C43.8149 32.728 44.6209 33.43 45.2189 34.314C45.8429 35.198 46.1549 36.355 46.1549 37.785C46.1549 39.111 45.7909 40.346 45.0629 41.49C44.3349 42.608 43.2169 43.518 41.7089 44.22C40.2269 44.896 38.3159 45.234 35.9759 45.234Z" fill="white"/><path d="M15.483 49.566V13.062H22.62V15.363H18.252V47.265H22.62V49.566H15.483ZM56.503 49.566H49.366V47.265H53.734V15.363H49.366V13.062H56.503V49.566Z" fill="white"/></svg>
+          </div>
+          <div class="logo-card-meta">
+            <p class="logo-card-name">Black Mark</p>
+            <p class="logo-card-use">Light backgrounds — print, single-colour</p>
+            <div class="logo-actions">
+              <button class="btn-copy" onclick="copyLogoSVG('markBlack', this)">Copy SVG</button>
+              <a class="btn-dl" onclick="downloadSVG('markBlack', 'sv-mark-black.svg')">Download</a>
+            </div>
+            <p class="copied-msg" id="markBlackMsg">Copied!</p>
+          </div>
+        </div>
+
+        <div class="logo-card">
+          <div class="logo-preview on-navy mark">
+            <svg width="71" height="63" viewBox="0 0 71 63" fill="none" xmlns="http://www.w3.org/2000/svg"><rect y="4" width="71" height="55" rx="2" fill="white"/><path d="M35.9759 45.234C33.9479 45.234 31.9979 44.909 30.1259 44.259C28.2799 43.583 26.8499 42.725 25.8359 41.685L26.9669 39.462C27.9289 40.398 29.2159 41.191 30.8279 41.841C32.4659 42.465 34.1819 42.777 35.9759 42.777C37.6919 42.777 39.0829 42.569 40.1489 42.153C41.2409 41.711 42.0339 41.126 42.5279 40.398C43.0479 39.67 43.3079 38.864 43.3079 37.98C43.3079 36.914 42.9959 36.056 42.3719 35.406C41.7739 34.756 40.9809 34.249 39.9929 33.885C39.0049 33.495 37.9129 33.157 36.7169 32.871C35.5209 32.585 34.3249 32.286 33.1289 31.974C31.9329 31.636 30.8279 31.194 29.8139 30.648C28.8259 30.102 28.0199 29.387 27.3959 28.503C26.7979 27.593 26.4989 26.41 26.4989 24.954C26.4989 23.602 26.8499 22.367 27.5519 21.249C28.2799 20.105 29.3849 19.195 30.8669 18.519C32.3489 17.817 34.2469 17.466 36.5609 17.466C38.0949 17.466 39.6159 17.687 41.1239 18.129C42.6319 18.545 43.9319 19.13 45.0239 19.884L44.0489 22.185C42.8789 21.405 41.6309 20.833 40.3049 20.469C39.0049 20.105 37.7439 19.923 36.5219 19.923C34.8839 19.923 33.5319 20.144 32.4659 20.586C31.3999 21.028 30.6069 21.626 30.0869 22.38C29.5929 23.108 29.3459 23.94 29.3459 24.876C29.3459 25.942 29.6449 26.8 30.2429 27.45C30.8669 28.1 31.6729 28.607 32.6609 28.971C33.6749 29.335 34.7799 29.66 35.9759 29.946C37.1719 30.232 38.3549 30.544 39.5249 30.882C40.7209 31.22 41.8129 31.662 42.8009 32.208C43.8149 32.728 44.6209 33.43 45.2189 34.314C45.8429 35.198 46.1549 36.355 46.1549 37.785C46.1549 39.111 45.7909 40.346 45.0629 41.49C44.3349 42.608 43.2169 43.518 41.7089 44.22C40.2269 44.896 38.3159 45.234 35.9759 45.234Z" fill="#1B2C3C"/><path d="M15.483 49.566V13.062H22.62V15.363H18.252V47.265H22.62V49.566H15.483ZM56.503 49.566H49.366V47.265H53.734V15.363H49.366V13.062H56.503V49.566Z" fill="#1B2C3C"/></svg>
+          </div>
+          <div class="logo-card-meta">
+            <p class="logo-card-name">White Mark</p>
+            <p class="logo-card-use">Dark backgrounds — navy, black</p>
+            <div class="logo-actions">
+              <button class="btn-copy" onclick="copyLogoSVG('markWhite', this)">Copy SVG</button>
+              <a class="btn-dl" onclick="downloadSVG('markWhite', 'sv-mark-white.svg')">Download</a>
+            </div>
+            <p class="copied-msg" id="markWhiteMsg">Copied!</p>
+          </div>
+        </div>
+
+      </div>
+    </div><!-- /Marks -->
+
+    <div class="logo-section">
+      <div class="logo-section-header">
+        <p class="section-label">03 — Wordmark Only</p>
+        <h2 class="section-title">Text Only</h2>
+      </div>
+      <div class="logo-grid">
+
+        <div class="logo-card">
+          <div class="logo-preview on-cream wordmark">
+            <svg width="370" height="40" viewBox="0 0 370 40" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><style>@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&display=swap');</style></defs><text x="0" y="32" font-family="'DM Sans', sans-serif" font-weight="500" font-size="32" letter-spacing="2" fill="#1B2C3C">SYNC VALUATIONS</text></svg>
+          </div>
+          <div class="logo-card-meta">
+            <p class="logo-card-name">Wordmark Dark</p>
+            <p class="logo-card-use">Light backgrounds — no mark needed</p>
+            <div class="logo-actions">
+              <button class="btn-copy" onclick="copyLogoSVG('wordmarkDark', this)">Copy SVG</button>
+              <a class="btn-dl" onclick="downloadSVG('wordmarkDark', 'sv-wordmark-dark.svg')">Download</a>
+            </div>
+            <p class="copied-msg" id="wordmarkDarkMsg">Copied!</p>
+          </div>
+        </div>
+
+        <div class="logo-card">
+          <div class="logo-preview on-navy wordmark">
+            <svg width="370" height="40" viewBox="0 0 370 40" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><style>@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&display=swap');</style></defs><text x="0" y="32" font-family="'DM Sans', sans-serif" font-weight="500" font-size="32" letter-spacing="2" fill="white">SYNC VALUATIONS</text></svg>
+          </div>
+          <div class="logo-card-meta">
+            <p class="logo-card-name">Wordmark White</p>
+            <p class="logo-card-use">Dark backgrounds</p>
+            <div class="logo-actions">
+              <button class="btn-copy" onclick="copyLogoSVG('wordmarkWhite', this)">Copy SVG</button>
+              <a class="btn-dl" onclick="downloadSVG('wordmarkWhite', 'sv-wordmark-white.svg')">Download</a>
+            </div>
+            <p class="copied-msg" id="wordmarkWhiteMsg">Copied!</p>
+          </div>
+        </div>
+
+      </div>
+    </div><!-- /Wordmarks -->
+
+  </div><!-- /logosTab -->
+
+  <!-- ── COLOURS & TYPE TAB ── -->
+  <div id="coloursTab" style="display:none; max-width:900px; margin:0 auto; padding:64px 48px;">
+
+    <div class="voice-section">
+      <p class="section-label">01 — Colour Palette</p>
+      <h2 class="section-title">Brand Colours</h2>
+      <div class="colour-chips">
+        <div class="chip">
+          <div class="chip-swatch" style="background:#F5F0E3; border:1px solid #ddd;"></div>
+          <div class="chip-info"><span class="chip-name">Cream</span><span class="chip-hex">#F5F0E3</span></div>
+        </div>
+        <div class="chip">
+          <div class="chip-swatch" style="background:#1B2C3C;"></div>
+          <div class="chip-info"><span class="chip-name">Deep Navy</span><span class="chip-hex">#1B2C3C</span></div>
+        </div>
+        <div class="chip">
+          <div class="chip-swatch" style="background:#B5A878;"></div>
+          <div class="chip-info"><span class="chip-name">Gold</span><span class="chip-hex">#B5A878</span></div>
+        </div>
+        <div class="chip">
+          <div class="chip-swatch" style="background:#A59F8E;"></div>
+          <div class="chip-info"><span class="chip-name">Gold Muted</span><span class="chip-hex">#A59F8E</span></div>
+        </div>
+        <div class="chip">
+          <div class="chip-swatch" style="background:#0A0A0A;"></div>
+          <div class="chip-info"><span class="chip-name">Black</span><span class="chip-hex">#0A0A0A</span></div>
+        </div>
+      </div>
+      <p class="body-text" style="margin-top:20px;">Warm cream + deep navy + muted gold is the identity. Authority through typography and whitespace, not through darkness or heaviness.</p>
+    </div>
+
+    <div class="voice-section">
+      <p class="section-label">02 — Typography</p>
+      <h2 class="section-title">Type System</h2>
+      <table class="brand-table">
+        <thead><tr><th>Role</th><th>Font</th><th>Usage</th></tr></thead>
+        <tbody>
+          <tr><td>Headlines</td><td>Barlow Condensed 800 — UPPERCASE</td><td>Section titles, hero text, card names. Bold, editorial, condensed.</td></tr>
+          <tr><td>Body</td><td>DM Sans 400 / 500</td><td>All body copy, navigation, emails. Clean, readable.</td></tr>
+          <tr><td>Labels</td><td>JetBrains Mono 400 — UPPERCASE</td><td>Section labels, metadata, tags. Always small, always tracked.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="voice-section">
+      <p class="section-label">03 — Design Principles</p>
+      <h2 class="section-title">Visual Rules</h2>
+      <table class="brand-table">
+        <tbody>
+          <tr><td>Corners</td><td>Square — zero border-radius on all buttons and cards</td></tr>
+          <tr><td>Whitespace</td><td>Generous between sections — breathing room signals confidence</td></tr>
+          <tr><td>Buttons</td><td>Navy fill or transparent with navy border — no rounded pill shapes</td></tr>
+          <tr><td>Dividers</td><td>Thin 1px lines at low opacity — never heavy rules</td></tr>
+          <tr><td>Hierarchy</td><td>Barlow Condensed for punch, DM Sans for readability, Mono for precision</td></tr>
+          <tr><td>Tone</td><td>Warm, editorial, confident. Not cold. Not law-firm dark.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div><!-- /coloursTab -->
+
+</div><!-- /portal -->
+
+<script>
+  // ── SVG SOURCE STRINGS (for copy/download) ──
+  const svgSources = {
+    logoColorFull: `<svg width="450" height="62" viewBox="0 0 450 62" fill="none" xmlns="http://www.w3.org/2000/svg"><rect y="4" width="71" height="55" rx="2" fill="#1B2C3C"/><path d="M35.9759 45.234C33.9479 45.234 31.9979 44.909 30.1259 44.259C28.2799 43.583 26.8499 42.725 25.8359 41.685L26.9669 39.462C27.9289 40.398 29.2159 41.191 30.8279 41.841C32.4659 42.465 34.1819 42.777 35.9759 42.777C37.6919 42.777 39.0829 42.569 40.1489 42.153C41.2409 41.711 42.0339 41.126 42.5279 40.398C43.0479 39.67 43.3079 38.864 43.3079 37.98C43.3079 36.914 42.9959 36.056 42.3719 35.406C41.7739 34.756 40.9809 34.249 39.9929 33.885C39.0049 33.495 37.9129 33.157 36.7169 32.871C35.5209 32.585 34.3249 32.286 33.1289 31.974C31.9329 31.636 30.8279 31.194 29.8139 30.648C28.8259 30.102 28.0199 29.387 27.3959 28.503C26.7979 27.593 26.4989 26.41 26.4989 24.954C26.4989 23.602 26.8499 22.367 27.5519 21.249C28.2799 20.105 29.3849 19.195 30.8669 18.519C32.3489 17.817 34.2469 17.466 36.5609 17.466C38.0949 17.466 39.6159 17.687 41.1239 18.129C42.6319 18.545 43.9319 19.13 45.0239 19.884L44.0489 22.185C42.8789 21.405 41.6309 20.833 40.3049 20.469C39.0049 20.105 37.7439 19.923 36.5219 19.923C34.8839 19.923 33.5319 20.144 32.4659 20.586C31.3999 21.028 30.6069 21.626 30.0869 22.38C29.5929 23.108 29.3459 23.94 29.3459 24.876C29.3459 25.942 29.6449 26.8 30.2429 27.45C30.8669 28.1 31.6729 28.607 32.6609 28.971C33.6749 29.335 34.7799 29.66 35.9759 29.946C37.1719 30.232 38.3549 30.544 39.5249 30.882C40.7209 31.22 41.8129 31.662 42.8009 32.208C43.8149 32.728 44.6209 33.43 45.2189 34.314C45.8429 35.198 46.1549 36.355 46.1549 37.785C46.1549 39.111 45.7909 40.346 45.0629 41.49C44.3349 42.608 43.2169 43.518 41.7089 44.22C40.2269 44.896 38.3159 45.234 35.9759 45.234Z" fill="white"/><path d="M15.483 49.566V13.062H22.62V15.363H18.252V47.265H22.62V49.566H15.483ZM56.503 49.566H49.366V47.265H53.734V15.363H49.366V13.062H56.503V49.566Z" fill="white"/><text x="83" y="42" font-family="'DM Sans', sans-serif" font-weight="500" font-size="32" letter-spacing="2" fill="#1B2C3C">SYNC VALUATIONS</text></svg>`,
+    logoBlackFull: `<svg width="450" height="62" viewBox="0 0 450 62" fill="none" xmlns="http://www.w3.org/2000/svg"><rect y="4" width="71" height="55" rx="2" fill="#0A0A0A"/><path d="M35.9759 45.234C33.9479 45.234 31.9979 44.909 30.1259 44.259C28.2799 43.583 26.8499 42.725 25.8359 41.685L26.9669 39.462C27.9289 40.398 29.2159 41.191 30.8279 41.841C32.4659 42.465 34.1819 42.777 35.9759 42.777C37.6919 42.777 39.0829 42.569 40.1489 42.153C41.2409 41.711 42.0339 41.126 42.5279 40.398C43.0479 39.67 43.3079 38.864 43.3079 37.98C43.3079 36.914 42.9959 36.056 42.3719 35.406C41.7739 34.756 40.9809 34.249 39.9929 33.885C39.0049 33.495 37.9129 33.157 36.7169 32.871C35.5209 32.585 34.3249 32.286 33.1289 31.974C31.9329 31.636 30.8279 31.194 29.8139 30.648C28.8259 30.102 28.0199 29.387 27.3959 28.503C26.7979 27.593 26.4989 26.41 26.4989 24.954C26.4989 23.602 26.8499 22.367 27.5519 21.249C28.2799 20.105 29.3849 19.195 30.8669 18.519C32.3489 17.817 34.2469 17.466 36.5609 17.466C38.0949 17.466 39.6159 17.687 41.1239 18.129C42.6319 18.545 43.9319 19.13 45.0239 19.884L44.0489 22.185C42.8789 21.405 41.6309 20.833 40.3049 20.469C39.0049 20.105 37.7439 19.923 36.5219 19.923C34.8839 19.923 33.5319 20.144 32.4659 20.586C31.3999 21.028 30.6069 21.626 30.0869 22.38C29.5929 23.108 29.3459 23.94 29.3459 24.876C29.3459 25.942 29.6449 26.8 30.2429 27.45C30.8669 28.1 31.6729 28.607 32.6609 28.971C33.6749 29.335 34.7799 29.66 35.9759 29.946C37.1719 30.232 38.3549 30.544 39.5249 30.882C40.7209 31.22 41.8129 31.662 42.8009 32.208C43.8149 32.728 44.6209 33.43 45.2189 34.314C45.8429 35.198 46.1549 36.355 46.1549 37.785C46.1549 39.111 45.7909 40.346 45.0629 41.49C44.3349 42.608 43.2169 43.518 41.7089 44.22C40.2269 44.896 38.3159 45.234 35.9759 45.234Z" fill="white"/><path d="M15.483 49.566V13.062H22.62V15.363H18.252V47.265H22.62V49.566H15.483ZM56.503 49.566H49.366V47.265H53.734V15.363H49.366V13.062H56.503V49.566Z" fill="white"/><text x="83" y="42" font-family="'DM Sans', sans-serif" font-weight="500" font-size="32" letter-spacing="2" fill="#0A0A0A">SYNC VALUATIONS</text></svg>`,
+    logoWhiteFull: `<svg width="450" height="62" viewBox="0 0 450 62" fill="none" xmlns="http://www.w3.org/2000/svg"><rect y="4" width="71" height="55" rx="2" fill="white"/><path d="M35.9759 45.234C33.9479 45.234 31.9979 44.909 30.1259 44.259C28.2799 43.583 26.8499 42.725 25.8359 41.685L26.9669 39.462C27.9289 40.398 29.2159 41.191 30.8279 41.841C32.4659 42.465 34.1819 42.777 35.9759 42.777C37.6919 42.777 39.0829 42.569 40.1489 42.153C41.2409 41.711 42.0339 41.126 42.5279 40.398C43.0479 39.67 43.3079 38.864 43.3079 37.98C43.3079 36.914 42.9959 36.056 42.3719 35.406C41.7739 34.756 40.9809 34.249 39.9929 33.885C39.0049 33.495 37.9129 33.157 36.7169 32.871C35.5209 32.585 34.3249 32.286 33.1289 31.974C31.9329 31.636 30.8279 31.194 29.8139 30.648C28.8259 30.102 28.0199 29.387 27.3959 28.503C26.7979 27.593 26.4989 26.41 26.4989 24.954C26.4989 23.602 26.8499 22.367 27.5519 21.249C28.2799 20.105 29.3849 19.195 30.8669 18.519C32.3489 17.817 34.2469 17.466 36.5609 17.466C38.0949 17.466 39.6159 17.687 41.1239 18.129C42.6319 18.545 43.9319 19.13 45.0239 19.884L44.0489 22.185C42.8789 21.405 41.6309 20.833 40.3049 20.469C39.0049 20.105 37.7439 19.923 36.5219 19.923C34.8839 19.923 33.5319 20.144 32.4659 20.586C31.3999 21.028 30.6069 21.626 30.0869 22.38C29.5929 23.108 29.3459 23.94 29.3459 24.876C29.3459 25.942 29.6449 26.8 30.2429 27.45C30.8669 28.1 31.6729 28.607 32.6609 28.971C33.6749 29.335 34.7799 29.66 35.9759 29.946C37.1719 30.232 38.3549 30.544 39.5249 30.882C40.7209 31.22 41.8129 31.662 42.8009 32.208C43.8149 32.728 44.6209 33.43 45.2189 34.314C45.8429 35.198 46.1549 36.355 46.1549 37.785C46.1549 39.111 45.7909 40.346 45.0629 41.49C44.3349 42.608 43.2169 43.518 41.7089 44.22C40.2269 44.896 38.3159 45.234 35.9759 45.234Z" fill="#1B2C3C"/><path d="M15.483 49.566V13.062H22.62V15.363H18.252V47.265H22.62V49.566H15.483ZM56.503 49.566H49.366V47.265H53.734V15.363H49.366V13.062H56.503V49.566Z" fill="#1B2C3C"/><text x="83" y="42" font-family="'DM Sans', sans-serif" font-weight="500" font-size="32" letter-spacing="2" fill="white">SYNC VALUATIONS</text></svg>`,
+    markColor: `<svg width="71" height="63" viewBox="0 0 71 63" fill="none" xmlns="http://www.w3.org/2000/svg"><rect y="4" width="71" height="55" rx="2" fill="#1B2C3C"/><path d="M35.9759 45.234C33.9479 45.234 31.9979 44.909 30.1259 44.259C28.2799 43.583 26.8499 42.725 25.8359 41.685L26.9669 39.462C27.9289 40.398 29.2159 41.191 30.8279 41.841C32.4659 42.465 34.1819 42.777 35.9759 42.777C37.6919 42.777 39.0829 42.569 40.1489 42.153C41.2409 41.711 42.0339 41.126 42.5279 40.398C43.0479 39.67 43.3079 38.864 43.3079 37.98C43.3079 36.914 42.9959 36.056 42.3719 35.406C41.7739 34.756 40.9809 34.249 39.9929 33.885C39.0049 33.495 37.9129 33.157 36.7169 32.871C35.5209 32.585 34.3249 32.286 33.1289 31.974C31.9329 31.636 30.8279 31.194 29.8139 30.648C28.8259 30.102 28.0199 29.387 27.3959 28.503C26.7979 27.593 26.4989 26.41 26.4989 24.954C26.4989 23.602 26.8499 22.367 27.5519 21.249C28.2799 20.105 29.3849 19.195 30.8669 18.519C32.3489 17.817 34.2469 17.466 36.5609 17.466C38.0949 17.466 39.6159 17.687 41.1239 18.129C42.6319 18.545 43.9319 19.13 45.0239 19.884L44.0489 22.185C42.8789 21.405 41.6309 20.833 40.3049 20.469C39.0049 20.105 37.7439 19.923 36.5219 19.923C34.8839 19.923 33.5319 20.144 32.4659 20.586C31.3999 21.028 30.6069 21.626 30.0869 22.38C29.5929 23.108 29.3459 23.94 29.3459 24.876C29.3459 25.942 29.6449 26.8 30.2429 27.45C30.8669 28.1 31.6729 28.607 32.6609 28.971C33.6749 29.335 34.7799 29.66 35.9759 29.946C37.1719 30.232 38.3549 30.544 39.5249 30.882C40.7209 31.22 41.8129 31.662 42.8009 32.208C43.8149 32.728 44.6209 33.43 45.2189 34.314C45.8429 35.198 46.1549 36.355 46.1549 37.785C46.1549 39.111 45.7909 40.346 45.0629 41.49C44.3349 42.608 43.2169 43.518 41.7089 44.22C40.2269 44.896 38.3159 45.234 35.9759 45.234Z" fill="white"/><path d="M15.483 49.566V13.062H22.62V15.363H18.252V47.265H22.62V49.566H15.483ZM56.503 49.566H49.366V47.265H53.734V15.363H49.366V13.062H56.503V49.566Z" fill="white"/></svg>`,
+    markBlack: `<svg width="71" height="63" viewBox="0 0 71 63" fill="none" xmlns="http://www.w3.org/2000/svg"><rect y="4" width="71" height="55" rx="2" fill="#0A0A0A"/><path d="M35.9759 45.234C33.9479 45.234 31.9979 44.909 30.1259 44.259C28.2799 43.583 26.8499 42.725 25.8359 41.685L26.9669 39.462C27.9289 40.398 29.2159 41.191 30.8279 41.841C32.4659 42.465 34.1819 42.777 35.9759 42.777C37.6919 42.777 39.0829 42.569 40.1489 42.153C41.2409 41.711 42.0339 41.126 42.5279 40.398C43.0479 39.67 43.3079 38.864 43.3079 37.98C43.3079 36.914 42.9959 36.056 42.3719 35.406C41.7739 34.756 40.9809 34.249 39.9929 33.885C39.0049 33.495 37.9129 33.157 36.7169 32.871C35.5209 32.585 34.3249 32.286 33.1289 31.974C31.9329 31.636 30.8279 31.194 29.8139 30.648C28.8259 30.102 28.0199 29.387 27.3959 28.503C26.7979 27.593 26.4989 26.41 26.4989 24.954C26.4989 23.602 26.8499 22.367 27.5519 21.249C28.2799 20.105 29.3849 19.195 30.8669 18.519C32.3489 17.817 34.2469 17.466 36.5609 17.466C38.0949 17.466 39.6159 17.687 41.1239 18.129C42.6319 18.545 43.9319 19.13 45.0239 19.884L44.0489 22.185C42.8789 21.405 41.6309 20.833 40.3049 20.469C39.0049 20.105 37.7439 19.923 36.5219 19.923C34.8839 19.923 33.5319 20.144 32.4659 20.586C31.3999 21.028 30.6069 21.626 30.0869 22.38C29.5929 23.108 29.3459 23.94 29.3459 24.876C29.3459 25.942 29.6449 26.8 30.2429 27.45C30.8669 28.1 31.6729 28.607 32.6609 28.971C33.6749 29.335 34.7799 29.66 35.9759 29.946C37.1719 30.232 38.3549 30.544 39.5249 30.882C40.7209 31.22 41.8129 31.662 42.8009 32.208C43.8149 32.728 44.6209 33.43 45.2189 34.314C45.8429 35.198 46.1549 36.355 46.1549 37.785C46.1549 39.111 45.7909 40.346 45.0629 41.49C44.3349 42.608 43.2169 43.518 41.7089 44.22C40.2269 44.896 38.3159 45.234 35.9759 45.234Z" fill="white"/><path d="M15.483 49.566V13.062H22.62V15.363H18.252V47.265H22.62V49.566H15.483ZM56.503 49.566H49.366V47.265H53.734V15.363H49.366V13.062H56.503V49.566Z" fill="white"/></svg>`,
+    markWhite: `<svg width="71" height="63" viewBox="0 0 71 63" fill="none" xmlns="http://www.w3.org/2000/svg"><rect y="4" width="71" height="55" rx="2" fill="white"/><path d="M35.9759 45.234C33.9479 45.234 31.9979 44.909 30.1259 44.259C28.2799 43.583 26.8499 42.725 25.8359 41.685L26.9669 39.462C27.9289 40.398 29.2159 41.191 30.8279 41.841C32.4659 42.465 34.1819 42.777 35.9759 42.777C37.6919 42.777 39.0829 42.569 40.1489 42.153C41.2409 41.711 42.0339 41.126 42.5279 40.398C43.0479 39.67 43.3079 38.864 43.3079 37.98C43.3079 36.914 42.9959 36.056 42.3719 35.406C41.7739 34.756 40.9809 34.249 39.9929 33.885C39.0049 33.495 37.9129 33.157 36.7169 32.871C35.5209 32.585 34.3249 32.286 33.1289 31.974C31.9329 31.636 30.8279 31.194 29.8139 30.648C28.8259 30.102 28.0199 29.387 27.3959 28.503C26.7979 27.593 26.4989 26.41 26.4989 24.954C26.4989 23.602 26.8499 22.367 27.5519 21.249C28.2799 20.105 29.3849 19.195 30.8669 18.519C32.3489 17.817 34.2469 17.466 36.5609 17.466C38.0949 17.466 39.6159 17.687 41.1239 18.129C42.6319 18.545 43.9319 19.13 45.0239 19.884L44.0489 22.185C42.8789 21.405 41.6309 20.833 40.3049 20.469C39.0049 20.105 37.7439 19.923 36.5219 19.923C34.8839 19.923 33.5319 20.144 32.4659 20.586C31.3999 21.028 30.6069 21.626 30.0869 22.38C29.5929 23.108 29.3459 23.94 29.3459 24.876C29.3459 25.942 29.6449 26.8 30.2429 27.45C30.8669 28.1 31.6729 28.607 32.6609 28.971C33.6749 29.335 34.7799 29.66 35.9759 29.946C37.1719 30.232 38.3549 30.544 39.5249 30.882C40.7209 31.22 41.8129 31.662 42.8009 32.208C43.8149 32.728 44.6209 33.43 45.2189 34.314C45.8429 35.198 46.1549 36.355 46.1549 37.785C46.1549 39.111 45.7909 40.346 45.0629 41.49C44.3349 42.608 43.2169 43.518 41.7089 44.22C40.2269 44.896 38.3159 45.234 35.9759 45.234Z" fill="#1B2C3C"/><path d="M15.483 49.566V13.062H22.62V15.363H18.252V47.265H22.62V49.566H15.483ZM56.503 49.566H49.366V47.265H53.734V15.363H49.366V13.062H56.503V49.566Z" fill="#1B2C3C"/></svg>`,
+    wordmarkDark: `<svg width="370" height="40" viewBox="0 0 370 40" fill="none" xmlns="http://www.w3.org/2000/svg"><text x="0" y="32" font-family="'DM Sans', sans-serif" font-weight="500" font-size="32" letter-spacing="2" fill="#1B2C3C">SYNC VALUATIONS</text></svg>`,
+    wordmarkWhite: `<svg width="370" height="40" viewBox="0 0 370 40" fill="none" xmlns="http://www.w3.org/2000/svg"><text x="0" y="32" font-family="'DM Sans', sans-serif" font-weight="500" font-size="32" letter-spacing="2" fill="white">SYNC VALUATIONS</text></svg>`
+  };
+
+  // ── AUTH ──
+  function checkPassword() {
+    const val = document.getElementById('pwInput').value;
+    const err = document.getElementById('pwError');
+    const input = document.getElementById('pwInput');
+    if (val === 'hallo1234!') {
+      document.getElementById('passwordScreen').style.display = 'none';
+      document.getElementById('portal').style.display = 'block';
+    } else {
+      input.classList.add('error');
+      err.style.display = 'block';
+      setTimeout(() => { input.classList.remove('error'); err.style.display = 'none'; }, 2500);
+    }
+  }
+
+  document.getElementById('pwInput').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') checkPassword();
+  });
+
+  // ── TABS ──
+  function showTab(tab, btn) {
+    ['voiceTab', 'logosTab', 'coloursTab'].forEach(id => {
+      document.getElementById(id).style.display = 'none';
+    });
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(tab + 'Tab').style.display = 'block';
+    btn.classList.add('active');
+  }
+
+  // ── LOGO ACTIONS ──
+  function copyLogoSVG(key, btn) {
+    const svg = svgSources[key];
+    navigator.clipboard.writeText(svg).then(() => {
+      const id = key + 'Msg';
+      const msg = document.getElementById(id);
+      if (msg) { msg.style.display = 'block'; setTimeout(() => msg.style.display = 'none', 2000); }
+    });
+  }
+
+  function downloadSVG(key, filename) {
+    const svg = svgSources[key];
+    const blob = new Blob([svg], { type: 'image/svg+xml' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = filename;
+    document.body.appendChild(a); a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+</script>
+</body>
+</html>
