@@ -1,6 +1,1 @@
-<svg width="370" height="40" viewBox="0 0 370 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <style>@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&amp;display=swap');</style>
-  </defs>
-  <text x="0" y="32" font-family="'DM Sans', sans-serif" font-weight="500" font-size="32" letter-spacing="2" fill="#1B2C3C">SYNC VALUATIONS</text>
-</svg>
+<svg width="370" height="40" viewBox="0 0 370 40" fill="none" xmlns="http://www.w3.org/2000/svg"><text x="0" y="32" font-family="'DM Sans', sans-serif" font-size="32" letter-spacing="2"><tspan font-weight="500" fill="#243D52">SYNC</tspan><tspan font-weight="400" fill="#243D52"> VALUATIONS</tspan></text></svg>
